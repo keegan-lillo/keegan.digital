@@ -1,0 +1,37 @@
+{
+  "name": "using-typescript",
+  "version": "1.0.0",
+  "description": "Gatsby example site demonstrating how to use TypeScript with Gatsby",
+  "author": "fabien0102 <fabien0102@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "gatsby develop",
+    "develop": "gatsby develop",
+    "build": "gatsby build",
+    "type-check": "tsc --noEmit",
+    "lint": "tslint --project .",
+    "graphql-codegen": "graphql-codegen --config codegen.yml"
+  },
+  "dependencies": {
+    "@types/node": "^10.3.1",
+    "@types/react": "^16.9.2",
+    "@types/react-dom": "^16.9.0",
+    "gatsby": "^2.0.0",
+    "gatsby-plugin-typescript": "^2.0.0",
+    "prettier": "^1.18.2",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-typography": "^0.16.13"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^1.7.0",
+    "@graphql-codegen/typescript": "1.7.0",
+    "@graphql-codegen/typescript-operations": "1.7.0",
+    "graphql": "^14.5.4",
+    "tslint": "^5.10.0",
+    "tslint-config-prettier": "^1.13.0",
+    "tslint-react": "^3.6.0",
+    "typescript": "^3.6.2",
+    "typescript-plugin-css-module-types": "^0.1.1"
+  }
+}
