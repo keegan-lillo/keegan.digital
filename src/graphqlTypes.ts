@@ -1,4 +1,4 @@
-export type Maybe<T> = T | null
+export type Maybe<T> = T
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string
@@ -34,7 +34,6 @@ export type DateQueryOperatorInput = {
 }
 
 export type Internal = {
-  __typename?: 'Internal'
   content?: Maybe<Scalars['String']>
   contentDigest: Scalars['String']
   description?: Maybe<Scalars['String']>
@@ -87,7 +86,6 @@ export type NodeFilterListInput = {
 }
 
 export type PageInfo = {
-  __typename?: 'PageInfo'
   currentPage: Scalars['Int']
   hasPreviousPage: Scalars['Boolean']
   hasNextPage: Scalars['Boolean']
@@ -97,7 +95,6 @@ export type PageInfo = {
 }
 
 export type Query = {
-  __typename?: 'Query'
   sitePage?: Maybe<SitePage>
   allSitePage: SitePageConnection
   sitePlugin?: Maybe<SitePlugin>
@@ -170,7 +167,6 @@ export type QueryAllSiteArgs = {
 }
 
 export type Site = Node & {
-  __typename?: 'Site'
   id: Scalars['ID']
   parent?: Maybe<Node>
   children: Array<Node>
@@ -191,7 +187,6 @@ export type SiteBuildTimeArgs = {
 }
 
 export type SiteConnection = {
-  __typename?: 'SiteConnection'
   totalCount: Scalars['Int']
   edges: Array<SiteEdge>
   nodes: Array<Site>
@@ -211,7 +206,6 @@ export type SiteConnectionGroupArgs = {
 }
 
 export type SiteEdge = {
-  __typename?: 'SiteEdge'
   next?: Maybe<Site>
   node: Site
   previous?: Maybe<Site>
@@ -305,6 +299,8 @@ export enum SiteFieldsEnum {
   internal___owner = 'internal___owner',
   internal___type = 'internal___type',
   siteMetadata___siteName = 'siteMetadata___siteName',
+  siteMetadata___siteUrl = 'siteMetadata___siteUrl',
+  siteMetadata___title = 'siteMetadata___title',
   port = 'port',
   host = 'host',
   polyfill = 'polyfill',
@@ -326,7 +322,6 @@ export type SiteFilterInput = {
 }
 
 export type SiteGroupConnection = {
-  __typename?: 'SiteGroupConnection'
   totalCount: Scalars['Int']
   edges: Array<SiteEdge>
   nodes: Array<Site>
@@ -336,7 +331,6 @@ export type SiteGroupConnection = {
 }
 
 export type SitePage = Node & {
-  __typename?: 'SitePage'
   id: Scalars['ID']
   parent?: Maybe<Node>
   children: Array<Node>
@@ -352,7 +346,6 @@ export type SitePage = Node & {
 }
 
 export type SitePageConnection = {
-  __typename?: 'SitePageConnection'
   totalCount: Scalars['Int']
   edges: Array<SitePageEdge>
   nodes: Array<SitePage>
@@ -372,7 +365,6 @@ export type SitePageConnectionGroupArgs = {
 }
 
 export type SitePageEdge = {
-  __typename?: 'SitePageEdge'
   next?: Maybe<SitePage>
   node: SitePage
   previous?: Maybe<SitePage>
@@ -551,7 +543,6 @@ export type SitePageFilterInput = {
 }
 
 export type SitePageGroupConnection = {
-  __typename?: 'SitePageGroupConnection'
   totalCount: Scalars['Int']
   edges: Array<SitePageEdge>
   nodes: Array<SitePage>
@@ -566,7 +557,6 @@ export type SitePageSortInput = {
 }
 
 export type SitePlugin = Node & {
-  __typename?: 'SitePlugin'
   id: Scalars['ID']
   parent?: Maybe<Node>
   children: Array<Node>
@@ -581,7 +571,6 @@ export type SitePlugin = Node & {
 }
 
 export type SitePluginConnection = {
-  __typename?: 'SitePluginConnection'
   totalCount: Scalars['Int']
   edges: Array<SitePluginEdge>
   nodes: Array<SitePlugin>
@@ -601,7 +590,6 @@ export type SitePluginConnectionGroupArgs = {
 }
 
 export type SitePluginEdge = {
-  __typename?: 'SitePluginEdge'
   next?: Maybe<SitePlugin>
   node: SitePlugin
   previous?: Maybe<SitePlugin>
@@ -734,7 +722,6 @@ export type SitePluginFilterInput = {
 }
 
 export type SitePluginGroupConnection = {
-  __typename?: 'SitePluginGroupConnection'
   totalCount: Scalars['Int']
   edges: Array<SitePluginEdge>
   nodes: Array<SitePlugin>
@@ -744,7 +731,6 @@ export type SitePluginGroupConnection = {
 }
 
 export type SitePluginPackageJson = {
-  __typename?: 'SitePluginPackageJson'
   name?: Maybe<Scalars['String']>
   description?: Maybe<Scalars['String']>
   version?: Maybe<Scalars['String']>
@@ -758,7 +744,6 @@ export type SitePluginPackageJson = {
 }
 
 export type SitePluginPackageJsonDependencies = {
-  __typename?: 'SitePluginPackageJsonDependencies'
   name?: Maybe<Scalars['String']>
   version?: Maybe<Scalars['String']>
 }
@@ -773,7 +758,6 @@ export type SitePluginPackageJsonDependenciesFilterListInput = {
 }
 
 export type SitePluginPackageJsonDevDependencies = {
-  __typename?: 'SitePluginPackageJsonDevDependencies'
   name?: Maybe<Scalars['String']>
   version?: Maybe<Scalars['String']>
 }
@@ -801,7 +785,6 @@ export type SitePluginPackageJsonFilterInput = {
 }
 
 export type SitePluginPackageJsonPeerDependencies = {
-  __typename?: 'SitePluginPackageJsonPeerDependencies'
   name?: Maybe<Scalars['String']>
   version?: Maybe<Scalars['String']>
 }
@@ -816,7 +799,6 @@ export type SitePluginPackageJsonPeerDependenciesFilterListInput = {
 }
 
 export type SitePluginPluginOptions = {
-  __typename?: 'SitePluginPluginOptions'
   path?: Maybe<Scalars['String']>
   pathCheck?: Maybe<Scalars['Boolean']>
 }
@@ -832,12 +814,15 @@ export type SitePluginSortInput = {
 }
 
 export type SiteSiteMetadata = {
-  __typename?: 'SiteSiteMetadata'
   siteName?: Maybe<Scalars['String']>
+  siteUrl?: Maybe<Scalars['String']>
+  title?: Maybe<Scalars['String']>
 }
 
 export type SiteSiteMetadataFilterInput = {
   siteName?: Maybe<StringQueryOperatorInput>
+  siteUrl?: Maybe<StringQueryOperatorInput>
+  title?: Maybe<StringQueryOperatorInput>
 }
 
 export type SiteSortInput = {
@@ -858,14 +843,9 @@ export type StringQueryOperatorInput = {
   regex?: Maybe<Scalars['String']>
   glob?: Maybe<Scalars['String']>
 }
-export type IndexQueryQueryVariables = {}
 
-export type IndexQueryQuery = { __typename?: 'Query' } & {
-  site: Maybe<
-    { __typename?: 'Site' } & Pick<Site, 'host'> & {
-        siteMetadata: Maybe<
-          { __typename?: 'SiteSiteMetadata' } & Pick<SiteSiteMetadata, 'siteName'>
-        >
-      }
-  >
+export type IndexPageQueryVariables = {}
+
+export type IndexPageQuery = {
+  site: Maybe<Pick<Site, 'host'> & { siteMetadata: Maybe<Pick<SiteSiteMetadata, 'siteName'>> }>
 }

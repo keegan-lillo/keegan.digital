@@ -1,14 +1,14 @@
-import React, { Component } from 'react'
+import React, { FC } from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../layouts'
-import { Query } from '../graphqlTypes'
+import { IndexPageQuery } from '../graphqlTypes'
 
 type Props = {
-  data: Query
+  data: IndexPageQuery
 }
 
 export const pageQuery = graphql`
-  query IndexQuery {
+  query IndexPage {
     site {
       host
       siteMetadata {
@@ -18,16 +18,13 @@ export const pageQuery = graphql`
   }
 `
 
-export default class IndexPage extends Component<Props> {
-  render() {
-    const { siteMetadata, host } = this.props.data.site!
-    return (
-      <Layout>
-        <h1>
-          {siteMetadata!.siteName} - {host}
-        </h1>
-        <p>Hello and welcome!</p>
-      </Layout>
-    )
-  }
+const IndexPage: FC<Props> = ({ data }) => {
+  return (
+    <Layout>
+      <h1>{data.site.siteMetadata.siteName}</h1>
+      <p>Hello and welcome!</p>
+    </Layout>
+  )
 }
+
+export default IndexPage

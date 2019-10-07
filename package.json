@@ -1,37 +1,37 @@
 {
   "name": "using-typescript",
   "version": "1.0.0",
-  "description": "Gatsby example site demonstrating how to use TypeScript with Gatsby",
-  "author": "fabien0102 <fabien0102@gmail.com>",
+  "description": "Keegan Digital Website",
+  "author": "Keegan Lillo <keegan@lillo.me>",
   "license": "MIT",
   "scripts": {
     "start": "gatsby develop",
-    "develop": "gatsby develop",
+    "develop": "(sleep 20; yarn graphql-codegen) & gatsby develop",
     "build": "gatsby build",
     "type-check": "tsc --noEmit",
     "lint": "tslint --project .",
-    "graphql-codegen": "graphql-codegen --config codegen.yml"
+    "graphql-codegen": "graphql-codegen --watch --config codegen.yml && prettier --write ./src/graphqlTypes.ts"
   },
   "dependencies": {
-    "@types/node": "^10.3.1",
-    "@types/react": "^16.9.2",
-    "@types/react-dom": "^16.9.0",
-    "gatsby": "^2.0.0",
-    "gatsby-plugin-typescript": "^2.0.0",
+    "@types/node": "^12.7.11",
+    "@types/react": "^16.9.5",
+    "@types/react-dom": "^16.9.1",
+    "gatsby": "^2.15.29",
+    "gatsby-plugin-typescript": "^2.1.11",
     "prettier": "^1.18.2",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
     "react-typography": "^0.16.13"
   },
   "devDependencies": {
-    "@graphql-codegen/cli": "^1.7.0",
-    "@graphql-codegen/typescript": "1.7.0",
-    "@graphql-codegen/typescript-operations": "1.7.0",
-    "graphql": "^14.5.4",
-    "tslint": "^5.10.0",
+    "@graphql-codegen/cli": "^1.8.1",
+    "@graphql-codegen/typescript": "1.8.1",
+    "@graphql-codegen/typescript-operations": "1.8.1",
+    "graphql": "^14.5.8",
+    "tslint": "^5.20.0",
     "tslint-config-prettier": "^1.13.0",
-    "tslint-react": "^3.6.0",
-    "typescript": "^3.6.2",
+    "tslint-react": "^4.1.0",
+    "typescript": "^3.7.0-beta",
     "typescript-plugin-css-module-types": "^0.1.1"
   }
 }
