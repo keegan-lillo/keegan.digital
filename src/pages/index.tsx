@@ -10,7 +10,6 @@ type Props = {
 export const pageQuery = graphql`
   query IndexPage {
     site {
-      host
       siteMetadata {
         siteName
       }
