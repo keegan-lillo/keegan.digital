@@ -1,0 +1,4 @@
+{
+  "extends": ["@keegan-lillo/typescript-react"],
+  "parserOptions": { "project": "./tsconfig.eslint.json" }
+}

@@ -1,8 +1,2 @@
-module.exports = {
-  siteMetadata: {
-    siteName: `Keegan Digital`,
-    siteUrl: `https://www.keegan.digital`,
-    title: `Keegan Digital`,
-  },
-  plugins: [`gatsby-plugin-typescript`],
-}
+require('./src/gatsby/babel-register.js')
+module.exports = require('./src/gatsby/gatsby-config.ts')

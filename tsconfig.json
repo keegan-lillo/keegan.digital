@@ -1,18 +1,16 @@
 {
-  "include": ["./src/**/*"],
+  "include": ["./src/**/*", "./types/**/*"],
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "declaration": true,
-    "esModuleInterop": true,
-    "jsx": "react",
-    "lib": ["dom", "esnext"],
-    "module": "es6",
+    "jsx": "preserve",
+    "lib": ["DOM", "ESNext"],
+    "module": "ESNext",
     "moduleResolution": "node",
     "noEmit": true,
     "noImplicitReturns": true,
-    "plugins": [{ "name": "typescript-plugin-css-module-types" }],
     "skipLibCheck": true,
     "strict": true,
-    "target": "esnext"
+    "target": "ESNext"
   }
 }

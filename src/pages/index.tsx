@@ -1,7 +1,8 @@
-import React, { FC } from 'react'
 import { graphql } from 'gatsby'
-import Layout from '../layouts'
-import { IndexPageQuery } from '../graphqlTypes'
+import React from 'react'
+
+import { IndexPageQuery } from '../../types/graphql'
+import MainLayout from '../layouts/MainLayout'
 
 type Props = {
   data: IndexPageQuery
@@ -10,6 +11,7 @@ type Props = {
 export const pageQuery = graphql`
   query IndexPage {
     site {
+      buildTime
       siteMetadata {
         siteName
       }
@@ -17,13 +19,10 @@ export const pageQuery = graphql`
   }
 `
 
-const IndexPage: FC<Props> = ({ data }) => {
+export default function IndexPage({ data }: Props) {
   return (
-    <Layout>
-      <h1>{data.site.siteMetadata.siteName}</h1>
-      <p>Hello and welcome!</p>
-    </Layout>
+    <MainLayout>
+      <h1>{data.site?.siteMetadata?.siteName}</h1>
+    </MainLayout>
   )
 }
-
-export default IndexPage
