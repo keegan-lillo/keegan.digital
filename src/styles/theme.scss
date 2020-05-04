@@ -1,0 +1,25 @@
+:root {
+  --color-background-main: #fafafa;
+  --color-background: #fff;
+  --color-foreground: rgba(0, 0, 0, 0.8);
+  --color-text-default: rgba(0, 0, 0, 0.8);
+  --color-text-link-default: rgb(0, 120, 191);
+  --color-text-link-hover: rgb(2, 81, 125);
+  --color-text-link-visited: var(--color-text-link-default);
+  --font-weight-body: 400;
+  --font-weight-headings: 400;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background-main: rgb(18, 19, 20);
+    --color-background: #000;
+    --color-foreground: #fff;
+    --color-text-default: rgba(255, 255, 255, 0.8);
+    --color-text-link-default: rgba(51, 172, 244, 0.8);
+    --color-text-link-hover: rgba(51, 172, 244, 0.9);
+    --color-text-link-visited: var(--color-text-link-default);
+    --font-weight-body: 300;
+    --font-weight-headings: 400;
+  }
+}

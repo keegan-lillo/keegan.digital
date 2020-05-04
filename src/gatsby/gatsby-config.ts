@@ -15,7 +15,22 @@ const config: GatsbyConfig = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-sass`,
+    {
+      resolve: 'gatsby-plugin-svgr',
+      options: {
+        prettier: false,
+        svgo: false,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-sass`,
+      options: {
+        cssLoaderOptions: {
+          localIdentName: '[local]__[1]__[hash:base64:5]',
+          localIdentRegExp: /.*\/(.*)\.module\.scss/i,
+        },
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {

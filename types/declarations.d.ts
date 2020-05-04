@@ -6,7 +6,28 @@
 
 // And to shim assets, use (one file extension per `declare`):
 // declare module "*.png"
+
 declare module '*.module.scss' {
-  const styles: { [className: string]: string }
-  export default styles
+  const s: { [className: string]: string }
+  export default s
+}
+
+declare module '*.svg' {
+  import { FunctionComponent, SVGProps } from 'react'
+
+  export const ReactComponent: FunctionComponent<
+    SVGProps<SVGSVGElement> & { title?: string }
+  >
+
+  const dataUri: string
+  export default dataUri
+}
+
+declare module 'csstype' {
+  import { THEME } from '../src/components/Theme'
+
+  interface Properties {
+    // Add a CSS Custom Property
+    '--theme'?: THEME
+  }
 }

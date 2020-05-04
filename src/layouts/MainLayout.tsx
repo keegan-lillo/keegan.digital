@@ -45,7 +45,6 @@ export default function MainLayout({
         />
         <link rel="manifest" href="/icons/site.webmanifest" />
         <link rel="shortcut icon" href="/icons/favicon.ico" />
-        <link rel="shortcut icon" href="/icons/favicon.ico" />
         <meta name="theme-color" content="#ffffff" />
         {/* === SEO === */}
         <title>
@@ -60,8 +59,14 @@ export default function MainLayout({
         <meta charSet="UTF-8" />
         {/* === Device === */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..600&display=block"
+          rel="stylesheet"
+        />
       </Helmet>
-      <div className={s.root}>{children}</div>
+      <main className={s.root}>
+        <div className={s.inner}>{children}</div>
+      </main>
     </>
   )
 }

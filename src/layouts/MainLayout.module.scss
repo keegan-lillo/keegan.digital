@@ -1,3 +1,25 @@
 .root {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--color-background-main);
+  color: var(--color-text-default);
+}
 
+.inner {
+  max-width: 88rem;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+:global ._favoritesList {
+  ul {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(max-content, 6em));
+    padding: 0;
+    list-style: none;
+    white-space: nowrap;
+  }
 }
