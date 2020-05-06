@@ -19,16 +19,15 @@ I have spent the majority of my career in the San Francisco Bay Area in various
 capacities across the tech stack. However, I have always found myself enjoying
 visual and interactive experiences the most. I loved my time there, and after
 five amazing years collectively at
-[Pebble](<https://en.wikipedia.org/wiki/Pebble_ (watch)>),
+[Pebble](<https://en.wikipedia.org/wiki/Pebble_(watch)>),
 [Fitbit](https://www.fitbit.com), and
 [Viv Labs (Bixby)](https://bixby.developer.samsung.com/) I returned home to
-Melbourne at the end of 2019. I'm now searching for my next
-adventure, hopefully in a capacity where I can pursue my passions and give back
-to the world.
+Melbourne at the end of 2019. I'm now searching for my next adventure, hopefully
+in a capacity where I can pursue my passions and give back to the world.
 
-My favorite technologies include:
+### My best friends
 
-<div class="_favoritesList">
+<div class="_gridList">
 
 - [CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout)
 - [CSS Modules](https://github.com/css-modules/css-modules)
@@ -43,6 +42,12 @@ My favorite technologies include:
 
 </div>
 
-If you'd like to reach out, you can find me on
-[LinkedIn](https://www.linkedin.com/in/keegan-lillo/) or email me at
-[hello@keegan.digital](mailto:hello@keegan.digital)
+### Where to find me
+
+<div class="_gridList">
+
+- [GitHub](https://github.com/keegan-lillo/)
+- [LinkedIn](https://www.linkedin.com/in/keegan-lillo/)
+- [hello@keegan.digital](mailto:hello@keegan.digital)
+
+</div>
