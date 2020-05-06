@@ -10,7 +10,8 @@
     "deploy": "clean && lint && build",
     "lint": "npm-run-all --aggregate-output --parallel lint:*",
     "lint:css": "stylelint '**/*.{scss,css}'",
-    "lint:js": "yarn eslint '**/*.{js,jsx,ts,tsx}'",
+    "lint:js": "eslint '**/*.{js,jsx,ts,tsx}'",
+    "lint:prettier": "prettier . --check",
     "serve": "gatsby build && serve ./public",
     "start": "gatsby develop",
     "type-check": "tsc --noEmit"
