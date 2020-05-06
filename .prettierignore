@@ -1,0 +1,5 @@
+/node_modules
+/public
+/.cache
+/types/graphql.ts
+/types/schema.graphql
