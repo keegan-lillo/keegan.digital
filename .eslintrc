@@ -1,8 +1,4 @@
 {
   "extends": ["@keegan-lillo/typescript-react"],
-  "parserOptions": { "project": "./tsconfig.eslint.json" },
-  "rules": {
-    "indent": "off",
-    "@typescript-eslint/indent": ["off", {}]
-  }
+  "parserOptions": { "project": "./tsconfig.eslint.json" }
 }
