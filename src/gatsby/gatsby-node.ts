@@ -86,7 +86,9 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = ({
 
   switch (node.internal.type) {
     case 'MarkdownRemark': {
-      const { relativePath }: { relativePath: string } = getNode(node.parent)
+      const { relativePath = '' } = getNode(node.parent) as ReturnType<
+        typeof getNode
+      > & { relativePath?: string }
       const { slug, template } = node.frontmatter as Frontmatter
 
       // Used to generate URL to view this content.
