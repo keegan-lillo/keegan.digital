@@ -1,4 +1,5 @@
 export type Maybe<T> = T;
+export type Exact<T extends { [key: string]: any }> = { [K in keyof T]: T[K] };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -2230,7 +2231,7 @@ export type StringQueryOperatorInput = {
   glob?: Maybe<Scalars['String']>;
 };
 
-export type AllMarkdownQueryVariables = {};
+export type AllMarkdownQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type AllMarkdownQuery = { allMarkdownRemark: { edges: Array<{ node: (
@@ -2238,7 +2239,7 @@ export type AllMarkdownQuery = { allMarkdownRemark: { edges: Array<{ node: (
         & { fields?: Maybe<Pick<MarkdownRemarkFields, 'template' | 'slug'>> }
       ) }> } };
 
-export type MainLayoutQueryVariables = {};
+export type MainLayoutQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type MainLayoutQuery = { site?: Maybe<{ siteMetadata?: Maybe<(
@@ -2246,9 +2247,9 @@ export type MainLayoutQuery = { site?: Maybe<{ siteMetadata?: Maybe<(
       & { author?: Maybe<Pick<SiteSiteMetadataAuthor, 'name' | 'url'>> }
     )> }> };
 
-export type BasicTemplateQueryVariables = {
+export type BasicTemplateQueryVariables = Exact<{
   slug: Scalars['String'];
-};
+}>;
 
 
 export type BasicTemplateQuery = { markdownRemark?: Maybe<(
@@ -2256,9 +2257,9 @@ export type BasicTemplateQuery = { markdownRemark?: Maybe<(
     & { frontmatter: Pick<Frontmatter, 'title'> }
   )> };
 
-export type HomeTemplateQueryVariables = {
+export type HomeTemplateQueryVariables = Exact<{
   slug: Scalars['String'];
-};
+}>;
 
 
 export type HomeTemplateQuery = { markdownRemark?: Maybe<(

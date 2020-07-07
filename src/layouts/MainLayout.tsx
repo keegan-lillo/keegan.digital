@@ -37,6 +37,7 @@ export default function MainLayout({
   return (
     <>
       <Helmet>
+        <html lang="en" />
         {/* === Icons === */}
         <link
           rel="apple-touch-icon"
@@ -52,6 +53,7 @@ export default function MainLayout({
             ? title
             : `${title ? title + ' | ' : ''}${siteMetadata.title}`}
         </title>
+        <meta name="author" content={siteMetadata.author?.name} />
         <meta
           name="description"
           content={description ?? siteMetadata.description}
