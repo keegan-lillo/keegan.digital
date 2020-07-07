@@ -12,6 +12,8 @@ html {
 }
 
 body {
+  background-color: var(--color-background-main);
+  color: var(--color-text-default);
   font-size: 2.25rem;
   font-weight: var(--font-weight-body);
   line-height: 4rem;

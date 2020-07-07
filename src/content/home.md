@@ -4,7 +4,8 @@ slug: /
 template: home
 ---
 
-Hi, I'm Keegan, a front-end web software engineer based in Melbourne, Australia.
+Hi, I'm Keegan Lillo, a front-end web software engineer based in Melbourne,
+Australia.
 
 Originally starting out as a full-stack web developer, I have since focused on
 the front end working with [React](https://reactjs.org/) and
