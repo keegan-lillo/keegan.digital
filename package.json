@@ -25,6 +25,7 @@
     "@svgr/webpack": "^5.4.0",
     "clsx": "^1.1.1",
     "gatsby": "^2.24.51",
+    "gatsby-plugin-netlify-cache": "1.2.0",
     "gatsby-plugin-react-helmet": "^3.3.10",
     "gatsby-plugin-sass": "^2.3.12",
     "gatsby-plugin-svgr": "^2.0.2",
