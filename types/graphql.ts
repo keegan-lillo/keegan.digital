@@ -1215,7 +1215,7 @@ export type QueryAllSitePageArgs = {
 export type QuerySiteArgs = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
-  port?: Maybe<DateQueryOperatorInput>;
+  port?: Maybe<IntQueryOperatorInput>;
   host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
@@ -1305,7 +1305,7 @@ export type QueryAllSitePluginArgs = {
 export type Site = Node & {
   buildTime?: Maybe<Scalars['Date']>;
   siteMetadata?: Maybe<SiteSiteMetadata>;
-  port?: Maybe<Scalars['Date']>;
+  port?: Maybe<Scalars['Int']>;
   host?: Maybe<Scalars['String']>;
   polyfill?: Maybe<Scalars['Boolean']>;
   pathPrefix?: Maybe<Scalars['String']>;
@@ -1317,14 +1317,6 @@ export type Site = Node & {
 
 
 export type SiteBuildTimeArgs = {
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  difference?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-};
-
-
-export type SitePortArgs = {
   formatString?: Maybe<Scalars['String']>;
   fromNow?: Maybe<Scalars['Boolean']>;
   difference?: Maybe<Scalars['String']>;
@@ -1615,7 +1607,7 @@ export type SiteFieldsEnum =
 export type SiteFilterInput = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
-  port?: Maybe<DateQueryOperatorInput>;
+  port?: Maybe<IntQueryOperatorInput>;
   host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
@@ -1826,12 +1818,12 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___cssLoaderOptions___localIdentName'
   | 'pluginCreator___pluginOptions___name'
   | 'pluginCreator___pluginOptions___path'
+  | 'pluginCreator___pluginOptions___pathCheck'
   | 'pluginCreator___pluginOptions___fileName'
   | 'pluginCreator___pluginOptions___typeCheck'
   | 'pluginCreator___pluginOptions___documentPaths'
   | 'pluginCreator___pluginOptions___codegenConfig___skipTypename'
   | 'pluginCreator___pluginOptions___codegenConfig___maybeValue'
-  | 'pluginCreator___pluginOptions___pathCheck'
   | 'pluginCreator___nodeAPIs'
   | 'pluginCreator___ssrAPIs'
   | 'pluginCreator___pluginFilepath'
@@ -2021,12 +2013,12 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___cssLoaderOptions___localIdentName'
   | 'pluginOptions___name'
   | 'pluginOptions___path'
+  | 'pluginOptions___pathCheck'
   | 'pluginOptions___fileName'
   | 'pluginOptions___typeCheck'
   | 'pluginOptions___documentPaths'
   | 'pluginOptions___codegenConfig___skipTypename'
   | 'pluginOptions___codegenConfig___maybeValue'
-  | 'pluginOptions___pathCheck'
   | 'nodeAPIs'
   | 'ssrAPIs'
   | 'pluginFilepath'
@@ -2142,11 +2134,11 @@ export type SitePluginPluginOptions = {
   cssLoaderOptions?: Maybe<SitePluginPluginOptionsCssLoaderOptions>;
   name?: Maybe<Scalars['String']>;
   path?: Maybe<Scalars['String']>;
+  pathCheck?: Maybe<Scalars['Boolean']>;
   fileName?: Maybe<Scalars['String']>;
   typeCheck?: Maybe<Scalars['Boolean']>;
   documentPaths?: Maybe<Array<Maybe<Scalars['String']>>>;
   codegenConfig?: Maybe<SitePluginPluginOptionsCodegenConfig>;
-  pathCheck?: Maybe<Scalars['Boolean']>;
 };
 
 export type SitePluginPluginOptionsCodegenConfig = {
@@ -2173,11 +2165,11 @@ export type SitePluginPluginOptionsFilterInput = {
   cssLoaderOptions?: Maybe<SitePluginPluginOptionsCssLoaderOptionsFilterInput>;
   name?: Maybe<StringQueryOperatorInput>;
   path?: Maybe<StringQueryOperatorInput>;
+  pathCheck?: Maybe<BooleanQueryOperatorInput>;
   fileName?: Maybe<StringQueryOperatorInput>;
   typeCheck?: Maybe<BooleanQueryOperatorInput>;
   documentPaths?: Maybe<StringQueryOperatorInput>;
   codegenConfig?: Maybe<SitePluginPluginOptionsCodegenConfigFilterInput>;
-  pathCheck?: Maybe<BooleanQueryOperatorInput>;
 };
 
 export type SitePluginSortInput = {
