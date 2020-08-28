@@ -14,7 +14,7 @@ const config: GatsbyConfig = {
     },
   },
   plugins: [
-    `gatsby-plugin-netlify-cache`,
+    `gatsby-plugin-netlify-cms`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: 'gatsby-plugin-svgr',
@@ -52,6 +52,7 @@ const config: GatsbyConfig = {
         },
       },
     },
+    `gatsby-plugin-netlify-cache`,
   ],
 }
 
