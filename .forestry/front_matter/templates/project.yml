@@ -1,4 +1,21 @@
 ---
 label: Project
 hide_body: false
-fields: []
+fields:
+- name: title
+  type: text
+  config:
+    required: false
+  label: Title
+- name: company
+  type: select
+  default: []
+  config:
+    required: false
+    options: []
+    source:
+      type: pages
+      section: project-companies-073b8fb4-663d-471c-93fc-87e94ba1c283
+      file: 
+      path: 
+  label: Company
