@@ -5,6 +5,13 @@ admin_path:
 webhook_url: 
 sections:
 - type: directory
+  path: src/content/project-companies
+  label: Project Companies
+  create: all
+  match: "**/*"
+  templates:
+  - project-company
+- type: directory
   path: src/content/pages
   label: Pages
   create: all
@@ -16,9 +23,6 @@ sections:
   label: Projects
   create: all
   match: "**/*"
-- type: document
-  path: src/content/project-companies.yaml
-  label: Project Companies
 upload_dir: static/media
 public_path: "/media"
 front_matter_path: ''
