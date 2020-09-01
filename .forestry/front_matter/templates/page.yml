@@ -8,3 +8,5 @@ fields:
   config:
     required: false
   label: Title
+pages:
+- src/content/pages/who-i-am.md
