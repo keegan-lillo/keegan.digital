@@ -7,7 +7,6 @@ sections:
 - type: document
   path: src/content/project-companies
   label: Project Companies
-  match: "**/*"
 - type: directory
   path: src/content/pages
   label: Pages
