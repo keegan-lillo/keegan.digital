@@ -17,7 +17,7 @@ sections:
   create: all
   match: "**/*"
 - type: document
-  path: src/content/project-companies.md
+  path: src/content/project-companies.yaml
   label: Project Companies
 upload_dir: static/media
 public_path: "/media"
