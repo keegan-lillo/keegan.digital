@@ -18,3 +18,4 @@ fields:
   label: Description
 pages:
 - src/content/pages/pebble.md
+- src/content/project-companies/pebble.md
