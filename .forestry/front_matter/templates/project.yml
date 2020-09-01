@@ -19,3 +19,5 @@ fields:
       file: 
       path: 
   label: Company
+pages:
+- src/content/projects/clay.md
