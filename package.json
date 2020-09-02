@@ -14,6 +14,7 @@
     "lint:prettier": "prettier . --check",
     "serve": "gatsby build && serve ./public",
     "start": "gatsby develop",
+    "forestry:preview": "gatsby develop -H 0.0.0.0 -p 8080",
     "type-check": "tsc --noEmit"
   },
   "browserslist": [
