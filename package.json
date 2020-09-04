@@ -5,10 +5,10 @@
   "author": "Keegan Lillo <keegan@lillo.me>",
   "license": "GPL-3.0-or-later",
   "scripts": {
-    "build": "gatsby build",
+    "build": "npm run clean && gatsby build",
     "clean": "gatsby clean",
     "deploy": "clean && lint && build",
-    "lint": "npm-run-all --aggregate-output --parallel lint:*",
+    "lint": "npm-run-all --aggregate-output --continue-on-error --parallel lint:*",
     "lint:css": "stylelint '**/*.{scss,css}'",
     "lint:js": "eslint '**/*.{js,jsx,ts,tsx}'",
     "lint:prettier": "prettier . --check",
