@@ -3,3 +3,4 @@
 /.cache
 /types/graphql.ts
 /types/schema.graphql
+/src/content/

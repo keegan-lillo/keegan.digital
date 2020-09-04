@@ -14,7 +14,6 @@ const config: GatsbyConfig = {
     },
   },
   plugins: [
-    `gatsby-plugin-netlify-cms`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: 'gatsby-plugin-svgr',
@@ -35,11 +34,16 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `content`,
-        path: `${__dirname}/../content`,
+        name: `pages`,
+        path: `${__dirname}/../content/pages`,
       },
     },
-    `gatsby-transformer-remark`,
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        delimiters: '```',
+      },
+    },
     {
       resolve: `gatsby-plugin-ts`,
       options: {
@@ -50,6 +54,12 @@ const config: GatsbyConfig = {
           skipTypename: true,
           maybeValue: 'T',
         },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-netlify-cms`,
+      options: {
+        modulePath: `${__dirname}/../cms/cms.ts`,
       },
     },
     `gatsby-plugin-netlify-cache`,

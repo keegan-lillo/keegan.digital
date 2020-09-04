@@ -1,8 +1,7 @@
----
+```yaml
 title: Keegan Digital
-slug: /
 template: home
----
+```
 
 Hi, I'm Keegan Lillo, a front-end web software engineer based in Melbourne,
 Australia.

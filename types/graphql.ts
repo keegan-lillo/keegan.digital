@@ -1,5 +1,5 @@
 export type Maybe<T> = T;
-export type Exact<T extends { [key: string]: any }> = { [K in keyof T]: T[K] };
+export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -595,9 +595,8 @@ export type FileFieldsEnum =
   | 'internal___owner'
   | 'internal___type'
   | 'childMarkdownRemark___id'
-  | 'childMarkdownRemark___frontmatter___slug'
-  | 'childMarkdownRemark___frontmatter___template'
   | 'childMarkdownRemark___frontmatter___title'
+  | 'childMarkdownRemark___frontmatter___template'
   | 'childMarkdownRemark___excerpt'
   | 'childMarkdownRemark___rawMarkdownBody'
   | 'childMarkdownRemark___fileAbsolutePath'
@@ -720,18 +719,6 @@ export type FloatQueryOperatorInput = {
   nin?: Maybe<Array<Maybe<Scalars['Float']>>>;
 };
 
-export type Frontmatter = {
-  slug?: Maybe<Scalars['String']>;
-  template?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-};
-
-export type FrontmatterFilterInput = {
-  slug?: Maybe<StringQueryOperatorInput>;
-  template?: Maybe<StringQueryOperatorInput>;
-  title?: Maybe<StringQueryOperatorInput>;
-};
-
 export type Internal = {
   content?: Maybe<Scalars['String']>;
   contentDigest: Scalars['String'];
@@ -806,7 +793,7 @@ export type MarkdownHeadingLevels =
 
 export type MarkdownRemark = Node & {
   id: Scalars['ID'];
-  frontmatter: Frontmatter;
+  frontmatter?: Maybe<MarkdownRemarkFrontmatter>;
   excerpt?: Maybe<Scalars['String']>;
   rawMarkdownBody?: Maybe<Scalars['String']>;
   fileAbsolutePath?: Maybe<Scalars['String']>;
@@ -883,9 +870,8 @@ export type MarkdownRemarkFields = {
 
 export type MarkdownRemarkFieldsEnum = 
   | 'id'
-  | 'frontmatter___slug'
-  | 'frontmatter___template'
   | 'frontmatter___title'
+  | 'frontmatter___template'
   | 'excerpt'
   | 'rawMarkdownBody'
   | 'fileAbsolutePath'
@@ -996,7 +982,7 @@ export type MarkdownRemarkFieldsFilterInput = {
 
 export type MarkdownRemarkFilterInput = {
   id?: Maybe<StringQueryOperatorInput>;
-  frontmatter?: Maybe<FrontmatterFilterInput>;
+  frontmatter?: Maybe<MarkdownRemarkFrontmatterFilterInput>;
   excerpt?: Maybe<StringQueryOperatorInput>;
   rawMarkdownBody?: Maybe<StringQueryOperatorInput>;
   fileAbsolutePath?: Maybe<StringQueryOperatorInput>;
@@ -1011,6 +997,16 @@ export type MarkdownRemarkFilterInput = {
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
+};
+
+export type MarkdownRemarkFrontmatter = {
+  title?: Maybe<Scalars['String']>;
+  template?: Maybe<Scalars['String']>;
+};
+
+export type MarkdownRemarkFrontmatterFilterInput = {
+  title?: Maybe<StringQueryOperatorInput>;
+  template?: Maybe<StringQueryOperatorInput>;
 };
 
 export type MarkdownRemarkGroupConnection = {
@@ -1236,7 +1232,7 @@ export type QueryAllSiteArgs = {
 
 export type QueryMarkdownRemarkArgs = {
   id?: Maybe<StringQueryOperatorInput>;
-  frontmatter?: Maybe<FrontmatterFilterInput>;
+  frontmatter?: Maybe<MarkdownRemarkFrontmatterFilterInput>;
   excerpt?: Maybe<StringQueryOperatorInput>;
   rawMarkdownBody?: Maybe<StringQueryOperatorInput>;
   fileAbsolutePath?: Maybe<StringQueryOperatorInput>;
@@ -1819,11 +1815,13 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___cssLoaderOptions___localIdentName'
   | 'pluginCreator___pluginOptions___name'
   | 'pluginCreator___pluginOptions___path'
+  | 'pluginCreator___pluginOptions___delimiters'
   | 'pluginCreator___pluginOptions___fileName'
   | 'pluginCreator___pluginOptions___typeCheck'
   | 'pluginCreator___pluginOptions___documentPaths'
   | 'pluginCreator___pluginOptions___codegenConfig___skipTypename'
   | 'pluginCreator___pluginOptions___codegenConfig___maybeValue'
+  | 'pluginCreator___pluginOptions___modulePath'
   | 'pluginCreator___pluginOptions___pathCheck'
   | 'pluginCreator___nodeAPIs'
   | 'pluginCreator___browserAPIs'
@@ -2016,11 +2014,13 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___cssLoaderOptions___localIdentName'
   | 'pluginOptions___name'
   | 'pluginOptions___path'
+  | 'pluginOptions___delimiters'
   | 'pluginOptions___fileName'
   | 'pluginOptions___typeCheck'
   | 'pluginOptions___documentPaths'
   | 'pluginOptions___codegenConfig___skipTypename'
   | 'pluginOptions___codegenConfig___maybeValue'
+  | 'pluginOptions___modulePath'
   | 'pluginOptions___pathCheck'
   | 'nodeAPIs'
   | 'browserAPIs'
@@ -2139,10 +2139,12 @@ export type SitePluginPluginOptions = {
   cssLoaderOptions?: Maybe<SitePluginPluginOptionsCssLoaderOptions>;
   name?: Maybe<Scalars['String']>;
   path?: Maybe<Scalars['String']>;
+  delimiters?: Maybe<Scalars['String']>;
   fileName?: Maybe<Scalars['String']>;
   typeCheck?: Maybe<Scalars['Boolean']>;
   documentPaths?: Maybe<Array<Maybe<Scalars['String']>>>;
   codegenConfig?: Maybe<SitePluginPluginOptionsCodegenConfig>;
+  modulePath?: Maybe<Scalars['String']>;
   pathCheck?: Maybe<Scalars['Boolean']>;
 };
 
@@ -2170,10 +2172,12 @@ export type SitePluginPluginOptionsFilterInput = {
   cssLoaderOptions?: Maybe<SitePluginPluginOptionsCssLoaderOptionsFilterInput>;
   name?: Maybe<StringQueryOperatorInput>;
   path?: Maybe<StringQueryOperatorInput>;
+  delimiters?: Maybe<StringQueryOperatorInput>;
   fileName?: Maybe<StringQueryOperatorInput>;
   typeCheck?: Maybe<BooleanQueryOperatorInput>;
   documentPaths?: Maybe<StringQueryOperatorInput>;
   codegenConfig?: Maybe<SitePluginPluginOptionsCodegenConfigFilterInput>;
+  modulePath?: Maybe<StringQueryOperatorInput>;
   pathCheck?: Maybe<BooleanQueryOperatorInput>;
 };
 
@@ -2233,7 +2237,7 @@ export type AllMarkdownQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type AllMarkdownQuery = { allMarkdownRemark: { edges: Array<{ node: (
         Pick<MarkdownRemark, 'fileAbsolutePath'>
-        & { fields?: Maybe<Pick<MarkdownRemarkFields, 'template' | 'slug'>> }
+        & { fields?: Maybe<Pick<MarkdownRemarkFields, 'slug' | 'template'>> }
       ) }> } };
 
 export type MainLayoutQueryVariables = Exact<{ [key: string]: never; }>;
@@ -2251,7 +2255,7 @@ export type BasicTemplateQueryVariables = Exact<{
 
 export type BasicTemplateQuery = { markdownRemark?: Maybe<(
     Pick<MarkdownRemark, 'html'>
-    & { frontmatter: Pick<Frontmatter, 'title'> }
+    & { frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, 'title'>> }
   )> };
 
 export type HomeTemplateQueryVariables = Exact<{
@@ -2261,5 +2265,5 @@ export type HomeTemplateQueryVariables = Exact<{
 
 export type HomeTemplateQuery = { markdownRemark?: Maybe<(
     Pick<MarkdownRemark, 'html'>
-    & { frontmatter: Pick<Frontmatter, 'title'> }
+    & { frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, 'title'>> }
   )> };

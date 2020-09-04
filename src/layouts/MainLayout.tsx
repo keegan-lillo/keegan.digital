@@ -14,8 +14,8 @@ type Props = {
 
 export default function MainLayout({
   children,
-  title = '',
   description,
+  title = '',
 }: Props) {
   const data = useStaticQuery<MainLayoutQuery>(graphql`
     query MainLayout {
@@ -66,9 +66,19 @@ export default function MainLayout({
           rel="stylesheet"
         />
       </Helmet>
-      <main className={s.root}>
-        <div className={s.inner}>{children}</div>
-      </main>
+      <MainLayoutContent>{children}</MainLayoutContent>
     </>
+  )
+}
+
+type MainLayoutContentProps = {
+  children: ReactNode
+}
+
+export function MainLayoutContent({ children }: MainLayoutContentProps) {
+  return (
+    <main className={s.root}>
+      <div className={s.inner}>{children}</div>
+    </main>
   )
 }

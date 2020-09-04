@@ -1,27 +1,16 @@
-import path from 'path'
+import { resolve } from 'path'
 
-import { CreateSchemaCustomizationArgs, GatsbyNode } from 'gatsby'
+import { GatsbyNode } from 'gatsby'
+import { createFilePath } from 'gatsby-source-filesystem'
 
-import { AllMarkdownQuery, Frontmatter } from '../../types/graphql'
-
-export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] = ({
-  actions: { createTypes },
-}: CreateSchemaCustomizationArgs): any => {
-  createTypes(`
-    type MarkdownRemark implements Node {
-      frontmatter: Frontmatter!
-    }
-    type Frontmatter {
-      slug: String
-      template: String
-      title: String
-    }
-  `)
-}
+import {
+  AllMarkdownQuery,
+  MarkdownRemarkFrontmatter,
+} from '../../types/graphql'
 
 export const createPages: GatsbyNode['createPages'] = async ({
-  graphql,
   actions,
+  graphql,
 }) => {
   const { createPage } = actions
 
@@ -33,8 +22,8 @@ export const createPages: GatsbyNode['createPages'] = async ({
           node {
             fileAbsolutePath
             fields {
-              template
               slug
+              template
             }
           }
         }
@@ -62,7 +51,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
       // long as the corresponding template file exists in src/templates.
       // If no template is set, it will fall back to the default `page`
       // template.
-      component: path.resolve(`./src/templates/${template}.tsx`),
+      component: resolve(`./src/templates/${template}.tsx`),
       context: {
         // Data passed to context is available in page queries as GraphQL variables.
         slug,
@@ -73,9 +62,9 @@ export const createPages: GatsbyNode['createPages'] = async ({
 }
 
 export const onCreateNode: GatsbyNode['onCreateNode'] = ({
-  node,
   actions,
   getNode,
+  node,
 }) => {
   const { createNodeField } = actions
 
@@ -86,24 +75,18 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = ({
 
   switch (node.internal.type) {
     case 'MarkdownRemark': {
-      const { relativePath = '' } = getNode(node.parent) as ReturnType<
-        typeof getNode
-      > & { relativePath?: string }
-      const { slug, template } = node.frontmatter as Frontmatter
+      const value = createFilePath({
+        getNode,
+        node,
+        trailingSlash: false,
+      })
 
       // Used to generate URL to view this content.
-      createNodeField({
-        name: 'slug',
-        node,
-        value: slug ?? `/${relativePath.replace(/\.md$/, '')}/`,
-      })
+      createNodeField({ name: 'slug', node, value })
 
       // Used to determine a page template.
-      createNodeField({
-        name: 'template',
-        node,
-        value: template ?? 'basic',
-      })
+      const { template } = node.frontmatter as MarkdownRemarkFrontmatter
+      createNodeField({ name: 'template', node, value: template ?? 'basic' })
 
       // @todo copy over all fields?
     }
