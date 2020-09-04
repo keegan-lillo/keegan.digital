@@ -69,7 +69,7 @@ const config: GatsbyConfig = {
     },
 
     // === Hosting ===
-    // `gatsby-plugin-netlify-cache`,
+    `gatsby-plugin-netlify-cache`,
   ],
 }
 
