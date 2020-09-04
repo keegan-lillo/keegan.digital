@@ -1,8 +1,8 @@
 import { graphql } from 'gatsby'
-import React from 'react'
+import React, { ReactNode } from 'react'
 
 import { BasicTemplateQuery } from '../../types/graphql'
-import MainLayout from '../layouts/MainLayout'
+import MainLayout, { MainLayoutContent } from '../layouts/MainLayout'
 
 type Props = {
   data: BasicTemplateQuery
@@ -20,7 +20,7 @@ export const query = graphql`
 `
 
 export default function BasicTemplate({ data }: Props) {
-  const { html = '', frontmatter } = data.markdownRemark ?? {}
+  const { frontmatter, html = '' } = data.markdownRemark ?? {}
   const { title } = frontmatter ?? {}
 
   return (
@@ -28,5 +28,22 @@ export default function BasicTemplate({ data }: Props) {
       <h1>{title}</h1>
       <div dangerouslySetInnerHTML={{ __html: html }} />
     </MainLayout>
+  )
+}
+
+type BasicTemplateContentProps = {
+  children: ReactNode
+  title: string
+}
+
+export function BasicTemplateContent({
+  children,
+  title,
+}: BasicTemplateContentProps) {
+  return (
+    <MainLayoutContent>
+      <h1>{title}</h1>
+      {children}
+    </MainLayoutContent>
   )
 }

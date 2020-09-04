@@ -1,0 +1,67 @@
+local_backend: true
+
+backend:
+  name: 'git-gateway'
+  repo: 'keegan-lillo/keegan.digital'
+  branch: 'netlify-cms'
+  commit_messages:
+    create: 'Create {{collection}} “{{slug}}”'
+    update: 'Update {{collection}} “{{slug}}”'
+    delete: 'Delete {{collection}} “{{slug}}”'
+    uploadMedia: '[skip ci] Upload “{{path}}”'
+    deleteMedia: '[skip ci] Delete “{{path}}”'
+
+media_folder: 'static/media'
+public_folder: '/media'
+logo_url: 'https://keegan.digital/icons/android-chrome-512x512.png'
+slug:
+  encoding: 'ascii'
+  clean_accents: true
+  sanitize_replacement: '-'
+
+collections:
+  - name: 'pages'
+    create: true
+    format: 'yaml-frontmatter'
+    frontmatter_delimiter: ['```yaml', '```']
+    label: 'Page'
+    folder: 'src/content/pages'
+    #  summary: '{{title}} - {{path}} - {{slug}}'
+    #  identifier_field: 'meta.path'
+    nested: { depth: 100, summary: '{{meta.path}}' }
+    meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
+    fields:
+      - label: 'Title'
+        name: 'title'
+        widget: 'string'
+
+      - label: 'Template'
+        name: 'template'
+        widget: 'select'
+        default: 'basic'
+        options:
+          - { label: 'Basic', value: 'basic' }
+          - { label: 'Home', value: 'home' }
+
+      - label: 'Body'
+        name: 'body'
+        widget: 'markdown'
+
+  - name: 'projects'
+    label: 'Project'
+    create: true
+    format: 'yaml-frontmatter'
+    frontmatter_delimiter: ['```yaml', '```']
+    folder: 'src/content/projects'
+    fields:
+      - label: 'Title'
+        name: 'title'
+        widget: 'string'
+
+      - label: 'Company'
+        name: 'company'
+        widget: 'string'
+
+      - label: 'Description'
+        name: 'body'
+        widget: 'markdown'

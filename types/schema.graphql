@@ -269,12 +269,6 @@ type FileGroupConnection {
   totalCount: Int!
 }
 
-type Frontmatter {
-  slug: String
-  template: String
-  title: String
-}
-
 type Internal {
   content: String
   contentDigest: String!
@@ -288,6 +282,7 @@ type Internal {
 
 type MarkdownHeading {
   depth: Int
+  id: String
   value: String
 }
 
@@ -297,7 +292,7 @@ type MarkdownRemark implements Node {
   excerptAst(pruneLength: Int = 140, truncate: Boolean = false): JSON
   fields: MarkdownRemarkFields
   fileAbsolutePath: String
-  frontmatter: Frontmatter!
+  frontmatter: MarkdownRemarkFrontmatter
   headings(depth: MarkdownHeadingLevels): [MarkdownHeading]
   html: String
   htmlAst: JSON
@@ -330,6 +325,13 @@ type MarkdownRemarkFields {
   template: String
 }
 
+type MarkdownRemarkFrontmatter {
+  collection: String
+  path: String
+  template: String
+  title: String
+}
+
 type MarkdownRemarkGroupConnection {
   edges: [MarkdownRemarkEdge!]!
   field: String!
@@ -352,6 +354,7 @@ type PageInfo {
   itemCount: Int!
   pageCount: Int!
   perPage: Int
+  totalCount: Int!
 }
 
 type Query {
@@ -364,11 +367,11 @@ type Query {
   allSitePlugin(filter: SitePluginFilterInput, limit: Int, skip: Int, sort: SitePluginSortInput): SitePluginConnection!
   directory(absolutePath: StringQueryOperatorInput, accessTime: DateQueryOperatorInput, atime: DateQueryOperatorInput, atimeMs: FloatQueryOperatorInput, base: StringQueryOperatorInput, birthTime: DateQueryOperatorInput, birthtime: DateQueryOperatorInput, birthtimeMs: FloatQueryOperatorInput, blksize: IntQueryOperatorInput, blocks: IntQueryOperatorInput, changeTime: DateQueryOperatorInput, children: NodeFilterListInput, ctime: DateQueryOperatorInput, ctimeMs: FloatQueryOperatorInput, dev: IntQueryOperatorInput, dir: StringQueryOperatorInput, ext: StringQueryOperatorInput, extension: StringQueryOperatorInput, gid: IntQueryOperatorInput, id: StringQueryOperatorInput, ino: FloatQueryOperatorInput, internal: InternalFilterInput, mode: IntQueryOperatorInput, modifiedTime: DateQueryOperatorInput, mtime: DateQueryOperatorInput, mtimeMs: FloatQueryOperatorInput, name: StringQueryOperatorInput, nlink: IntQueryOperatorInput, parent: NodeFilterInput, prettySize: StringQueryOperatorInput, rdev: IntQueryOperatorInput, relativeDirectory: StringQueryOperatorInput, relativePath: StringQueryOperatorInput, root: StringQueryOperatorInput, size: IntQueryOperatorInput, sourceInstanceName: StringQueryOperatorInput, uid: IntQueryOperatorInput): Directory
   file(absolutePath: StringQueryOperatorInput, accessTime: DateQueryOperatorInput, atime: DateQueryOperatorInput, atimeMs: FloatQueryOperatorInput, base: StringQueryOperatorInput, birthTime: DateQueryOperatorInput, birthtime: DateQueryOperatorInput, birthtimeMs: FloatQueryOperatorInput, blksize: IntQueryOperatorInput, blocks: IntQueryOperatorInput, changeTime: DateQueryOperatorInput, childMarkdownRemark: MarkdownRemarkFilterInput, children: NodeFilterListInput, ctime: DateQueryOperatorInput, ctimeMs: FloatQueryOperatorInput, dev: IntQueryOperatorInput, dir: StringQueryOperatorInput, ext: StringQueryOperatorInput, extension: StringQueryOperatorInput, gid: IntQueryOperatorInput, id: StringQueryOperatorInput, ino: FloatQueryOperatorInput, internal: InternalFilterInput, mode: IntQueryOperatorInput, modifiedTime: DateQueryOperatorInput, mtime: DateQueryOperatorInput, mtimeMs: FloatQueryOperatorInput, name: StringQueryOperatorInput, nlink: IntQueryOperatorInput, parent: NodeFilterInput, prettySize: StringQueryOperatorInput, publicURL: StringQueryOperatorInput, rdev: IntQueryOperatorInput, relativeDirectory: StringQueryOperatorInput, relativePath: StringQueryOperatorInput, root: StringQueryOperatorInput, size: IntQueryOperatorInput, sourceInstanceName: StringQueryOperatorInput, uid: IntQueryOperatorInput): File
-  markdownRemark(children: NodeFilterListInput, excerpt: StringQueryOperatorInput, excerptAst: JSONQueryOperatorInput, fields: MarkdownRemarkFieldsFilterInput, fileAbsolutePath: StringQueryOperatorInput, frontmatter: FrontmatterFilterInput, headings: MarkdownHeadingFilterListInput, html: StringQueryOperatorInput, htmlAst: JSONQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, parent: NodeFilterInput, rawMarkdownBody: StringQueryOperatorInput, tableOfContents: StringQueryOperatorInput, timeToRead: IntQueryOperatorInput, wordCount: MarkdownWordCountFilterInput): MarkdownRemark
+  markdownRemark(children: NodeFilterListInput, excerpt: StringQueryOperatorInput, excerptAst: JSONQueryOperatorInput, fields: MarkdownRemarkFieldsFilterInput, fileAbsolutePath: StringQueryOperatorInput, frontmatter: MarkdownRemarkFrontmatterFilterInput, headings: MarkdownHeadingFilterListInput, html: StringQueryOperatorInput, htmlAst: JSONQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, parent: NodeFilterInput, rawMarkdownBody: StringQueryOperatorInput, tableOfContents: StringQueryOperatorInput, timeToRead: IntQueryOperatorInput, wordCount: MarkdownWordCountFilterInput): MarkdownRemark
   site(buildTime: DateQueryOperatorInput, children: NodeFilterListInput, host: StringQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, parent: NodeFilterInput, pathPrefix: StringQueryOperatorInput, polyfill: BooleanQueryOperatorInput, port: IntQueryOperatorInput, siteMetadata: SiteSiteMetadataFilterInput): Site
   siteBuildMetadata(buildTime: DateQueryOperatorInput, children: NodeFilterListInput, id: StringQueryOperatorInput, internal: InternalFilterInput, parent: NodeFilterInput): SiteBuildMetadata
-  sitePage(children: NodeFilterListInput, component: StringQueryOperatorInput, componentChunkName: StringQueryOperatorInput, componentPath: StringQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, internalComponentName: StringQueryOperatorInput, isCreatedByStatefulCreatePages: BooleanQueryOperatorInput, matchPath: StringQueryOperatorInput, parent: NodeFilterInput, path: StringQueryOperatorInput, pluginCreator: SitePluginFilterInput, pluginCreatorId: StringQueryOperatorInput): SitePage
-  sitePlugin(children: NodeFilterListInput, id: StringQueryOperatorInput, internal: InternalFilterInput, name: StringQueryOperatorInput, nodeAPIs: StringQueryOperatorInput, packageJson: SitePluginPackageJsonFilterInput, parent: NodeFilterInput, pluginFilepath: StringQueryOperatorInput, pluginOptions: SitePluginPluginOptionsFilterInput, resolve: StringQueryOperatorInput, ssrAPIs: StringQueryOperatorInput, version: StringQueryOperatorInput): SitePlugin
+  sitePage(children: NodeFilterListInput, component: StringQueryOperatorInput, componentChunkName: StringQueryOperatorInput, componentPath: StringQueryOperatorInput, context: SitePageContextFilterInput, id: StringQueryOperatorInput, internal: InternalFilterInput, internalComponentName: StringQueryOperatorInput, isCreatedByStatefulCreatePages: BooleanQueryOperatorInput, matchPath: StringQueryOperatorInput, parent: NodeFilterInput, path: StringQueryOperatorInput, pluginCreator: SitePluginFilterInput, pluginCreatorId: StringQueryOperatorInput): SitePage
+  sitePlugin(browserAPIs: StringQueryOperatorInput, children: NodeFilterListInput, id: StringQueryOperatorInput, internal: InternalFilterInput, name: StringQueryOperatorInput, nodeAPIs: StringQueryOperatorInput, packageJson: SitePluginPackageJsonFilterInput, parent: NodeFilterInput, pluginFilepath: StringQueryOperatorInput, pluginOptions: SitePluginPluginOptionsFilterInput, resolve: StringQueryOperatorInput, ssrAPIs: StringQueryOperatorInput, version: StringQueryOperatorInput): SitePlugin
 }
 
 type Site implements Node {
@@ -463,6 +466,7 @@ type SitePage implements Node {
   component: String!
   componentChunkName: String!
   componentPath: String
+  context: SitePageContext
   id: ID!
   internal: Internal!
   internalComponentName: String!
@@ -483,6 +487,10 @@ type SitePageConnection {
   totalCount: Int!
 }
 
+type SitePageContext {
+  slug: String
+}
+
 type SitePageEdge {
   next: SitePage
   node: SitePage!
@@ -499,6 +507,7 @@ type SitePageGroupConnection {
 }
 
 type SitePlugin implements Node {
+  browserAPIs: [String]
   children: [Node!]!
   id: ID!
   internal: Internal!
@@ -538,7 +547,6 @@ type SitePluginGroupConnection {
 }
 
 type SitePluginPackageJson {
-  author: String
   dependencies: [SitePluginPackageJsonDependencies]
   description: String
   devDependencies: [SitePluginPackageJsonDevDependencies]
@@ -567,17 +575,26 @@ type SitePluginPackageJsonPeerDependencies {
 
 type SitePluginPluginOptions {
   codegenConfig: SitePluginPluginOptionsCodegenConfig
+  cssLoaderOptions: SitePluginPluginOptionsCssLoaderOptions
+  delimiters: String
   documentPaths: [String]
   fileName: String
+  modulePath: String
   name: String
   path: String
   pathCheck: Boolean
+  prettier: Boolean
+  svgo: Boolean
   typeCheck: Boolean
 }
 
 type SitePluginPluginOptionsCodegenConfig {
   maybeValue: String
   skipTypename: Boolean
+}
+
+type SitePluginPluginOptionsCssLoaderOptions {
+  localIdentName: String
 }
 
 type SiteSiteMetadata {
@@ -748,11 +765,13 @@ enum FileFieldsEnum {
   childMarkdownRemark___fields___slug @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
   childMarkdownRemark___fields___template @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
   childMarkdownRemark___fileAbsolutePath @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
-  childMarkdownRemark___frontmatter___slug
+  childMarkdownRemark___frontmatter___collection
+  childMarkdownRemark___frontmatter___path
   childMarkdownRemark___frontmatter___template
   childMarkdownRemark___frontmatter___title
   childMarkdownRemark___headings @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
   childMarkdownRemark___headings___depth @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+  childMarkdownRemark___headings___id @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
   childMarkdownRemark___headings___value @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
   childMarkdownRemark___html @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
   childMarkdownRemark___htmlAst @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
@@ -956,11 +975,13 @@ enum MarkdownRemarkFieldsEnum {
   fields___slug @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
   fields___template @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
   fileAbsolutePath @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
-  frontmatter___slug
+  frontmatter___collection
+  frontmatter___path
   frontmatter___template
   frontmatter___title
   headings @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
   headings___depth @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+  headings___id @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
   headings___value @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
   html @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
   htmlAst @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
@@ -1253,6 +1274,7 @@ enum SitePageFieldsEnum {
   component
   componentChunkName
   componentPath
+  context___slug
   id
   internalComponentName
   internal___content
@@ -1305,6 +1327,7 @@ enum SitePageFieldsEnum {
   parent___parent___parent___id
   path
   pluginCreatorId
+  pluginCreator___browserAPIs
   pluginCreator___children
   pluginCreator___children___children
   pluginCreator___children___children___children
@@ -1331,7 +1354,6 @@ enum SitePageFieldsEnum {
   pluginCreator___internal___type
   pluginCreator___name
   pluginCreator___nodeAPIs
-  pluginCreator___packageJson___author
   pluginCreator___packageJson___dependencies
   pluginCreator___packageJson___dependencies___name
   pluginCreator___packageJson___dependencies___version
@@ -1364,11 +1386,16 @@ enum SitePageFieldsEnum {
   pluginCreator___pluginFilepath
   pluginCreator___pluginOptions___codegenConfig___maybeValue
   pluginCreator___pluginOptions___codegenConfig___skipTypename
+  pluginCreator___pluginOptions___cssLoaderOptions___localIdentName
+  pluginCreator___pluginOptions___delimiters
   pluginCreator___pluginOptions___documentPaths
   pluginCreator___pluginOptions___fileName
+  pluginCreator___pluginOptions___modulePath
   pluginCreator___pluginOptions___name
   pluginCreator___pluginOptions___path
   pluginCreator___pluginOptions___pathCheck
+  pluginCreator___pluginOptions___prettier
+  pluginCreator___pluginOptions___svgo
   pluginCreator___pluginOptions___typeCheck
   pluginCreator___resolve
   pluginCreator___ssrAPIs
@@ -1376,6 +1403,7 @@ enum SitePageFieldsEnum {
 }
 
 enum SitePluginFieldsEnum {
+  browserAPIs
   children
   children___children
   children___children___children
@@ -1426,7 +1454,6 @@ enum SitePluginFieldsEnum {
   internal___type
   name
   nodeAPIs
-  packageJson___author
   packageJson___dependencies
   packageJson___dependencies___name
   packageJson___dependencies___version
@@ -1483,11 +1510,16 @@ enum SitePluginFieldsEnum {
   pluginFilepath
   pluginOptions___codegenConfig___maybeValue
   pluginOptions___codegenConfig___skipTypename
+  pluginOptions___cssLoaderOptions___localIdentName
+  pluginOptions___delimiters
   pluginOptions___documentPaths
   pluginOptions___fileName
+  pluginOptions___modulePath
   pluginOptions___name
   pluginOptions___path
   pluginOptions___pathCheck
+  pluginOptions___prettier
+  pluginOptions___svgo
   pluginOptions___typeCheck
   resolve
   ssrAPIs
@@ -1620,12 +1652,6 @@ input FloatQueryOperatorInput {
   nin: [Float]
 }
 
-input FrontmatterFilterInput {
-  slug: StringQueryOperatorInput
-  template: StringQueryOperatorInput
-  title: StringQueryOperatorInput
-}
-
 input IntQueryOperatorInput {
   eq: Int
   gt: Int
@@ -1659,6 +1685,7 @@ input JSONQueryOperatorInput {
 
 input MarkdownHeadingFilterInput {
   depth: IntQueryOperatorInput
+  id: StringQueryOperatorInput
   value: StringQueryOperatorInput
 }
 
@@ -1677,7 +1704,7 @@ input MarkdownRemarkFilterInput {
   excerptAst: JSONQueryOperatorInput
   fields: MarkdownRemarkFieldsFilterInput
   fileAbsolutePath: StringQueryOperatorInput
-  frontmatter: FrontmatterFilterInput
+  frontmatter: MarkdownRemarkFrontmatterFilterInput
   headings: MarkdownHeadingFilterListInput
   html: StringQueryOperatorInput
   htmlAst: JSONQueryOperatorInput
@@ -1688,6 +1715,13 @@ input MarkdownRemarkFilterInput {
   tableOfContents: StringQueryOperatorInput
   timeToRead: IntQueryOperatorInput
   wordCount: MarkdownWordCountFilterInput
+}
+
+input MarkdownRemarkFrontmatterFilterInput {
+  collection: StringQueryOperatorInput
+  path: StringQueryOperatorInput
+  template: StringQueryOperatorInput
+  title: StringQueryOperatorInput
 }
 
 input MarkdownRemarkSortInput {
@@ -1738,11 +1772,16 @@ input SiteFilterInput {
   siteMetadata: SiteSiteMetadataFilterInput
 }
 
+input SitePageContextFilterInput {
+  slug: StringQueryOperatorInput
+}
+
 input SitePageFilterInput {
   children: NodeFilterListInput
   component: StringQueryOperatorInput
   componentChunkName: StringQueryOperatorInput
   componentPath: StringQueryOperatorInput
+  context: SitePageContextFilterInput
   id: StringQueryOperatorInput
   internal: InternalFilterInput
   internalComponentName: StringQueryOperatorInput
@@ -1760,6 +1799,7 @@ input SitePageSortInput {
 }
 
 input SitePluginFilterInput {
+  browserAPIs: StringQueryOperatorInput
   children: NodeFilterListInput
   id: StringQueryOperatorInput
   internal: InternalFilterInput
@@ -1793,7 +1833,6 @@ input SitePluginPackageJsonDevDependenciesFilterListInput {
 }
 
 input SitePluginPackageJsonFilterInput {
-  author: StringQueryOperatorInput
   dependencies: SitePluginPackageJsonDependenciesFilterListInput
   description: StringQueryOperatorInput
   devDependencies: SitePluginPackageJsonDevDependenciesFilterListInput
@@ -1819,13 +1858,22 @@ input SitePluginPluginOptionsCodegenConfigFilterInput {
   skipTypename: BooleanQueryOperatorInput
 }
 
+input SitePluginPluginOptionsCssLoaderOptionsFilterInput {
+  localIdentName: StringQueryOperatorInput
+}
+
 input SitePluginPluginOptionsFilterInput {
   codegenConfig: SitePluginPluginOptionsCodegenConfigFilterInput
+  cssLoaderOptions: SitePluginPluginOptionsCssLoaderOptionsFilterInput
+  delimiters: StringQueryOperatorInput
   documentPaths: StringQueryOperatorInput
   fileName: StringQueryOperatorInput
+  modulePath: StringQueryOperatorInput
   name: StringQueryOperatorInput
   path: StringQueryOperatorInput
   pathCheck: BooleanQueryOperatorInput
+  prettier: BooleanQueryOperatorInput
+  svgo: BooleanQueryOperatorInput
   typeCheck: BooleanQueryOperatorInput
 }
 
