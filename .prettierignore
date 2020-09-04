@@ -4,3 +4,5 @@
 /types/graphql.ts
 /types/schema.graphql
 /src/content/
+.yarn/
+.pnp.js
