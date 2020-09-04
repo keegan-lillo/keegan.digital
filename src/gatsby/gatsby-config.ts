@@ -14,7 +14,19 @@ const config: GatsbyConfig = {
     },
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
+    // === Transformers ===
+    {
+      resolve: `gatsby-plugin-ts`,
+      options: {
+        fileName: `types/graphql.ts`,
+        typeCheck: false,
+        documentPaths: ['./src/**/*.{ts,tsx}'],
+        codegenConfig: {
+          skipTypename: true,
+          maybeValue: 'T',
+        },
+      },
+    },
     {
       resolve: 'gatsby-plugin-svgr',
       options: {
@@ -31,6 +43,11 @@ const config: GatsbyConfig = {
         },
       },
     },
+
+    // === App plugins ===
+    `gatsby-plugin-react-helmet`,
+
+    // === Build helpers ===
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -45,23 +62,13 @@ const config: GatsbyConfig = {
       },
     },
     {
-      resolve: `gatsby-plugin-ts`,
-      options: {
-        fileName: `types/graphql.ts`,
-        typeCheck: process.env.NODE_ENV === 'production',
-        documentPaths: ['./src/**/*.{ts,tsx}'],
-        codegenConfig: {
-          skipTypename: true,
-          maybeValue: 'T',
-        },
-      },
-    },
-    {
       resolve: `gatsby-plugin-netlify-cms`,
       options: {
         modulePath: `${__dirname}/../cms/cms.ts`,
       },
     },
+
+    // === Hosting ===
     `gatsby-plugin-netlify-cache`,
   ],
 }

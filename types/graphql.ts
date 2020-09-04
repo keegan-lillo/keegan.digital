@@ -1211,8 +1211,6 @@ export type QueryAllSitePageArgs = {
 export type QuerySiteArgs = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
-  port?: Maybe<IntQueryOperatorInput>;
-  host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -1302,8 +1300,6 @@ export type QueryAllSitePluginArgs = {
 export type Site = Node & {
   buildTime?: Maybe<Scalars['Date']>;
   siteMetadata?: Maybe<SiteSiteMetadata>;
-  port?: Maybe<Scalars['Int']>;
-  host?: Maybe<Scalars['String']>;
   polyfill?: Maybe<Scalars['Boolean']>;
   pathPrefix?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
@@ -1510,8 +1506,6 @@ export type SiteFieldsEnum =
   | 'siteMetadata___author___name'
   | 'siteMetadata___author___url'
   | 'siteMetadata___author___email'
-  | 'port'
-  | 'host'
   | 'polyfill'
   | 'pathPrefix'
   | 'id'
@@ -1604,8 +1598,6 @@ export type SiteFieldsEnum =
 export type SiteFilterInput = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
-  port?: Maybe<IntQueryOperatorInput>;
-  host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -1810,17 +1802,17 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___resolve'
   | 'pluginCreator___name'
   | 'pluginCreator___version'
+  | 'pluginCreator___pluginOptions___fileName'
+  | 'pluginCreator___pluginOptions___typeCheck'
+  | 'pluginCreator___pluginOptions___documentPaths'
+  | 'pluginCreator___pluginOptions___codegenConfig___skipTypename'
+  | 'pluginCreator___pluginOptions___codegenConfig___maybeValue'
   | 'pluginCreator___pluginOptions___prettier'
   | 'pluginCreator___pluginOptions___svgo'
   | 'pluginCreator___pluginOptions___cssLoaderOptions___localIdentName'
   | 'pluginCreator___pluginOptions___name'
   | 'pluginCreator___pluginOptions___path'
   | 'pluginCreator___pluginOptions___delimiters'
-  | 'pluginCreator___pluginOptions___fileName'
-  | 'pluginCreator___pluginOptions___typeCheck'
-  | 'pluginCreator___pluginOptions___documentPaths'
-  | 'pluginCreator___pluginOptions___codegenConfig___skipTypename'
-  | 'pluginCreator___pluginOptions___codegenConfig___maybeValue'
   | 'pluginCreator___pluginOptions___modulePath'
   | 'pluginCreator___pluginOptions___pathCheck'
   | 'pluginCreator___nodeAPIs'
@@ -2009,17 +2001,17 @@ export type SitePluginFieldsEnum =
   | 'resolve'
   | 'name'
   | 'version'
+  | 'pluginOptions___fileName'
+  | 'pluginOptions___typeCheck'
+  | 'pluginOptions___documentPaths'
+  | 'pluginOptions___codegenConfig___skipTypename'
+  | 'pluginOptions___codegenConfig___maybeValue'
   | 'pluginOptions___prettier'
   | 'pluginOptions___svgo'
   | 'pluginOptions___cssLoaderOptions___localIdentName'
   | 'pluginOptions___name'
   | 'pluginOptions___path'
   | 'pluginOptions___delimiters'
-  | 'pluginOptions___fileName'
-  | 'pluginOptions___typeCheck'
-  | 'pluginOptions___documentPaths'
-  | 'pluginOptions___codegenConfig___skipTypename'
-  | 'pluginOptions___codegenConfig___maybeValue'
   | 'pluginOptions___modulePath'
   | 'pluginOptions___pathCheck'
   | 'nodeAPIs'
@@ -2134,16 +2126,16 @@ export type SitePluginPackageJsonPeerDependenciesFilterListInput = {
 };
 
 export type SitePluginPluginOptions = {
+  fileName?: Maybe<Scalars['String']>;
+  typeCheck?: Maybe<Scalars['Boolean']>;
+  documentPaths?: Maybe<Array<Maybe<Scalars['String']>>>;
+  codegenConfig?: Maybe<SitePluginPluginOptionsCodegenConfig>;
   prettier?: Maybe<Scalars['Boolean']>;
   svgo?: Maybe<Scalars['Boolean']>;
   cssLoaderOptions?: Maybe<SitePluginPluginOptionsCssLoaderOptions>;
   name?: Maybe<Scalars['String']>;
   path?: Maybe<Scalars['String']>;
   delimiters?: Maybe<Scalars['String']>;
-  fileName?: Maybe<Scalars['String']>;
-  typeCheck?: Maybe<Scalars['Boolean']>;
-  documentPaths?: Maybe<Array<Maybe<Scalars['String']>>>;
-  codegenConfig?: Maybe<SitePluginPluginOptionsCodegenConfig>;
   modulePath?: Maybe<Scalars['String']>;
   pathCheck?: Maybe<Scalars['Boolean']>;
 };
@@ -2167,16 +2159,16 @@ export type SitePluginPluginOptionsCssLoaderOptionsFilterInput = {
 };
 
 export type SitePluginPluginOptionsFilterInput = {
+  fileName?: Maybe<StringQueryOperatorInput>;
+  typeCheck?: Maybe<BooleanQueryOperatorInput>;
+  documentPaths?: Maybe<StringQueryOperatorInput>;
+  codegenConfig?: Maybe<SitePluginPluginOptionsCodegenConfigFilterInput>;
   prettier?: Maybe<BooleanQueryOperatorInput>;
   svgo?: Maybe<BooleanQueryOperatorInput>;
   cssLoaderOptions?: Maybe<SitePluginPluginOptionsCssLoaderOptionsFilterInput>;
   name?: Maybe<StringQueryOperatorInput>;
   path?: Maybe<StringQueryOperatorInput>;
   delimiters?: Maybe<StringQueryOperatorInput>;
-  fileName?: Maybe<StringQueryOperatorInput>;
-  typeCheck?: Maybe<BooleanQueryOperatorInput>;
-  documentPaths?: Maybe<StringQueryOperatorInput>;
-  codegenConfig?: Maybe<SitePluginPluginOptionsCodegenConfigFilterInput>;
   modulePath?: Maybe<StringQueryOperatorInput>;
   pathCheck?: Maybe<BooleanQueryOperatorInput>;
 };

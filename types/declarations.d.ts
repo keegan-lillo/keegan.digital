@@ -32,31 +32,3 @@ declare module 'csstype' {
     '--theme'?: THEME
   }
 }
-
-declare module 'netlify-cms-core' {
-  import { EntryMap, EntryObject } from 'netlify-cms-core/src/types/redux'
-  import { StaticallyTypedRecord } from 'netlify-cms-core/src/types/immutable'
-
-  type EventName =
-    | 'prePublish'
-    | 'postPublish'
-    | 'preUnpublish'
-    | 'postUnpublish'
-    | 'preSave'
-    | 'postSave'
-
-  type EventHandler = (data: {
-    author: { login?: string; name?: string }
-    entry: EntryMap
-  }) => StaticallyTypedRecord
-
-  export interface CMS {
-    registerEventListener: (
-      event: {
-        handler: EventHandler
-        name: EventName
-      },
-      options = {},
-    ) => void
-  }
-}
