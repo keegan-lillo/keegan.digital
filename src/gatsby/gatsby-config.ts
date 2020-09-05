@@ -21,6 +21,7 @@ const config: GatsbyConfig = {
         fileName: `types/graphql.ts`,
         typeCheck: false,
         documentPaths: ['./src/**/*.{ts,tsx}'],
+        codegen: !process.env.CI,
         codegenConfig: {
           skipTypename: true,
           maybeValue: 'T',
