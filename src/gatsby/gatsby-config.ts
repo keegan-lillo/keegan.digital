@@ -67,9 +67,6 @@ const config: GatsbyConfig = {
         modulePath: `${__dirname}/../cms/cms.ts`,
       },
     },
-
-    // === Hosting ===
-    `gatsby-plugin-netlify-cache`,
   ],
 }
 
