@@ -12,5 +12,3 @@ pride myself on my ability to form professional relationships based on trust and
 mutual respect. I have an academic background in design and a career in software
 engineering. This provides me with a unique perspective and allows me to help
 bridge the gap between design and engineering teams.
-
-Hello
