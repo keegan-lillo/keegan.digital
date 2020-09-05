@@ -3,7 +3,7 @@ local_backend: true
 backend:
   name: 'git-gateway'
   repo: 'keegan-lillo/keegan.digital'
-  branch: 'netlify-cms'
+  branch: 'production'
   commit_messages:
     create: 'Create {{collection}} “{{slug}}”'
     update: 'Update {{collection}} “{{slug}}”'
