@@ -7,7 +7,5 @@
   YARN_FLAGS = "--ignore-optional --frozen-lockfile"
   YARN_VERSION = "1.22.4"
 
-#[[plugins]]
-#  package = "netlify-plugin-gatsby-cache"
-
-# touch 1
+[[plugins]]
+  package = "netlify-plugin-gatsby-cache"
