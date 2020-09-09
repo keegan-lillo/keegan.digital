@@ -16,11 +16,23 @@ const config: GatsbyConfig = {
   plugins: [
     // === Transformers ===
     {
-      resolve: `gatsby-plugin-ts`,
+      resolve: `gatsby-plugin-typescript`,
+      options: {
+        isTSX: true,
+        allExtensions: true,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-graphql-codegen`,
       options: {
         fileName: `types/graphql.ts`,
         typeCheck: false,
-        documentPaths: ['./src/**/*.{ts,tsx}'],
+        documentPaths: [
+          './src/**/*.{ts,tsx}',
+          // not used right now
+          // './.cache/fragments/*.js',
+          // './node_modules/gatsby-*/**/*.js',
+        ],
         codegen: !process.env.CI,
         codegenConfig: {
           skipTypename: true,
