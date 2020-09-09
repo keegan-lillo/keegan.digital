@@ -4,7 +4,7 @@
 
 [build.environment]
   NODE_VERSION = "12"
-  YARN_FLAGS = "--prefer-offline --frozen-lockfile --no-ignore-optional"
+  YARN_FLAGS = "--frozen-lockfile --no-ignore-optional"
   YARN_VERSION = "1.22.5"
 
 #[[plugins]]
