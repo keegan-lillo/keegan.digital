@@ -7,5 +7,5 @@
   YARN_FLAGS = "--prefer-offline --frozen-lockfile --no-ignore-optional"
   YARN_VERSION = "1.22.5"
 
-[[plugins]]
-  package = "netlify-plugin-gatsby-cache"
+#[[plugins]]
+#  package = "netlify-plugin-gatsby-cache"
