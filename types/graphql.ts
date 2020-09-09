@@ -1804,6 +1804,12 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___version'
   | 'pluginCreator___pluginOptions___isTSX'
   | 'pluginCreator___pluginOptions___allExtensions'
+  | 'pluginCreator___pluginOptions___fileName'
+  | 'pluginCreator___pluginOptions___typeCheck'
+  | 'pluginCreator___pluginOptions___documentPaths'
+  | 'pluginCreator___pluginOptions___codegen'
+  | 'pluginCreator___pluginOptions___codegenConfig___skipTypename'
+  | 'pluginCreator___pluginOptions___codegenConfig___maybeValue'
   | 'pluginCreator___pluginOptions___prettier'
   | 'pluginCreator___pluginOptions___svgo'
   | 'pluginCreator___pluginOptions___cssLoaderOptions___localIdentName'
@@ -1812,12 +1818,6 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___delimiters'
   | 'pluginCreator___pluginOptions___modulePath'
   | 'pluginCreator___pluginOptions___pathCheck'
-  | 'pluginCreator___pluginOptions___fileName'
-  | 'pluginCreator___pluginOptions___typeCheck'
-  | 'pluginCreator___pluginOptions___documentPaths'
-  | 'pluginCreator___pluginOptions___codegen'
-  | 'pluginCreator___pluginOptions___codegenConfig___skipTypename'
-  | 'pluginCreator___pluginOptions___codegenConfig___maybeValue'
   | 'pluginCreator___nodeAPIs'
   | 'pluginCreator___browserAPIs'
   | 'pluginCreator___ssrAPIs'
@@ -2006,6 +2006,12 @@ export type SitePluginFieldsEnum =
   | 'version'
   | 'pluginOptions___isTSX'
   | 'pluginOptions___allExtensions'
+  | 'pluginOptions___fileName'
+  | 'pluginOptions___typeCheck'
+  | 'pluginOptions___documentPaths'
+  | 'pluginOptions___codegen'
+  | 'pluginOptions___codegenConfig___skipTypename'
+  | 'pluginOptions___codegenConfig___maybeValue'
   | 'pluginOptions___prettier'
   | 'pluginOptions___svgo'
   | 'pluginOptions___cssLoaderOptions___localIdentName'
@@ -2014,12 +2020,6 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___delimiters'
   | 'pluginOptions___modulePath'
   | 'pluginOptions___pathCheck'
-  | 'pluginOptions___fileName'
-  | 'pluginOptions___typeCheck'
-  | 'pluginOptions___documentPaths'
-  | 'pluginOptions___codegen'
-  | 'pluginOptions___codegenConfig___skipTypename'
-  | 'pluginOptions___codegenConfig___maybeValue'
   | 'nodeAPIs'
   | 'browserAPIs'
   | 'ssrAPIs'
@@ -2134,6 +2134,11 @@ export type SitePluginPackageJsonPeerDependenciesFilterListInput = {
 export type SitePluginPluginOptions = {
   isTSX?: Maybe<Scalars['Boolean']>;
   allExtensions?: Maybe<Scalars['Boolean']>;
+  fileName?: Maybe<Scalars['String']>;
+  typeCheck?: Maybe<Scalars['Boolean']>;
+  documentPaths?: Maybe<Array<Maybe<Scalars['String']>>>;
+  codegen?: Maybe<Scalars['Boolean']>;
+  codegenConfig?: Maybe<SitePluginPluginOptionsCodegenConfig>;
   prettier?: Maybe<Scalars['Boolean']>;
   svgo?: Maybe<Scalars['Boolean']>;
   cssLoaderOptions?: Maybe<SitePluginPluginOptionsCssLoaderOptions>;
@@ -2142,11 +2147,6 @@ export type SitePluginPluginOptions = {
   delimiters?: Maybe<Scalars['String']>;
   modulePath?: Maybe<Scalars['String']>;
   pathCheck?: Maybe<Scalars['Boolean']>;
-  fileName?: Maybe<Scalars['String']>;
-  typeCheck?: Maybe<Scalars['Boolean']>;
-  documentPaths?: Maybe<Array<Maybe<Scalars['String']>>>;
-  codegen?: Maybe<Scalars['Boolean']>;
-  codegenConfig?: Maybe<SitePluginPluginOptionsCodegenConfig>;
 };
 
 export type SitePluginPluginOptionsCodegenConfig = {
@@ -2170,6 +2170,11 @@ export type SitePluginPluginOptionsCssLoaderOptionsFilterInput = {
 export type SitePluginPluginOptionsFilterInput = {
   isTSX?: Maybe<BooleanQueryOperatorInput>;
   allExtensions?: Maybe<BooleanQueryOperatorInput>;
+  fileName?: Maybe<StringQueryOperatorInput>;
+  typeCheck?: Maybe<BooleanQueryOperatorInput>;
+  documentPaths?: Maybe<StringQueryOperatorInput>;
+  codegen?: Maybe<BooleanQueryOperatorInput>;
+  codegenConfig?: Maybe<SitePluginPluginOptionsCodegenConfigFilterInput>;
   prettier?: Maybe<BooleanQueryOperatorInput>;
   svgo?: Maybe<BooleanQueryOperatorInput>;
   cssLoaderOptions?: Maybe<SitePluginPluginOptionsCssLoaderOptionsFilterInput>;
@@ -2178,11 +2183,6 @@ export type SitePluginPluginOptionsFilterInput = {
   delimiters?: Maybe<StringQueryOperatorInput>;
   modulePath?: Maybe<StringQueryOperatorInput>;
   pathCheck?: Maybe<BooleanQueryOperatorInput>;
-  fileName?: Maybe<StringQueryOperatorInput>;
-  typeCheck?: Maybe<BooleanQueryOperatorInput>;
-  documentPaths?: Maybe<StringQueryOperatorInput>;
-  codegen?: Maybe<BooleanQueryOperatorInput>;
-  codegenConfig?: Maybe<SitePluginPluginOptionsCodegenConfigFilterInput>;
 };
 
 export type SitePluginSortInput = {
