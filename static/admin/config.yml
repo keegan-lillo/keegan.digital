@@ -5,6 +5,7 @@ backend:
   name: 'git-gateway'
   repo: 'keegan-lillo/keegan.digital'
   branch: 'production'
+  squash_merges: true
   commit_messages:
     create: 'Create {{collection}} “{{slug}}”'
     update: 'Update {{collection}} “{{slug}}”'
