@@ -24,7 +24,7 @@
   "dependencies": {
     "@svgr/webpack": "^5.4.0",
     "clsx": "^1.1.1",
-    "gatsby": "^2.24.54",
+    "gatsby": "^2.24.55",
     "gatsby-plugin-graphql-codegen": "^2.7.1",
     "gatsby-plugin-netlify-cms": "^4.3.13",
     "gatsby-plugin-react-helmet": "^3.3.10",
