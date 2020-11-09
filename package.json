@@ -46,7 +46,7 @@
     "@babel/core": "^7.11.6",
     "@babel/preset-env": "^7.11.5",
     "@babel/preset-typescript": "^7.10.4",
-    "@babel/register": "^7.11.5",
+    "@babel/register": "^7.12.1",
     "@keegan-lillo/eslint-config-typescript-react": "^0.4.0",
     "@keegan-lillo/prettier-config": "^0.4.0",
     "@keegan-lillo/stylelint-config-scss": "^0.4.0",
