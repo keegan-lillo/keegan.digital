@@ -1,6 +1,6 @@
 ```yaml
 title: Pebble
-order: 2
+order: 1002
 section: portfolio
 link:
   url: https://en.wikipedia.org/wiki/Pebble_(watch)

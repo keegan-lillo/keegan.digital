@@ -3,6 +3,7 @@ $logo-height: 5rem;
 .root {
   display: flex;
   align-items: center;
+  margin-bottom: 2rem;
 }
 
 .image.image {
@@ -10,6 +11,8 @@ $logo-height: 5rem;
 }
 
 .lightImage {
+  display: flex;
+
   @media (prefers-color-scheme: dark) {
     display: none;
   }
@@ -19,7 +22,7 @@ $logo-height: 5rem;
   display: none;
 
   @media (prefers-color-scheme: dark) {
-    display: block;
+    display: flex;
   }
 }
 

@@ -1,6 +1,6 @@
 ```yaml
 title: Bixby (Viv Labs + Samsung)
-order: 1
+order: 1001
 section: portfolio
 link:
   url: https://bixbydevelopers.com/

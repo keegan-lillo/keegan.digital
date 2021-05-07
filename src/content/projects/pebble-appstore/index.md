@@ -1,6 +1,6 @@
 ```yaml
 title: Pebble Appstore
-order: 1
+order: 2001
 organization: src/content/organizations/pebble
 technology:
   - Angular JS v1.x

@@ -38,7 +38,15 @@ export const query = graphql`
           caption
           image {
             id
-            publicURL
+            fullSize: childImageSharp {
+              gatsbyImageData(
+                quality: 80
+                formats: JPG
+                layout: FULL_WIDTH
+                breakpoints: [2560]
+                placeholder: NONE
+              )
+            }
             childImageSharp {
               gatsbyImageData(
                 transformOptions: { cropFocus: NORTH }
@@ -66,6 +74,7 @@ export const query = graphql`
           sourceInstanceName: { eq: "projects" }
         }
       }
+      sort: { order: ASC, fields: frontmatter___order }
     ) {
       edges {
         ...ProjectCard

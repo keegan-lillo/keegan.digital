@@ -12,9 +12,17 @@ import s from './project.module.scss'
 export const query = graphql`
   fragment ProjectTemplateImage on File {
     id
-    publicURL
     childImageSharp {
       gatsbyImageData(placeholder: BLURRED, formats: JPG)
+    }
+    fullSizeImage: childImageSharp {
+      gatsbyImageData(
+        quality: 80
+        formats: JPG
+        layout: FULL_WIDTH
+        breakpoints: [2560]
+        placeholder: NONE
+      )
     }
   }
 

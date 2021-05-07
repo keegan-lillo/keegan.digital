@@ -1,4 +1,4 @@
-import { GatsbyImage } from 'gatsby-plugin-image'
+import { GatsbyImage, getSrc } from 'gatsby-plugin-image'
 import React from 'react'
 
 import { ProjectTemplateImageFragment } from '../../types/graphql'
@@ -20,7 +20,7 @@ export function ImageLink({ alt = '', caption, image }: ImageLinkProps) {
     <figure>
       <a
         className={s.imageLink}
-        href={image.publicURL}
+        href={getSrc(image.fullSizeImage?.gatsbyImageData)}
         target="_blank"
         rel="noreferrer"
       >

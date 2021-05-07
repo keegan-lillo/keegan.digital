@@ -1,6 +1,6 @@
 ```yaml
 title: Human Rights Arts & Film Festival
-order: 1
+order: 2001
 section: giving-back
 link:
   url: https://www.hraff.org.au

@@ -13,9 +13,9 @@ __anchors:
   - &order_field
     label: 'Order'
     name: 'order'
-    widget: "number"
+    widget: 'number'
     default: 0
-    value_type: "int"
+    value_type: 'int'
   - &body_field
     label: 'Body'
     name: 'body'
@@ -101,6 +101,8 @@ collections:
     <<: *nested_collection
     label: 'Organization'
     folder: 'src/content/organizations'
+    summary: '{{fields.order}} - {{fields.title}}'
+    sortable_fields: ['order', 'title']
     fields:
       - label: 'Title'
         name: 'title'
@@ -169,6 +171,8 @@ collections:
     <<: *nested_collection
     label: 'Project'
     folder: 'src/content/projects'
+    summary: '{{fields.order}} - {{fields.title}}'
+    sortable_fields: ['order', 'title']
     fields:
       - label: 'Title'
         name: 'title'

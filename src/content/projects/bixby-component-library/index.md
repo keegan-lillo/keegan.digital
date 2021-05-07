@@ -1,5 +1,6 @@
 ```yaml
 title: Bixby Component Library
+order: 1002
 organization: src/content/organizations/bixby
 technology:
   - TypeScript

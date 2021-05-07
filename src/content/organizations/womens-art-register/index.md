@@ -1,6 +1,6 @@
 ```yaml
 title: Women’s Art Register
-order: 2
+order: 2002
 section: giving-back
 link:
   text: www.womensartregister.org
