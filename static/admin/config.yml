@@ -1,3 +1,47 @@
+__anchors:
+  - &collection_defaults
+    i18n: true
+    create: true
+    format: 'yaml-frontmatter'
+    frontmatter_delimiter: ['```yaml', '```']
+    preview_path: '{{slug}}'
+    media_folder: 'images'
+  - &nested_collection
+    summary: '{{title}}'
+    nested: { depth: 100, summary: '{{meta.path}}' }
+    meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
+  - &order_field
+    label: 'Order'
+    name: 'order'
+    widget: "number"
+    default: 0
+    value_type: "int"
+  - &body_field
+    label: 'Body'
+    name: 'body'
+    i18n: true
+    widget: 'markdown'
+  - &images_field
+    label: 'Images'
+    name: 'images'
+    widget: 'list'
+    summary: '{{fields.image}}'
+    collapsed: true
+    fields:
+      - label: 'Image'
+        name: 'image'
+        widget: 'image'
+        media_folder: 'images'
+      - label: 'Alt Text'
+        name: 'alt'
+        widget: 'string'
+      - label: 'Caption'
+        name: 'caption'
+        widget: 'markdown'
+        required: false
+
+# =========================================
+
 local_backend: true
 publish_mode: editorial_workflow
 
@@ -21,50 +65,146 @@ slug:
   clean_accents: true
   sanitize_replacement: '-'
 
+# Coming Soon™
+# i18n:
+#  structure: multiple_files
+#  locales: [en, es]
+#  default_locale: en
+
 collections:
   - name: 'pages'
-    create: true
-    format: 'yaml-frontmatter'
-    frontmatter_delimiter: ['```yaml', '```']
+    <<: *collection_defaults
+    <<: *nested_collection
     label: 'Page'
     folder: 'src/content/pages'
-    preview_path: '{{slug}}'
-    #  summary: '{{title}} - {{path}} - {{slug}}'
-    #  identifier_field: 'meta.path'
-    nested: { depth: 100, summary: '{{meta.path}}' }
-    meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
+    fields:
+      - label: 'Title'
+        name: 'title'
+        i18n: true
+        widget: 'string'
+
+      - label: 'Template'
+        name: 'template'
+        i18n: duplicate
+        widget: 'select'
+        default: 'basic'
+        options:
+          - 'basic'
+          - 'organization'
+          - 'portfolio'
+          - 'project'
+
+      - *body_field
+
+  - name: 'organizations'
+    <<: *collection_defaults
+    <<: *nested_collection
+    label: 'Organization'
+    folder: 'src/content/organizations'
     fields:
       - label: 'Title'
         name: 'title'
         widget: 'string'
 
-      - label: 'Template'
-        name: 'template'
-        widget: 'select'
-        default: 'basic'
-        options:
-          - { label: 'Basic', value: 'basic' }
-          - { label: 'Home', value: 'home' }
+      - *order_field
 
-      - label: 'Body'
-        name: 'body'
-        widget: 'markdown'
+      - label: 'Section'
+        name: 'section'
+        widget: 'select'
+        default: 'portfolio'
+        options: ['giving-back', 'portfolio']
+
+      - label: 'link'
+        name: 'link'
+        widget: 'object'
+        summary: '{{fields.text}}'
+        collapsed: true
+        fields:
+          - label: 'Text'
+            name: 'text'
+            widget: 'string'
+          - label: 'URL'
+            name: 'url'
+            widget: 'string'
+
+      - label: 'Title and Logo'
+        name: 'titleAndLogo'
+        widget: 'boolean'
+        default: false
+        required: false
+
+      - label: 'Logo'
+        name: 'logo'
+        widget: 'object'
+        collapsed: true
+        fields:
+          - label: 'Dark'
+            name: 'dark'
+            widget: 'image'
+          - label: 'Light'
+            name: 'light'
+            widget: 'image'
+
+      - *images_field
+
+      - label: 'Quote'
+        name: 'quote'
+        widget: 'object'
+        required: false
+        collapsed: true
+        fields:
+          - label: 'Content'
+            name: 'content'
+            widget: 'markdown'
+            required: false
+          - label: 'Author'
+            name: 'author'
+            widget: 'string'
+            required: false
+
+      - *body_field
 
   - name: 'projects'
+    <<: *collection_defaults
+    <<: *nested_collection
     label: 'Project'
-    create: true
-    format: 'yaml-frontmatter'
-    frontmatter_delimiter: ['```yaml', '```']
     folder: 'src/content/projects'
     fields:
       - label: 'Title'
         name: 'title'
         widget: 'string'
 
-      - label: 'Company'
-        name: 'company'
-        widget: 'string'
+      - *order_field
 
-      - label: 'Description'
-        name: 'body'
-        widget: 'markdown'
+      - label: 'Organization'
+        name: 'organization'
+        widget: 'relation'
+        collection: 'organizations'
+        search_fields: ['title']
+        value_field: '{{dirname}}'
+        display_fields: ['title']
+
+      - label: 'Technology'
+        name: 'technology'
+        widget: 'list'
+        summary: '{{fields.value}}'
+        field: { label: 'Name', name: 'value', widget: 'string' }
+
+      - *images_field
+
+      - *body_field
+
+      - label: 'Sub Projects'
+        name: 'subProjects'
+        widget: 'list'
+        summary: '{{fields.title}}'
+        fields:
+          - label: 'Title'
+            name: 'title'
+            widget: 'string'
+
+          - label: 'Description'
+            name: 'description'
+            widget: 'markdown'
+
+          - *images_field

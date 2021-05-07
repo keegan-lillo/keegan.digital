@@ -1,9 +1,22 @@
-import React, { ReactNode } from 'react'
+import { Link } from 'gatsby'
+import React from 'react'
 
-type Props = {
-  children?: ReactNode
-}
+import Nav from './Nav'
+import { ReactComponent as Logo } from './svg/logo-minimal.svg'
 
-export default function Header({ children }: Props) {
-  return <h1>{children}</h1>
+import s from './Header.module.scss'
+
+export default function Header() {
+  return (
+    <header className={s.header}>
+      <div className={s.inner}>
+        <div className={s.logoContainer}>
+          <Link to="/" className={s.logoLink}>
+            <Logo className={s.logo} />
+          </Link>
+        </div>
+        <Nav />
+      </div>
+    </header>
+  )
 }

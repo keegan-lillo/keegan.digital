@@ -53,12 +53,18 @@ const config: GatsbyConfig = {
         cssLoaderOptions: {
           localIdentName: '[local]__[1]__[hash:base64:5]',
           localIdentRegExp: /.*\/(.*)\.module\.scss/i,
+          esModule: false,
+          modules: {
+            namedExport: false,
+          },
         },
       },
     },
+    `gatsby-transformer-sharp`,
 
     // === App plugins ===
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-image`,
 
     // === Build helpers ===
     {
@@ -69,9 +75,41 @@ const config: GatsbyConfig = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `organizations`,
+        path: `${__dirname}/../content/organizations`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `projects`,
+        path: `${__dirname}/../content/projects`,
+      },
+    },
+
+    `gatsby-plugin-sharp`,
+    {
       resolve: `gatsby-transformer-remark`,
       options: {
-        delimiters: '```',
+        delimiters: ['```yaml', '```'],
+        plugins: [
+          `gatsby-remark-copy-linked-files`,
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 640,
+            },
+          },
+          {
+            resolve: `gatsby-remark-external-links`,
+            options: {
+              target: `_blank`,
+              rel: `noreferrer noopener`,
+            },
+          },
+        ],
       },
     },
     {
@@ -80,6 +118,7 @@ const config: GatsbyConfig = {
         modulePath: `${__dirname}/../cms/cms.ts`,
       },
     },
+    // `gatsby-plugin-netlify`,
   ],
 }
 

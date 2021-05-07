@@ -1,0 +1,33 @@
+.content {
+  margin-bottom: 6rem;
+}
+
+.projectImages {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.subProjects {
+  display: grid;
+  gap: 3rem;
+}
+
+.subProjectTitle {
+  margin-top: 0;
+}
+
+.subProjectImages {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+  gap: 3rem;
+}
+
+.imageLink {
+  display: grid;
+}
+
+.imageLinkImage {
+  box-shadow: 0 0 0 3px var(--color-subtract-25);
+}

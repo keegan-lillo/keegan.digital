@@ -1,0 +1,34 @@
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(40rem, 1fr));
+  gap: 3rem;
+}
+
+.card {
+  height: 100%;
+  padding: 3rem 2rem;
+  background: var(--color-base-2);
+}
+
+.link {
+  position: relative;
+
+  &:hover {
+    text-decoration: none;
+
+    &::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: 4px;
+      background-color: var(--color-prime);
+    }
+  }
+
+  &,
+  &:visited {
+    color: var(--color-text-default);
+  }
+}

@@ -1,6 +1,4 @@
 {
   "extends": "./tsconfig.json",
-  "noEmit": false,
-  "outDir": "./",
   "include": ["./src/gatsby/*"]
 }

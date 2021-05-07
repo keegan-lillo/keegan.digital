@@ -1,12 +1,7 @@
-.root {
-  display: grid;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-}
+@import '../styles/variables';
 
 .inner {
-  max-width: 88rem;
+  max-width: $content-width;
   margin: 0 auto;
-  padding: 5rem 2rem;
+  padding: 6rem 2rem;
 }

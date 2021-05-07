@@ -1,0 +1,14 @@
+@import '../styles/variables';
+
+.root {
+  display: grid;
+  align-content: center;
+  min-height: 100vh;
+  background: var(--color-base-2);
+}
+
+.inner {
+  padding: 4rem 2rem;
+
+  background: var(--color-base-1);
+}

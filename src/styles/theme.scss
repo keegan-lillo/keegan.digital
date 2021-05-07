@@ -1,25 +1,128 @@
 :root {
-  --color-background-main: #fafafa;
-  --color-background: #fff;
-  --color-foreground: rgba(0, 0, 0, 0.8);
-  --color-text-default: rgba(0, 0, 0, 0.8);
-  --color-text-link-default: rgb(0, 120, 191);
-  --color-text-link-hover: rgb(2, 81, 125);
-  --color-text-link-visited: var(--color-text-link-default);
-  --font-weight-body: 400;
-  --font-weight-headings: 400;
+  $color-base-dark: #121314;
+  $color-base-light: #e9f5ff;
+
+  // Base Colors
+  --color-base-midday: #{$color-base-light};
+  --color-base-afternoon: #{mix($color-base-light, $color-base-dark, 95%)};
+  --color-base-dusk: #{mix($color-base-light, $color-base-dark, 60%)};
+  --color-base-evening: #{mix($color-base-light, $color-base-dark, 40%)};
+  --color-base-night: #{mix($color-base-light, $color-base-dark, 5%)};
+  --color-base-midnight: #{$color-base-dark};
+
+  // Darken
+  --color-darken-100: rgba(0, 0, 0, 1);
+  --color-darken-90: rgba(0, 0, 0, 0.9);
+  --color-darken-80: rgba(0, 0, 0, 0.8);
+  --color-darken-60: rgba(0, 0, 0, 0.6);
+  --color-darken-25: rgba(0, 0, 0, 0.25);
+  --color-darken-10: rgba(0, 0, 0, 0.1);
+  --color-darken-5: rgba(0, 0, 0, 0.05);
+
+  // Lighten
+  --color-lighten-100: rgba(255, 255, 255, 1);
+  --color-lighten-90: rgba(255, 255, 255, 0.9);
+  --color-lighten-80: rgba(255, 255, 255, 0.8);
+  --color-lighten-60: rgba(255, 255, 255, 0.6);
+  --color-lighten-25: rgba(255, 255, 255, 0.25);
+  --color-lighten-10: rgba(255, 255, 255, 0.1);
+  --color-lighten-5: rgba(255, 255, 255, 0.05);
+
+  // Colors - Light
+  --color-light-prime: rgb(0, 108, 172);
+  --color-light-prime-alt: rgb(2, 81, 125);
+  --font-weight-light-body: 400;
+  --font-weight-light-headings: 400;
+
+  // Colors - Dark
+  --color-dark-prime: rgb(41, 158, 224);
+  --color-dark-prime-alt: rgb(98, 178, 234);
+  --font-weight-dark-body: 300;
+  --font-weight-dark-headings: 400;
 }
 
+// === Light Theme ====
+/* stylelint-disable-next-line no-duplicate-selectors */
+:root {
+  // Base Colors
+  --color-base-1: var(--color-base-midday);
+  --color-base-2: var(--color-base-afternoon);
+  --color-base-3: var(--color-base-dusk);
+  --color-base-4: var(--color-base-evening);
+  --color-base-5: var(--color-base-night);
+  --color-base-6: var(--color-base-midnight);
+
+  // Additive Shades
+  --color-add-100: var(--color-darken-100);
+  --color-add-90: var(--color-darken-90);
+  --color-add-80: var(--color-darken-80);
+  --color-add-60: var(--color-darken-60);
+  --color-add-25: var(--color-darken-25);
+  --color-add-10: var(--color-darken-10);
+  --color-add-5: var(--color-darken-5);
+
+  // Subtractive Shades
+  --color-subtract-100: var(--color-lighten-100);
+  --color-subtract-90: var(--color-lighten-90);
+  --color-subtract-80: var(--color-lighten-80);
+  --color-subtract-60: var(--color-lighten-60);
+  --color-subtract-25: var(--color-lighten-25);
+  --color-subtract-10: var(--color-lighten-10);
+  --color-subtract-5: var(--color-lighten-5);
+
+  // Apply
+  --color-prime: var(--color-light-prime);
+  --color-prime-alt: var(--color-light-prime-alt);
+  --font-weight-body: var(--font-weight-light-body);
+  --font-weight-headings: var(--font-weight-light-headings);
+}
+
+// === Dark Theme ====
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-background-main: rgb(18, 19, 20);
-    --color-background: #000;
-    --color-foreground: #fff;
-    --color-text-default: rgba(255, 255, 255, 0.8);
-    --color-text-link-default: rgba(51, 172, 244, 0.9);
-    --color-text-link-hover: rgba(51, 172, 244, 1);
-    --color-text-link-visited: var(--color-text-link-default);
-    --font-weight-body: 300;
-    --font-weight-headings: 400;
+    // Base Colors
+    --color-base-1: var(--color-base-midnight);
+    --color-base-2: var(--color-base-night);
+    --color-base-3: var(--color-base-evening);
+    --color-base-4: var(--color-base-dusk);
+    --color-base-5: var(--color-base-afternoon);
+    --color-base-6: var(--color-base-midday);
+
+    // Additive Shades
+    --color-add-100: var(--color-lighten-100);
+    --color-add-90: var(--color-lighten-90);
+    --color-add-80: var(--color-lighten-80);
+    --color-add-60: var(--color-lighten-60);
+    --color-add-25: var(--color-lighten-25);
+    --color-add-10: var(--color-lighten-10);
+    --color-add-5: var(--color-lighten-5);
+
+    // Subtractive Shades
+    --color-subtract-100: var(--color-darken-100);
+    --color-subtract-90: var(--color-darken-90);
+    --color-subtract-80: var(--color-darken-80);
+    --color-subtract-60: var(--color-darken-60);
+    --color-subtract-25: var(--color-darken-25);
+    --color-subtract-10: var(--color-darken-10);
+    --color-subtract-5: var(--color-darken-5);
+
+    // Apply
+    --color-prime: var(--color-dark-prime);
+    --color-prime-alt: var(--color-dark-prime-alt);
+    --font-weight-body: var(--font-weight-dark-body);
+    --font-weight-headings: var(--font-weight-dark-headings);
   }
+}
+
+// === Elements ===
+/* stylelint-disable-next-line no-duplicate-selectors */
+:root {
+  --color-background-main: var(--color-base-1);
+  --color-background: var(--color-base-1);
+  --color-foreground: var(--color-add-90);
+  --color-text-default: var(--color-add-80);
+  --color-text-subtle: var(--color-add-60);
+  --color-text-link-default: var(--color-prime);
+  --color-text-link-hover: var(--color-prime);
+  --color-text-link-visited: var(--color-text-link-default);
 }

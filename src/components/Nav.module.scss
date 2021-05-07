@@ -1,0 +1,62 @@
+@import '../styles/variables';
+
+.nav {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 3rem;
+  align-content: center;
+  justify-content: end;
+  font-family: $font-family-headings;
+  font-size: 1.8rem;
+  line-height: 2rem;
+  white-space: nowrap;
+
+  @media (min-width: $media-mobile) {
+    gap: 5rem;
+  }
+}
+
+.navItem {
+  display: block;
+  position: relative;
+  color: var(--color-text-default);
+  text-align: center;
+
+  &:visited {
+    color: var(--color-text-default);
+  }
+
+  &:hover {
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-color: var(--color-text-link-default);
+    text-decoration-thickness: 3px;
+    text-underline-offset: 0.5rem;
+  }
+}
+
+.navActive {
+  color: var(--color-text-link-default);
+
+  &:visited {
+    color: var(--color-text-link-default);
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &::after {
+    $size: 0.5rem;
+
+    content: '';
+    display: block;
+    position: absolute;
+    top: calc(100% + #{$size});
+    left: calc(50% - #{$size});
+    width: $size;
+    height: $size;
+    background: currentColor;
+    border-radius: $size;
+  }
+}
