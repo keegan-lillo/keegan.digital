@@ -1,6 +1,6 @@
 ```yaml
 title: College of San Mateo
-order: 4
+order: 2004
 section: giving-back
 link:
   url: https://calendar.collegeofsanmateo.edu/events/index.php?eID=21370

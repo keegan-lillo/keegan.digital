@@ -258,6 +258,8 @@ export type DirectoryCtimeArgs = {
 export type Site = Node & {
   buildTime?: Maybe<Scalars['Date']>;
   siteMetadata?: Maybe<SiteSiteMetadata>;
+  port?: Maybe<Scalars['Int']>;
+  host?: Maybe<Scalars['String']>;
   polyfill?: Maybe<Scalars['Boolean']>;
   pathPrefix?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
@@ -323,6 +325,38 @@ export type SitePageContext = {
   slug?: Maybe<Scalars['String']>;
   sourceInstanceName?: Maybe<Scalars['String']>;
   template?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+  slugTitleMap?: Maybe<SitePageContextSlugTitleMap>;
+  breadcrumb?: Maybe<SitePageContextBreadcrumb>;
+};
+
+export type SitePageContextSlugTitleMap = {
+  _giving_back?: Maybe<Scalars['String']>;
+  _who?: Maybe<Scalars['String']>;
+  _portfolio?: Maybe<Scalars['String']>;
+  _about?: Maybe<Scalars['String']>;
+  _giving_back_paintbrush_diplomacy?: Maybe<Scalars['String']>;
+  _portfolio_pebble?: Maybe<Scalars['String']>;
+  _giving_back_womens_art_register?: Maybe<Scalars['String']>;
+  _giving_back_hraff?: Maybe<Scalars['String']>;
+  _giving_back_college_of_san_mateo?: Maybe<Scalars['String']>;
+  _portfolio_bixby?: Maybe<Scalars['String']>;
+  _portfolio_pebble_pebble_appstore?: Maybe<Scalars['String']>;
+  _portfolio_pebble_health_charts?: Maybe<Scalars['String']>;
+  _portfolio_pebble_pebble_website?: Maybe<Scalars['String']>;
+  _portfolio_pebble_clay?: Maybe<Scalars['String']>;
+  _portfolio_bixby_bixby_studio?: Maybe<Scalars['String']>;
+  _portfolio_bixby_bixby_component_library?: Maybe<Scalars['String']>;
+};
+
+export type SitePageContextBreadcrumb = {
+  location?: Maybe<Scalars['String']>;
+  crumbs?: Maybe<Array<Maybe<SitePageContextBreadcrumbCrumbs>>>;
+};
+
+export type SitePageContextBreadcrumbCrumbs = {
+  pathname?: Maybe<Scalars['String']>;
+  crumbLabel?: Maybe<Scalars['String']>;
 };
 
 export type ImageFormat =
@@ -700,6 +734,7 @@ export type MarkdownRemarkFields = {
   slug?: Maybe<Scalars['String']>;
   sourceInstanceName?: Maybe<Scalars['String']>;
   template?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
 };
 
 export type SiteBuildMetadata = Node & {
@@ -747,6 +782,7 @@ export type SitePluginPluginOptions = {
   prettier?: Maybe<Scalars['Boolean']>;
   svgo?: Maybe<Scalars['Boolean']>;
   cssLoaderOptions?: Maybe<SitePluginPluginOptionsCssLoaderOptions>;
+  useAutoGen?: Maybe<Scalars['Boolean']>;
   name?: Maybe<Scalars['String']>;
   path?: Maybe<Scalars['String']>;
   base64Width?: Maybe<Scalars['Int']>;
@@ -754,7 +790,6 @@ export type SitePluginPluginOptions = {
   defaultQuality?: Maybe<Scalars['Int']>;
   failOnError?: Maybe<Scalars['Boolean']>;
   delimiters?: Maybe<Array<Maybe<Scalars['String']>>>;
-  maxWidth?: Maybe<Scalars['Int']>;
   target?: Maybe<Scalars['String']>;
   rel?: Maybe<Scalars['String']>;
   modulePath?: Maybe<Scalars['String']>;
@@ -767,13 +802,10 @@ export type SitePluginPluginOptionsPlugins = {
   name?: Maybe<Scalars['String']>;
   version?: Maybe<Scalars['String']>;
   pluginOptions?: Maybe<SitePluginPluginOptionsPluginsPluginOptions>;
-  nodeAPIs?: Maybe<Array<Maybe<Scalars['String']>>>;
-  browserAPIs?: Maybe<Array<Maybe<Scalars['String']>>>;
   pluginFilepath?: Maybe<Scalars['String']>;
 };
 
 export type SitePluginPluginOptionsPluginsPluginOptions = {
-  maxWidth?: Maybe<Scalars['Int']>;
   target?: Maybe<Scalars['String']>;
   rel?: Maybe<Scalars['String']>;
 };
@@ -948,6 +980,8 @@ export type QueryAllDirectoryArgs = {
 export type QuerySiteArgs = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
+  port?: Maybe<IntQueryOperatorInput>;
+  host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -1376,6 +1410,7 @@ export type MarkdownRemarkFieldsFilterInput = {
   slug?: Maybe<StringQueryOperatorInput>;
   sourceInstanceName?: Maybe<StringQueryOperatorInput>;
   template?: Maybe<StringQueryOperatorInput>;
+  title?: Maybe<StringQueryOperatorInput>;
 };
 
 export type MarkdownHeadingFilterListInput = {
@@ -1654,6 +1689,7 @@ export type FileFieldsEnum =
   | 'childrenMarkdownRemark___fields___slug'
   | 'childrenMarkdownRemark___fields___sourceInstanceName'
   | 'childrenMarkdownRemark___fields___template'
+  | 'childrenMarkdownRemark___fields___title'
   | 'childrenMarkdownRemark___html'
   | 'childrenMarkdownRemark___htmlAst'
   | 'childrenMarkdownRemark___excerptAst'
@@ -1731,6 +1767,7 @@ export type FileFieldsEnum =
   | 'childMarkdownRemark___fields___slug'
   | 'childMarkdownRemark___fields___sourceInstanceName'
   | 'childMarkdownRemark___fields___template'
+  | 'childMarkdownRemark___fields___title'
   | 'childMarkdownRemark___html'
   | 'childMarkdownRemark___htmlAst'
   | 'childMarkdownRemark___excerptAst'
@@ -2173,6 +2210,8 @@ export type SiteFieldsEnum =
   | 'siteMetadata___author___name'
   | 'siteMetadata___author___url'
   | 'siteMetadata___author___email'
+  | 'port'
+  | 'host'
   | 'polyfill'
   | 'pathPrefix'
   | 'id'
@@ -2274,6 +2313,8 @@ export type SiteGroupConnection = {
 export type SiteFilterInput = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
+  port?: Maybe<IntQueryOperatorInput>;
+  host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -2457,6 +2498,42 @@ export type SitePageContextFilterInput = {
   slug?: Maybe<StringQueryOperatorInput>;
   sourceInstanceName?: Maybe<StringQueryOperatorInput>;
   template?: Maybe<StringQueryOperatorInput>;
+  title?: Maybe<StringQueryOperatorInput>;
+  slugTitleMap?: Maybe<SitePageContextSlugTitleMapFilterInput>;
+  breadcrumb?: Maybe<SitePageContextBreadcrumbFilterInput>;
+};
+
+export type SitePageContextSlugTitleMapFilterInput = {
+  _giving_back?: Maybe<StringQueryOperatorInput>;
+  _who?: Maybe<StringQueryOperatorInput>;
+  _portfolio?: Maybe<StringQueryOperatorInput>;
+  _about?: Maybe<StringQueryOperatorInput>;
+  _giving_back_paintbrush_diplomacy?: Maybe<StringQueryOperatorInput>;
+  _portfolio_pebble?: Maybe<StringQueryOperatorInput>;
+  _giving_back_womens_art_register?: Maybe<StringQueryOperatorInput>;
+  _giving_back_hraff?: Maybe<StringQueryOperatorInput>;
+  _giving_back_college_of_san_mateo?: Maybe<StringQueryOperatorInput>;
+  _portfolio_bixby?: Maybe<StringQueryOperatorInput>;
+  _portfolio_pebble_pebble_appstore?: Maybe<StringQueryOperatorInput>;
+  _portfolio_pebble_health_charts?: Maybe<StringQueryOperatorInput>;
+  _portfolio_pebble_pebble_website?: Maybe<StringQueryOperatorInput>;
+  _portfolio_pebble_clay?: Maybe<StringQueryOperatorInput>;
+  _portfolio_bixby_bixby_studio?: Maybe<StringQueryOperatorInput>;
+  _portfolio_bixby_bixby_component_library?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePageContextBreadcrumbFilterInput = {
+  location?: Maybe<StringQueryOperatorInput>;
+  crumbs?: Maybe<SitePageContextBreadcrumbCrumbsFilterListInput>;
+};
+
+export type SitePageContextBreadcrumbCrumbsFilterListInput = {
+  elemMatch?: Maybe<SitePageContextBreadcrumbCrumbsFilterInput>;
+};
+
+export type SitePageContextBreadcrumbCrumbsFilterInput = {
+  pathname?: Maybe<StringQueryOperatorInput>;
+  crumbLabel?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePluginFilterInput = {
@@ -2488,6 +2565,7 @@ export type SitePluginPluginOptionsFilterInput = {
   prettier?: Maybe<BooleanQueryOperatorInput>;
   svgo?: Maybe<BooleanQueryOperatorInput>;
   cssLoaderOptions?: Maybe<SitePluginPluginOptionsCssLoaderOptionsFilterInput>;
+  useAutoGen?: Maybe<BooleanQueryOperatorInput>;
   name?: Maybe<StringQueryOperatorInput>;
   path?: Maybe<StringQueryOperatorInput>;
   base64Width?: Maybe<IntQueryOperatorInput>;
@@ -2495,7 +2573,6 @@ export type SitePluginPluginOptionsFilterInput = {
   defaultQuality?: Maybe<IntQueryOperatorInput>;
   failOnError?: Maybe<BooleanQueryOperatorInput>;
   delimiters?: Maybe<StringQueryOperatorInput>;
-  maxWidth?: Maybe<IntQueryOperatorInput>;
   target?: Maybe<StringQueryOperatorInput>;
   rel?: Maybe<StringQueryOperatorInput>;
   modulePath?: Maybe<StringQueryOperatorInput>;
@@ -2512,13 +2589,10 @@ export type SitePluginPluginOptionsPluginsFilterInput = {
   name?: Maybe<StringQueryOperatorInput>;
   version?: Maybe<StringQueryOperatorInput>;
   pluginOptions?: Maybe<SitePluginPluginOptionsPluginsPluginOptionsFilterInput>;
-  nodeAPIs?: Maybe<StringQueryOperatorInput>;
-  browserAPIs?: Maybe<StringQueryOperatorInput>;
   pluginFilepath?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePluginPluginOptionsPluginsPluginOptionsFilterInput = {
-  maxWidth?: Maybe<IntQueryOperatorInput>;
   target?: Maybe<StringQueryOperatorInput>;
   rel?: Maybe<StringQueryOperatorInput>;
 };
@@ -2720,6 +2794,27 @@ export type SitePageFieldsEnum =
   | 'context___slug'
   | 'context___sourceInstanceName'
   | 'context___template'
+  | 'context___title'
+  | 'context___slugTitleMap____giving_back'
+  | 'context___slugTitleMap____who'
+  | 'context___slugTitleMap____portfolio'
+  | 'context___slugTitleMap____about'
+  | 'context___slugTitleMap____giving_back_paintbrush_diplomacy'
+  | 'context___slugTitleMap____portfolio_pebble'
+  | 'context___slugTitleMap____giving_back_womens_art_register'
+  | 'context___slugTitleMap____giving_back_hraff'
+  | 'context___slugTitleMap____giving_back_college_of_san_mateo'
+  | 'context___slugTitleMap____portfolio_bixby'
+  | 'context___slugTitleMap____portfolio_pebble_pebble_appstore'
+  | 'context___slugTitleMap____portfolio_pebble_health_charts'
+  | 'context___slugTitleMap____portfolio_pebble_pebble_website'
+  | 'context___slugTitleMap____portfolio_pebble_clay'
+  | 'context___slugTitleMap____portfolio_bixby_bixby_studio'
+  | 'context___slugTitleMap____portfolio_bixby_bixby_component_library'
+  | 'context___breadcrumb___location'
+  | 'context___breadcrumb___crumbs'
+  | 'context___breadcrumb___crumbs___pathname'
+  | 'context___breadcrumb___crumbs___crumbLabel'
   | 'pluginCreator___id'
   | 'pluginCreator___parent___id'
   | 'pluginCreator___parent___parent___id'
@@ -2766,8 +2861,6 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___plugins___id'
   | 'pluginCreator___pluginOptions___plugins___name'
   | 'pluginCreator___pluginOptions___plugins___version'
-  | 'pluginCreator___pluginOptions___plugins___nodeAPIs'
-  | 'pluginCreator___pluginOptions___plugins___browserAPIs'
   | 'pluginCreator___pluginOptions___plugins___pluginFilepath'
   | 'pluginCreator___pluginOptions___isTSX'
   | 'pluginCreator___pluginOptions___allExtensions'
@@ -2782,6 +2875,7 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___svgo'
   | 'pluginCreator___pluginOptions___cssLoaderOptions___localIdentName'
   | 'pluginCreator___pluginOptions___cssLoaderOptions___esModule'
+  | 'pluginCreator___pluginOptions___useAutoGen'
   | 'pluginCreator___pluginOptions___name'
   | 'pluginCreator___pluginOptions___path'
   | 'pluginCreator___pluginOptions___base64Width'
@@ -2789,7 +2883,6 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___defaultQuality'
   | 'pluginCreator___pluginOptions___failOnError'
   | 'pluginCreator___pluginOptions___delimiters'
-  | 'pluginCreator___pluginOptions___maxWidth'
   | 'pluginCreator___pluginOptions___target'
   | 'pluginCreator___pluginOptions___rel'
   | 'pluginCreator___pluginOptions___modulePath'
@@ -3216,6 +3309,7 @@ export type MarkdownRemarkFieldsEnum =
   | 'fields___slug'
   | 'fields___sourceInstanceName'
   | 'fields___template'
+  | 'fields___title'
   | 'html'
   | 'htmlAst'
   | 'excerptAst'
@@ -3624,11 +3718,8 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___plugins___id'
   | 'pluginOptions___plugins___name'
   | 'pluginOptions___plugins___version'
-  | 'pluginOptions___plugins___pluginOptions___maxWidth'
   | 'pluginOptions___plugins___pluginOptions___target'
   | 'pluginOptions___plugins___pluginOptions___rel'
-  | 'pluginOptions___plugins___nodeAPIs'
-  | 'pluginOptions___plugins___browserAPIs'
   | 'pluginOptions___plugins___pluginFilepath'
   | 'pluginOptions___isTSX'
   | 'pluginOptions___allExtensions'
@@ -3644,6 +3735,7 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___cssLoaderOptions___localIdentName'
   | 'pluginOptions___cssLoaderOptions___esModule'
   | 'pluginOptions___cssLoaderOptions___modules___namedExport'
+  | 'pluginOptions___useAutoGen'
   | 'pluginOptions___name'
   | 'pluginOptions___path'
   | 'pluginOptions___base64Width'
@@ -3651,7 +3743,6 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___defaultQuality'
   | 'pluginOptions___failOnError'
   | 'pluginOptions___delimiters'
-  | 'pluginOptions___maxWidth'
   | 'pluginOptions___target'
   | 'pluginOptions___rel'
   | 'pluginOptions___modulePath'
@@ -3713,7 +3804,7 @@ export type AllMarkdownQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type AllMarkdownQuery = { allMarkdownRemark: { edges: Array<{ node: (
         Pick<MarkdownRemark, 'fileAbsolutePath'>
-        & { fields?: Maybe<Pick<MarkdownRemarkFields, 'childrenGlob' | 'orgId' | 'slug' | 'sourceInstanceName' | 'template'>> }
+        & { fields?: Maybe<Pick<MarkdownRemarkFields, 'childrenGlob' | 'orgId' | 'slug' | 'sourceInstanceName' | 'template' | 'title'>> }
       ) }> } };
 
 export type HeadQueryVariables = Exact<{ [key: string]: never; }>;
@@ -3734,6 +3825,8 @@ export type BasicTemplateQuery = { markdownRemark?: Maybe<(
     & { frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, 'title'>> }
   )> };
 
+export type ImageLinkFragmentFragment = { fullSizeImage?: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> };
+
 export type OrganizationTemplateLogoImageSharpFragment = { childImageSharp?: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> };
 
 export type OrganizationTemplateQueryVariables = Exact<{
@@ -3749,8 +3842,9 @@ export type OrganizationTemplateQuery = { page?: Maybe<(
       & { quote?: Maybe<Pick<MarkdownRemarkFrontmatterQuote, 'author' | 'content'>>, images?: Maybe<Array<Maybe<(
         Pick<MarkdownRemarkFrontmatterImages, 'alt' | 'caption'>
         & { image?: Maybe<(
-          Pick<File, 'id' | 'publicURL'>
+          Pick<File, 'id'>
           & { childImageSharp?: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }
+          & ImageLinkFragmentFragment
         )> }
       )>>>, logo?: Maybe<{ dark?: Maybe<OrganizationTemplateLogoImageSharpFragment>, light?: Maybe<OrganizationTemplateLogoImageSharpFragment> }> }
     )> }
@@ -3768,8 +3862,9 @@ export type PortfolioPageQuery = { page?: Maybe<(
   )>, organizations: { edges: Array<OrganizationCardFragment> } };
 
 export type ProjectTemplateImageFragment = (
-  Pick<File, 'id' | 'publicURL'>
+  Pick<File, 'id'>
   & { childImageSharp?: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }
+  & ImageLinkFragmentFragment
 );
 
 export type ProjectTemplateQueryVariables = Exact<{

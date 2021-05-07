@@ -1,0 +1,36 @@
+@import '../../styles/variables';
+
+.root :global {
+  .breadcrumb {
+    $offset: $content-top-padding - 2rem;
+
+    height: 0;
+    margin: -$offset 0 $offset;
+    font-size: 1.75rem;
+    line-height: 2rem;
+  }
+
+  .breadcrumb__list {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+  }
+
+  .breadcrumb__separator {
+    margin: 0 1rem;
+  }
+
+  .breadcrumb__list__item {
+    margin-bottom: 0.5rem;
+  }
+
+  .breadcrumb__link {
+    color: var(--color-text-subtle);
+  }
+
+  .breadcrumb__link__active {
+    color: var(--color-text-default);
+  }
+}

@@ -65,6 +65,12 @@ const config: GatsbyConfig = {
     // === App plugins ===
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
+    {
+      resolve: `gatsby-plugin-breadcrumb`,
+      options: {
+        useAutoGen: true,
+      },
+    },
 
     // === Build helpers ===
     {
@@ -95,13 +101,6 @@ const config: GatsbyConfig = {
       options: {
         delimiters: ['```yaml', '```'],
         plugins: [
-          `gatsby-remark-copy-linked-files`,
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 640,
-            },
-          },
           {
             resolve: `gatsby-remark-external-links`,
             options: {
@@ -118,7 +117,6 @@ const config: GatsbyConfig = {
         modulePath: `${__dirname}/../cms/cms.ts`,
       },
     },
-    // `gatsby-plugin-netlify`,
   ],
 }
 

@@ -48,7 +48,7 @@ export default function ProjectCard({ node }: Props) {
   const { alt = '', image } = images?.[0] ?? {}
 
   return (
-    <CardLink to={`/${slug}`}>
+    <CardLink to={slug ?? '/'}>
       <h3 className={s.title}>{title}</h3>
       <GatsbyImage
         className={s.image}

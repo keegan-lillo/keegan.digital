@@ -1,6 +1,6 @@
 ```yaml
 title: Clay
-order: 3
+order: 2003
 organization: src/content/organizations/pebble
 technology:
   - JavaScript

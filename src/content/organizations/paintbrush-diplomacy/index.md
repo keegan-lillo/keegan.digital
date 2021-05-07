@@ -1,6 +1,6 @@
 ```yaml
 title: Paintbrush Diplomacy
-order: 3
+order: 2003
 section: giving-back
 link:
   text: www.paintbrushdiplomacy.org

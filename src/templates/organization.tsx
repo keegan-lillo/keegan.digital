@@ -4,6 +4,7 @@ import React from 'react'
 import { OrganizationTemplateQuery } from '../../types/graphql'
 import OrganizationTitle from '../components/OrganizationTitle'
 import ProjectCard from '../components/ProjectCard'
+import { Breadcrumb } from '../components/ui/Breadcrumb'
 import { Cards } from '../components/ui/cards'
 import MainLayout from '../layouts/MainLayout'
 
@@ -38,7 +39,7 @@ export const query = graphql`
           caption
           image {
             id
-            publicURL
+            ...ImageLinkFragment
             childImageSharp {
               gatsbyImageData(
                 transformOptions: { cropFocus: NORTH }
@@ -66,6 +67,7 @@ export const query = graphql`
           sourceInstanceName: { eq: "projects" }
         }
       }
+      sort: { order: ASC, fields: frontmatter___order }
     ) {
       edges {
         ...ProjectCard
@@ -76,12 +78,14 @@ export const query = graphql`
 
 export default function OrganizationTemplate({
   data,
-}: PageProps<OrganizationTemplateQuery>) {
+  pageContext,
+}: PageProps<OrganizationTemplateQuery, any>) {
   const { frontmatter, html = '' } = data.page ?? {}
   const { images, logo, quote, title = '', titleAndLogo } = frontmatter ?? {}
 
   return (
     <MainLayout title={title}>
+      <Breadcrumb pageContext={pageContext} />
       <OrganizationTitle
         component="h1"
         dark={logo?.dark?.childImageSharp?.gatsbyImageData}

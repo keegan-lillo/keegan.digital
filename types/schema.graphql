@@ -532,6 +532,7 @@ type MarkdownRemarkFields {
   slug: String
   sourceInstanceName: String
   template: String
+  title: String
 }
 
 type MarkdownRemarkFrontmatter {
@@ -791,11 +792,43 @@ type SitePageConnection {
 }
 
 type SitePageContext {
+  breadcrumb: SitePageContextBreadcrumb
   childrenGlob: String
   orgId: String
   slug: String
+  slugTitleMap: SitePageContextSlugTitleMap
   sourceInstanceName: String
   template: String
+  title: String
+}
+
+type SitePageContextBreadcrumb {
+  crumbs: [SitePageContextBreadcrumbCrumbs]
+  location: String
+}
+
+type SitePageContextBreadcrumbCrumbs {
+  crumbLabel: String
+  pathname: String
+}
+
+type SitePageContextSlugTitleMap {
+  _about: String
+  _giving_back: String
+  _giving_back_college_of_san_mateo: String
+  _giving_back_hraff: String
+  _giving_back_paintbrush_diplomacy: String
+  _giving_back_womens_art_register: String
+  _portfolio: String
+  _portfolio_bixby: String
+  _portfolio_bixby_bixby_component_library: String
+  _portfolio_bixby_bixby_studio: String
+  _portfolio_pebble: String
+  _portfolio_pebble_clay: String
+  _portfolio_pebble_health_charts: String
+  _portfolio_pebble_pebble_appstore: String
+  _portfolio_pebble_pebble_website: String
+  _who: String
 }
 
 type SitePageEdge {
@@ -896,7 +929,6 @@ type SitePluginPluginOptions {
   fileName: String
   isTSX: Boolean
   jsxPragma: String
-  maxWidth: Int
   modulePath: String
   name: String
   path: String
@@ -908,6 +940,7 @@ type SitePluginPluginOptions {
   svgo: Boolean
   target: String
   typeCheck: Boolean
+  useAutoGen: Boolean
 }
 
 type SitePluginPluginOptionsCodegenConfig {
@@ -926,10 +959,8 @@ type SitePluginPluginOptionsCssLoaderOptionsModules {
 }
 
 type SitePluginPluginOptionsPlugins {
-  browserAPIs: [String]
   id: String
   name: String
-  nodeAPIs: [String]
   pluginFilepath: String
   pluginOptions: SitePluginPluginOptionsPluginsPluginOptions
   resolve: String
@@ -937,7 +968,6 @@ type SitePluginPluginOptionsPlugins {
 }
 
 type SitePluginPluginOptionsPluginsPluginOptions {
-  maxWidth: Int
   rel: String
   target: String
 }
@@ -1182,6 +1212,7 @@ enum FileFieldsEnum {
   childMarkdownRemark___fields___slug @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
   childMarkdownRemark___fields___sourceInstanceName @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
   childMarkdownRemark___fields___template @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+  childMarkdownRemark___fields___title @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
   childMarkdownRemark___fileAbsolutePath @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
   childMarkdownRemark___frontmatter___images
   childMarkdownRemark___frontmatter___images___alt
@@ -1332,6 +1363,7 @@ enum FileFieldsEnum {
   childrenMarkdownRemark___fields___slug @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
   childrenMarkdownRemark___fields___sourceInstanceName @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
   childrenMarkdownRemark___fields___template @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+  childrenMarkdownRemark___fields___title @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
   childrenMarkdownRemark___fileAbsolutePath @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
   childrenMarkdownRemark___frontmatter___images
   childrenMarkdownRemark___frontmatter___images___alt
@@ -1724,6 +1756,7 @@ enum MarkdownRemarkFieldsEnum {
   fields___slug @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
   fields___sourceInstanceName @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
   fields___template @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+  fields___title @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
   fileAbsolutePath @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
   frontmatter___images
   frontmatter___images___alt
@@ -2258,11 +2291,32 @@ enum SitePageFieldsEnum {
   component
   componentChunkName
   componentPath
+  context___breadcrumb___crumbs
+  context___breadcrumb___crumbs___crumbLabel
+  context___breadcrumb___crumbs___pathname
+  context___breadcrumb___location
   context___childrenGlob
   context___orgId
   context___slug
+  context___slugTitleMap____about
+  context___slugTitleMap____giving_back
+  context___slugTitleMap____giving_back_college_of_san_mateo
+  context___slugTitleMap____giving_back_hraff
+  context___slugTitleMap____giving_back_paintbrush_diplomacy
+  context___slugTitleMap____giving_back_womens_art_register
+  context___slugTitleMap____portfolio
+  context___slugTitleMap____portfolio_bixby
+  context___slugTitleMap____portfolio_bixby_bixby_component_library
+  context___slugTitleMap____portfolio_bixby_bixby_studio
+  context___slugTitleMap____portfolio_pebble
+  context___slugTitleMap____portfolio_pebble_clay
+  context___slugTitleMap____portfolio_pebble_health_charts
+  context___slugTitleMap____portfolio_pebble_pebble_appstore
+  context___slugTitleMap____portfolio_pebble_pebble_website
+  context___slugTitleMap____who
   context___sourceInstanceName
   context___template
+  context___title
   id
   internalComponentName
   internal___content
@@ -2386,16 +2440,13 @@ enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___fileName
   pluginCreator___pluginOptions___isTSX
   pluginCreator___pluginOptions___jsxPragma
-  pluginCreator___pluginOptions___maxWidth
   pluginCreator___pluginOptions___modulePath
   pluginCreator___pluginOptions___name
   pluginCreator___pluginOptions___path
   pluginCreator___pluginOptions___pathCheck
   pluginCreator___pluginOptions___plugins
-  pluginCreator___pluginOptions___plugins___browserAPIs
   pluginCreator___pluginOptions___plugins___id
   pluginCreator___pluginOptions___plugins___name
-  pluginCreator___pluginOptions___plugins___nodeAPIs
   pluginCreator___pluginOptions___plugins___pluginFilepath
   pluginCreator___pluginOptions___plugins___resolve
   pluginCreator___pluginOptions___plugins___version
@@ -2405,6 +2456,7 @@ enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___svgo
   pluginCreator___pluginOptions___target
   pluginCreator___pluginOptions___typeCheck
+  pluginCreator___pluginOptions___useAutoGen
   pluginCreator___resolve
   pluginCreator___ssrAPIs
   pluginCreator___version
@@ -2531,18 +2583,14 @@ enum SitePluginFieldsEnum {
   pluginOptions___fileName
   pluginOptions___isTSX
   pluginOptions___jsxPragma
-  pluginOptions___maxWidth
   pluginOptions___modulePath
   pluginOptions___name
   pluginOptions___path
   pluginOptions___pathCheck
   pluginOptions___plugins
-  pluginOptions___plugins___browserAPIs
   pluginOptions___plugins___id
   pluginOptions___plugins___name
-  pluginOptions___plugins___nodeAPIs
   pluginOptions___plugins___pluginFilepath
-  pluginOptions___plugins___pluginOptions___maxWidth
   pluginOptions___plugins___pluginOptions___rel
   pluginOptions___plugins___pluginOptions___target
   pluginOptions___plugins___resolve
@@ -2553,6 +2601,7 @@ enum SitePluginFieldsEnum {
   pluginOptions___svgo
   pluginOptions___target
   pluginOptions___typeCheck
+  pluginOptions___useAutoGen
   resolve
   ssrAPIs
   version
@@ -2822,6 +2871,7 @@ input MarkdownRemarkFieldsFilterInput {
   slug: StringQueryOperatorInput
   sourceInstanceName: StringQueryOperatorInput
   template: StringQueryOperatorInput
+  title: StringQueryOperatorInput
 }
 
 input MarkdownRemarkFilterInput {
@@ -2990,12 +3040,48 @@ input SiteFunctionSortInput {
   order: [SortOrderEnum] = [ASC]
 }
 
+input SitePageContextBreadcrumbCrumbsFilterInput {
+  crumbLabel: StringQueryOperatorInput
+  pathname: StringQueryOperatorInput
+}
+
+input SitePageContextBreadcrumbCrumbsFilterListInput {
+  elemMatch: SitePageContextBreadcrumbCrumbsFilterInput
+}
+
+input SitePageContextBreadcrumbFilterInput {
+  crumbs: SitePageContextBreadcrumbCrumbsFilterListInput
+  location: StringQueryOperatorInput
+}
+
 input SitePageContextFilterInput {
+  breadcrumb: SitePageContextBreadcrumbFilterInput
   childrenGlob: StringQueryOperatorInput
   orgId: StringQueryOperatorInput
   slug: StringQueryOperatorInput
+  slugTitleMap: SitePageContextSlugTitleMapFilterInput
   sourceInstanceName: StringQueryOperatorInput
   template: StringQueryOperatorInput
+  title: StringQueryOperatorInput
+}
+
+input SitePageContextSlugTitleMapFilterInput {
+  _about: StringQueryOperatorInput
+  _giving_back: StringQueryOperatorInput
+  _giving_back_college_of_san_mateo: StringQueryOperatorInput
+  _giving_back_hraff: StringQueryOperatorInput
+  _giving_back_paintbrush_diplomacy: StringQueryOperatorInput
+  _giving_back_womens_art_register: StringQueryOperatorInput
+  _portfolio: StringQueryOperatorInput
+  _portfolio_bixby: StringQueryOperatorInput
+  _portfolio_bixby_bixby_component_library: StringQueryOperatorInput
+  _portfolio_bixby_bixby_studio: StringQueryOperatorInput
+  _portfolio_pebble: StringQueryOperatorInput
+  _portfolio_pebble_clay: StringQueryOperatorInput
+  _portfolio_pebble_health_charts: StringQueryOperatorInput
+  _portfolio_pebble_pebble_appstore: StringQueryOperatorInput
+  _portfolio_pebble_pebble_website: StringQueryOperatorInput
+  _who: StringQueryOperatorInput
 }
 
 input SitePageFilterInput {
@@ -3103,7 +3189,6 @@ input SitePluginPluginOptionsFilterInput {
   fileName: StringQueryOperatorInput
   isTSX: BooleanQueryOperatorInput
   jsxPragma: StringQueryOperatorInput
-  maxWidth: IntQueryOperatorInput
   modulePath: StringQueryOperatorInput
   name: StringQueryOperatorInput
   path: StringQueryOperatorInput
@@ -3115,13 +3200,12 @@ input SitePluginPluginOptionsFilterInput {
   svgo: BooleanQueryOperatorInput
   target: StringQueryOperatorInput
   typeCheck: BooleanQueryOperatorInput
+  useAutoGen: BooleanQueryOperatorInput
 }
 
 input SitePluginPluginOptionsPluginsFilterInput {
-  browserAPIs: StringQueryOperatorInput
   id: StringQueryOperatorInput
   name: StringQueryOperatorInput
-  nodeAPIs: StringQueryOperatorInput
   pluginFilepath: StringQueryOperatorInput
   pluginOptions: SitePluginPluginOptionsPluginsPluginOptionsFilterInput
   resolve: StringQueryOperatorInput
@@ -3133,7 +3217,6 @@ input SitePluginPluginOptionsPluginsFilterListInput {
 }
 
 input SitePluginPluginOptionsPluginsPluginOptionsFilterInput {
-  maxWidth: IntQueryOperatorInput
   rel: StringQueryOperatorInput
   target: StringQueryOperatorInput
 }
