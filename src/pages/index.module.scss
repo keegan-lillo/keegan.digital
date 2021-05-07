@@ -1,0 +1,19 @@
+.content {
+  text-align: justify;
+}
+
+.logo {
+  --color-foreground: var(--color-add-90);
+
+  display: block;
+  width: 70vw;
+  min-width: 32rem;
+  max-width: 70rem;
+  margin: 0 auto 6rem;
+}
+
+.nav.nav {
+  justify-content: center;
+  font-size: 2.2rem;
+  line-height: 3rem;
+}

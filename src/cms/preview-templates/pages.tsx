@@ -2,7 +2,6 @@ import { PreviewTemplateComponentProps } from 'netlify-cms-core'
 import React from 'react'
 
 import { BasicTemplateContent } from '../../templates/basic'
-import { HomeTemplateContent } from '../../templates/home'
 
 export default function PagesPreviewTemplate({
   entry,
@@ -17,13 +16,8 @@ export default function PagesPreviewTemplate({
         </BasicTemplateContent>
       )
 
-    case 'home':
-      return (
-        <HomeTemplateContent title={title}>
-          {widgetFor('body')}
-        </HomeTemplateContent>
-      )
+    // Todo add other templates
   }
 
-  return <div>Missing Template!</div>
+  return null // <div>Missing Template!</div>
 }

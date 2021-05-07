@@ -1,12 +1,9 @@
-import { resolve } from 'path'
+import { resolve, basename, posix } from 'path'
 
-import { GatsbyNode } from 'gatsby'
+import { GatsbyNode, CreateNodeArgs } from 'gatsby'
 import { createFilePath } from 'gatsby-source-filesystem'
 
-import {
-  AllMarkdownQuery,
-  MarkdownRemarkFrontmatter,
-} from '../../types/graphql'
+import { AllMarkdownQuery, MarkdownRemark, File } from '../../types/graphql'
 
 export const createPages: GatsbyNode['createPages'] = async ({
   actions,
@@ -22,7 +19,10 @@ export const createPages: GatsbyNode['createPages'] = async ({
           node {
             fileAbsolutePath
             fields {
+              childrenGlob
+              orgId
               slug
+              sourceInstanceName
               template
             }
           }
@@ -46,27 +46,27 @@ export const createPages: GatsbyNode['createPages'] = async ({
     createPage({
       // This will automatically resolve the template to a corresponding
       // `template` frontmatter in the Markdown.
-      //
-      // Feel free to set any `template` as you'd like in the frontmatter, as
-      // long as the corresponding template file exists in src/templates.
-      // If no template is set, it will fall back to the default `page`
-      // template.
-      component: resolve(`./src/templates/${template}.tsx`),
-      context: {
-        // Data passed to context is available in page queries as GraphQL variables.
-        slug,
-      },
+      component: resolve(`./src/templates/${template}.tsx`), // Data passed to context is
+      // available in page queries as
+      // GraphQL variables.
+      context: node.fields,
       path: slug,
     })
   })
 }
 
-export const onCreateNode: GatsbyNode['onCreateNode'] = ({
+export const onCreateNode = ({
   actions,
   getNode,
   node,
-}) => {
+}: CreateNodeArgs<MarkdownRemark>) => {
   const { createNodeField } = actions
+
+  const createFields = (obj: object) => {
+    for (const [name, value] of Object.entries(obj)) {
+      createNodeField({ name, node, value })
+    }
+  }
 
   // Sometimes, optional fields tend to get not picked up by the GraphQL
   // interpreter if not a single content uses it. Therefore, we're putting them
@@ -75,20 +75,40 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = ({
 
   switch (node.internal.type) {
     case 'MarkdownRemark': {
-      const value = createFilePath({
+      const path = createFilePath({
         getNode,
         node,
         trailingSlash: false,
       })
-
-      // Used to generate URL to view this content.
-      createNodeField({ name: 'slug', node, value })
+      const { sourceInstanceName } = (getNode(node.parent) as unknown) as File
 
       // Used to determine a page template.
-      const { template } = node.frontmatter as MarkdownRemarkFrontmatter
-      createNodeField({ name: 'template', node, value: template ?? 'basic' })
+      const { organization = '', section = '' } = node.frontmatter ?? {}
 
-      // @todo copy over all fields?
+      let slug = path
+      let template = node.frontmatter?.template ?? 'basic'
+      let orgId = ''
+
+      switch (sourceInstanceName) {
+        case 'pages': {
+          createFields({ childrenGlob: `${path.replace(/^\//, '')}/*` })
+          break
+        }
+        case 'organizations': {
+          orgId = basename(path)
+          slug = posix.join(section, path)
+          template = 'organization'
+          break
+        }
+        case 'projects': {
+          orgId = basename(organization)
+          slug = posix.join('portfolio', orgId, path)
+          template = 'project'
+          break
+        }
+      }
+
+      createFields({ orgId, slug, sourceInstanceName, template })
     }
   }
 }
