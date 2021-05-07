@@ -2,6 +2,7 @@ import { graphql, PageProps } from 'gatsby'
 import React from 'react'
 
 import { ProjectTemplateQuery } from '../../types/graphql'
+import { Breadcrumb } from '../components/ui/Breadcrumb'
 import { Card } from '../components/ui/cards'
 import MainLayout from '../layouts/MainLayout'
 
@@ -15,15 +16,7 @@ export const query = graphql`
     childImageSharp {
       gatsbyImageData(placeholder: BLURRED, formats: JPG)
     }
-    fullSizeImage: childImageSharp {
-      gatsbyImageData(
-        quality: 80
-        formats: JPG
-        layout: FULL_WIDTH
-        breakpoints: [2560]
-        placeholder: NONE
-      )
-    }
+    ...ImageLinkFragment
   }
 
   query ProjectTemplate($slug: String!) {
@@ -56,12 +49,14 @@ export const query = graphql`
 
 export default function ProjectTemplate({
   data,
-}: PageProps<ProjectTemplateQuery>) {
+  pageContext,
+}: PageProps<ProjectTemplateQuery, any>) {
   const { frontmatter, html = '' } = data.page ?? {}
   const { images, subProjects, title } = frontmatter ?? {}
 
   return (
     <MainLayout title={title}>
+      <Breadcrumb pageContext={pageContext} />
       <h1>{title}</h1>
       <div className={s.content} dangerouslySetInnerHTML={{ __html: html }} />
       <section className={s.projectImages}>

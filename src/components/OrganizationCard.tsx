@@ -52,7 +52,7 @@ export default function OrganizationCard({ node }: Props) {
   } = node
 
   return (
-    <CardLink to={`/${slug}`}>
+    <CardLink to={slug ?? '/'}>
       <OrganizationTitle
         dark={logo?.dark?.childImageSharp?.gatsbyImageData}
         light={logo?.light?.childImageSharp?.gatsbyImageData}

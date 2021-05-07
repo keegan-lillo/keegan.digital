@@ -1,3 +1,4 @@
+import { graphql } from 'gatsby'
 import { GatsbyImage, getSrc } from 'gatsby-plugin-image'
 import React from 'react'
 
@@ -10,6 +11,20 @@ type ImageLinkProps = {
   caption?: string
   image?: ProjectTemplateImageFragment
 }
+
+export const queryFragment = graphql`
+  fragment ImageLinkFragment on File {
+    fullSizeImage: childImageSharp {
+      gatsbyImageData(
+        quality: 80
+        formats: JPG
+        layout: FULL_WIDTH
+        breakpoints: [2560]
+        placeholder: NONE
+      )
+    }
+  }
+`
 
 export function ImageLink({ alt = '', caption, image }: ImageLinkProps) {
   if (!image) {

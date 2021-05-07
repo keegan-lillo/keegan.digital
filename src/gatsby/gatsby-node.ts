@@ -24,6 +24,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
               slug
               sourceInstanceName
               template
+              title
             }
           }
         }
@@ -35,6 +36,18 @@ export const createPages: GatsbyNode['createPages'] = async ({
     console.error(allMarkdown.errors)
     throw new Error(allMarkdown.errors)
   }
+
+  if (!allMarkdown?.data) {
+    console.error('no data!')
+    throw new Error('no data!')
+  }
+
+  const slugTitleMap = Object.fromEntries(
+    allMarkdown.data.allMarkdownRemark.edges.map(({ node }) => [
+      node.fields?.slug,
+      node.fields?.title,
+    ]),
+  )
 
   allMarkdown?.data?.allMarkdownRemark.edges.forEach(({ node }) => {
     const { slug, template } = node.fields ?? {}
@@ -49,7 +62,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
       component: resolve(`./src/templates/${template}.tsx`), // Data passed to context is
       // available in page queries as
       // GraphQL variables.
-      context: node.fields,
+      context: { ...node.fields, slugTitleMap },
       path: slug,
     })
   })
@@ -91,7 +104,7 @@ export const onCreateNode = ({
 
       switch (sourceInstanceName) {
         case 'pages': {
-          createFields({ childrenGlob: `${path.replace(/^\//, '')}/*` })
+          createFields({ childrenGlob: `/${path.replace(/^\//, '')}/*` })
           break
         }
         case 'organizations': {
@@ -108,7 +121,13 @@ export const onCreateNode = ({
         }
       }
 
-      createFields({ orgId, slug, sourceInstanceName, template })
+      createFields({
+        orgId,
+        slug: '/' + slug.replace(/^\//, ''),
+        sourceInstanceName,
+        template,
+        title: node.frontmatter?.title ?? '',
+      })
     }
   }
 }
