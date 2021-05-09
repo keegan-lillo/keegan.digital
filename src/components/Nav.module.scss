@@ -3,7 +3,7 @@
 .nav {
   display: grid;
   grid-auto-flow: column;
-  gap: 3rem;
+  grid-gap: 3rem;
   align-content: center;
   justify-content: end;
   font-family: $font-family-headings;
@@ -12,7 +12,7 @@
   white-space: nowrap;
 
   @media (min-width: $media-mobile) {
-    gap: 5rem;
+    grid-gap: 5rem;
   }
 }
 

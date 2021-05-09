@@ -10,7 +10,7 @@
 .inner {
   display: grid;
   grid-template-columns: 1fr auto;
-  gap: 2rem;
+  grid-gap: 2rem;
   padding: 2rem;
 
   @media (min-width: $media-mobile) {
@@ -37,5 +37,6 @@
 
   @media (min-width: $media-mobile) {
     width: 6rem;
+    height: 6rem;
   }
 }

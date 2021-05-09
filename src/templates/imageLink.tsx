@@ -46,7 +46,7 @@ export function ImageLink({ alt = '', caption, image }: ImageLinkProps) {
           image={image.childImageSharp?.gatsbyImageData}
         />
       </a>
-      {caption && <figcaption>{caption}</figcaption>}
+      {(caption || alt) && <figcaption>{caption || alt}</figcaption>}
     </figure>
   )
 }

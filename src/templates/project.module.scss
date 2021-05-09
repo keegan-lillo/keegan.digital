@@ -5,13 +5,13 @@
 .projectImages {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
-  gap: 3rem;
+  grid-gap: 3rem;
   margin-bottom: 3rem;
 }
 
 .subProjects {
   display: grid;
-  gap: 3rem;
+  grid-gap: 3rem;
 }
 
 .subProjectTitle {
@@ -21,7 +21,7 @@
 .subProjectImages {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
-  gap: 3rem;
+  grid-gap: 3rem;
 }
 
 .imageLink {
