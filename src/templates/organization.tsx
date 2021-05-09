@@ -3,9 +3,10 @@ import React from 'react'
 
 import { OrganizationTemplateQuery } from '../../types/graphql'
 import OrganizationTitle from '../components/OrganizationTitle'
-import ProjectCard from '../components/ProjectCard'
 import { Breadcrumb } from '../components/ui/Breadcrumb'
 import { Cards } from '../components/ui/cards'
+// eslint-disable-next-line import/order
+import ProjectCard from '../components/ProjectCard'
 import MainLayout from '../layouts/MainLayout'
 
 import { ImageLink } from './imageLink'
