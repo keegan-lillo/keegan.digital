@@ -11,8 +11,10 @@ logo:
 images:
   - image: images/home.png
     alt: Screenshot of the Women's Art Register website home page
+    caption: Women's Art Register website home page.
   - image: images/it-comes-in-waves.png
     alt: Screenshot of the "It Comes in Waves" conversation series page
+    caption: Women's Art Register website "It Comes in Waves" conversation series page
 quote:
   content: Keegan has been a tremendous help to our organisation. As a diverse
     community with a longstanding history of over 45 years, we are challenged
