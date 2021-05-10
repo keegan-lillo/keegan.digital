@@ -69,6 +69,7 @@ const config: GatsbyConfig = {
       resolve: `gatsby-plugin-breadcrumb`,
       options: {
         useAutoGen: true,
+        trailingSlashes: true,
       },
     },
 

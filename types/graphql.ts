@@ -258,8 +258,6 @@ export type DirectoryCtimeArgs = {
 export type Site = Node & {
   buildTime?: Maybe<Scalars['Date']>;
   siteMetadata?: Maybe<SiteSiteMetadata>;
-  port?: Maybe<Scalars['Int']>;
-  host?: Maybe<Scalars['String']>;
   polyfill?: Maybe<Scalars['Boolean']>;
   pathPrefix?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
@@ -331,14 +329,14 @@ export type SitePageContext = {
 };
 
 export type SitePageContextSlugTitleMap = {
-  _portfolio_?: Maybe<Scalars['String']>;
   _giving_back_?: Maybe<Scalars['String']>;
-  _who_?: Maybe<Scalars['String']>;
   _about_?: Maybe<Scalars['String']>;
+  _portfolio_?: Maybe<Scalars['String']>;
+  _who_?: Maybe<Scalars['String']>;
   _giving_back_womens_art_register_?: Maybe<Scalars['String']>;
   _portfolio_pebble_?: Maybe<Scalars['String']>;
-  _giving_back_hraff_?: Maybe<Scalars['String']>;
   _giving_back_paintbrush_diplomacy_?: Maybe<Scalars['String']>;
+  _giving_back_hraff_?: Maybe<Scalars['String']>;
   _giving_back_college_of_san_mateo_?: Maybe<Scalars['String']>;
   _portfolio_bixby_?: Maybe<Scalars['String']>;
   _portfolio_pebble_pebble_website_?: Maybe<Scalars['String']>;
@@ -783,6 +781,7 @@ export type SitePluginPluginOptions = {
   svgo?: Maybe<Scalars['Boolean']>;
   cssLoaderOptions?: Maybe<SitePluginPluginOptionsCssLoaderOptions>;
   useAutoGen?: Maybe<Scalars['Boolean']>;
+  trailingSlashes?: Maybe<Scalars['Boolean']>;
   name?: Maybe<Scalars['String']>;
   path?: Maybe<Scalars['String']>;
   base64Width?: Maybe<Scalars['Int']>;
@@ -981,8 +980,6 @@ export type QueryAllDirectoryArgs = {
 export type QuerySiteArgs = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
-  port?: Maybe<IntQueryOperatorInput>;
-  host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -2211,8 +2208,6 @@ export type SiteFieldsEnum =
   | 'siteMetadata___author___name'
   | 'siteMetadata___author___url'
   | 'siteMetadata___author___email'
-  | 'port'
-  | 'host'
   | 'polyfill'
   | 'pathPrefix'
   | 'id'
@@ -2314,8 +2309,6 @@ export type SiteGroupConnection = {
 export type SiteFilterInput = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
-  port?: Maybe<IntQueryOperatorInput>;
-  host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -2505,14 +2498,14 @@ export type SitePageContextFilterInput = {
 };
 
 export type SitePageContextSlugTitleMapFilterInput = {
-  _portfolio_?: Maybe<StringQueryOperatorInput>;
   _giving_back_?: Maybe<StringQueryOperatorInput>;
-  _who_?: Maybe<StringQueryOperatorInput>;
   _about_?: Maybe<StringQueryOperatorInput>;
+  _portfolio_?: Maybe<StringQueryOperatorInput>;
+  _who_?: Maybe<StringQueryOperatorInput>;
   _giving_back_womens_art_register_?: Maybe<StringQueryOperatorInput>;
   _portfolio_pebble_?: Maybe<StringQueryOperatorInput>;
-  _giving_back_hraff_?: Maybe<StringQueryOperatorInput>;
   _giving_back_paintbrush_diplomacy_?: Maybe<StringQueryOperatorInput>;
+  _giving_back_hraff_?: Maybe<StringQueryOperatorInput>;
   _giving_back_college_of_san_mateo_?: Maybe<StringQueryOperatorInput>;
   _portfolio_bixby_?: Maybe<StringQueryOperatorInput>;
   _portfolio_pebble_pebble_website_?: Maybe<StringQueryOperatorInput>;
@@ -2567,6 +2560,7 @@ export type SitePluginPluginOptionsFilterInput = {
   svgo?: Maybe<BooleanQueryOperatorInput>;
   cssLoaderOptions?: Maybe<SitePluginPluginOptionsCssLoaderOptionsFilterInput>;
   useAutoGen?: Maybe<BooleanQueryOperatorInput>;
+  trailingSlashes?: Maybe<BooleanQueryOperatorInput>;
   name?: Maybe<StringQueryOperatorInput>;
   path?: Maybe<StringQueryOperatorInput>;
   base64Width?: Maybe<IntQueryOperatorInput>;
@@ -2797,14 +2791,14 @@ export type SitePageFieldsEnum =
   | 'context___sourceInstanceName'
   | 'context___template'
   | 'context___title'
-  | 'context___slugTitleMap____portfolio_'
   | 'context___slugTitleMap____giving_back_'
-  | 'context___slugTitleMap____who_'
   | 'context___slugTitleMap____about_'
+  | 'context___slugTitleMap____portfolio_'
+  | 'context___slugTitleMap____who_'
   | 'context___slugTitleMap____giving_back_womens_art_register_'
   | 'context___slugTitleMap____portfolio_pebble_'
-  | 'context___slugTitleMap____giving_back_hraff_'
   | 'context___slugTitleMap____giving_back_paintbrush_diplomacy_'
+  | 'context___slugTitleMap____giving_back_hraff_'
   | 'context___slugTitleMap____giving_back_college_of_san_mateo_'
   | 'context___slugTitleMap____portfolio_bixby_'
   | 'context___slugTitleMap____portfolio_pebble_pebble_website_'
@@ -2878,6 +2872,7 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___cssLoaderOptions___localIdentName'
   | 'pluginCreator___pluginOptions___cssLoaderOptions___esModule'
   | 'pluginCreator___pluginOptions___useAutoGen'
+  | 'pluginCreator___pluginOptions___trailingSlashes'
   | 'pluginCreator___pluginOptions___name'
   | 'pluginCreator___pluginOptions___path'
   | 'pluginCreator___pluginOptions___base64Width'
@@ -3739,6 +3734,7 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___cssLoaderOptions___esModule'
   | 'pluginOptions___cssLoaderOptions___modules___namedExport'
   | 'pluginOptions___useAutoGen'
+  | 'pluginOptions___trailingSlashes'
   | 'pluginOptions___name'
   | 'pluginOptions___path'
   | 'pluginOptions___base64Width'
