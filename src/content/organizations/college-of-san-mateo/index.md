@@ -13,7 +13,7 @@ images:
   - image: images/lecture.png
     alt: Slide from the presentation with the text "Beyond the Online Portfolio" and
       "Keegan Lillo"
-    caption: ""
+    caption: Slide from the presentation.
 quote:
   content: Keegan Lillo presented ‘Beyond the Online Portfolio’ as part of the
     College of San Mateo's Artist/Graphic Design Lecture Series in 2018. Over
