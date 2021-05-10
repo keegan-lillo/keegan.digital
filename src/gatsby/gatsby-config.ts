@@ -117,6 +117,12 @@ const config: GatsbyConfig = {
         modulePath: `${__dirname}/../cms/cms.ts`,
       },
     },
+    {
+      resolve: `gatsby-plugin-force-trailing-slashes`,
+      options: {
+        excludedPaths: [`/404.html`],
+      },
+    },
   ],
 }
 
