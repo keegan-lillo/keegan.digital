@@ -104,7 +104,7 @@ export const onCreateNode = ({
 
       switch (sourceInstanceName) {
         case 'pages': {
-          createFields({ childrenGlob: `/${path.replace(/^\//, '')}/*` })
+          createFields({ childrenGlob: posix.join('/', path, '/*') })
           break
         }
         case 'organizations': {

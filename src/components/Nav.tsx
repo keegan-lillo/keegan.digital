@@ -22,9 +22,9 @@ type NavProps = {
 export default function Nav({ className }: NavProps) {
   return (
     <nav className={clsx(s.nav, className)}>
-      <NavLink to="/about">About</NavLink>
-      <NavLink to="/portfolio">Portfolio</NavLink>
-      <NavLink to="/giving-back">Giving Back</NavLink>
+      <NavLink to="/about/">About</NavLink>
+      <NavLink to="/portfolio/">Portfolio</NavLink>
+      <NavLink to="/giving-back/">Giving Back</NavLink>
     </nav>
   )
 }
