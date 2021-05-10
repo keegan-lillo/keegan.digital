@@ -4,7 +4,7 @@ __anchors:
     create: true
     format: 'yaml-frontmatter'
     frontmatter_delimiter: ['```yaml', '```']
-    preview_path: '{{slug}}'
+    preview_path: '{{dirname}}'
     media_folder: 'images'
   - &nested_collection
     summary: '{{title}}'
@@ -101,6 +101,7 @@ collections:
     <<: *nested_collection
     label: 'Organization'
     folder: 'src/content/organizations'
+    preview_path: '/{{fields.section}}/{{dirname}}'
     summary: '{{fields.order}} - {{fields.title}}'
     sortable_fields: ['order', 'title']
     fields:
@@ -171,6 +172,7 @@ collections:
     <<: *nested_collection
     label: 'Project'
     folder: 'src/content/projects'
+    preview_path: '/portfolio/{{fields.organization}}/{{dirname}}'
     summary: '{{fields.order}} - {{fields.title}}'
     sortable_fields: ['order', 'title']
     fields:
