@@ -11,6 +11,7 @@ logo:
 images:
   - image: images/hraff-2.png
     alt: Screenshot of the Human Rights Arts & Film Festival event page
+    caption: Human Rights Arts & Film Festival event page.
 quote:
   content: Keegan has generously given endless hours, energy, and expertise to the
     Human Rights Arts & Film Festival. What started as a general technical
