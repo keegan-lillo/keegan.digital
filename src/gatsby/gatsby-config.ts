@@ -69,6 +69,7 @@ const config: GatsbyConfig = {
       resolve: `gatsby-plugin-breadcrumb`,
       options: {
         useAutoGen: true,
+        trailingSlashes: true,
       },
     },
 
@@ -115,6 +116,12 @@ const config: GatsbyConfig = {
       resolve: `gatsby-plugin-netlify-cms`,
       options: {
         modulePath: `${__dirname}/../cms/cms.ts`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-force-trailing-slashes`,
+      options: {
+        excludedPaths: [`/404.html`],
       },
     },
   ],

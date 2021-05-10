@@ -91,7 +91,7 @@ export const onCreateNode = ({
       const path = createFilePath({
         getNode,
         node,
-        trailingSlash: false,
+        trailingSlash: true,
       })
       const { sourceInstanceName } = (getNode(node.parent) as unknown) as File
 
@@ -104,7 +104,7 @@ export const onCreateNode = ({
 
       switch (sourceInstanceName) {
         case 'pages': {
-          createFields({ childrenGlob: `/${path.replace(/^\//, '')}/*` })
+          createFields({ childrenGlob: posix.join('/', path, '/*') })
           break
         }
         case 'organizations': {
