@@ -2,6 +2,13 @@
   margin-bottom: 6rem;
 }
 
+.technologyTitle {
+  margin-right: 2rem;
+  margin-bottom: 1rem;
+  font-size: inherit;
+  line-height: inherit;
+}
+
 .projectImages {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));

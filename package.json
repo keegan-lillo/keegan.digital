@@ -15,7 +15,8 @@
     "serve": "gatsby build && serve ./public",
     "start": "gatsby develop",
     "local-cms": "npx netlify-cms-proxy-server",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "prepare": "husky install"
   },
   "browserslist": [
     "last 2 versions",

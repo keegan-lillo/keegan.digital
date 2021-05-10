@@ -5,22 +5,3 @@
 .image {
   margin-bottom: 1rem;
 }
-
-.technologyList {
-  display: flex;
-  flex-wrap: wrap;
-  margin: -0.5rem -1rem;
-  padding: 0;
-  list-style: none;
-  color: var(--color-text-subtle);
-  font-size: 1.75rem;
-  line-height: 2rem;
-}
-
-.technologyListItem {
-  margin: 0.5rem 1rem;
-
-  &:last-of-type::after {
-    content: none;
-  }
-}

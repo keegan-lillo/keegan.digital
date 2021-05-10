@@ -2,8 +2,9 @@ import { graphql, PageProps } from 'gatsby'
 import React from 'react'
 
 import { ProjectTemplateQuery } from '../../types/graphql'
-import { Breadcrumb } from '../components/ui/Breadcrumb'
+import { Breadcrumb, PageContext } from '../components/ui/Breadcrumb'
 import { Card } from '../components/ui/cards'
+import TechnologyList from '../components/ui/TechnologyList'
 import MainLayout from '../layouts/MainLayout'
 
 import { ImageLink } from './imageLink'
@@ -24,6 +25,7 @@ export const query = graphql`
       html
       frontmatter {
         title
+        technology
         images {
           alt
           caption
@@ -50,15 +52,23 @@ export const query = graphql`
 export default function ProjectTemplate({
   data,
   pageContext,
-}: PageProps<ProjectTemplateQuery, any>) {
+}: PageProps<ProjectTemplateQuery, PageContext>) {
   const { frontmatter, html = '' } = data.page ?? {}
-  const { images, subProjects, title } = frontmatter ?? {}
+  const { images, subProjects, technology, title } = frontmatter ?? {}
 
   return (
     <MainLayout title={title}>
       <Breadcrumb pageContext={pageContext} />
       <h1>{title}</h1>
-      <div className={s.content} dangerouslySetInnerHTML={{ __html: html }} />
+      <div className={s.content}>
+        <section dangerouslySetInnerHTML={{ __html: html }} />
+        {technology && (
+          <>
+            <h2 className={s.technologyTitle}>Technology</h2>
+            <TechnologyList technology={technology} />
+          </>
+        )}
+      </div>
       <section className={s.projectImages}>
         {images?.map((image) => (
           <ImageLink key={image?.image?.id} {...image} />

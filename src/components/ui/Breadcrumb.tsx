@@ -3,13 +3,15 @@ import React from 'react'
 
 import s from './Breadcrumb.module.scss'
 
-type Props = JSX.IntrinsicElements['nav'] & {
-  pageContext: {
-    breadcrumb: {
-      crumbs: { crumbLabel: string; pathname: string }[]
-    }
-    slugTitleMap: Record<string, string>
+export type PageContext = {
+  breadcrumb: {
+    crumbs: { crumbLabel: string; pathname: string }[]
   }
+  slugTitleMap: Record<string, string>
+}
+
+type Props = JSX.IntrinsicElements['nav'] & {
+  pageContext: PageContext
 }
 
 export function Breadcrumb({ pageContext, ...rest }: Props) {

@@ -3,7 +3,7 @@ import React from 'react'
 
 import { OrganizationTemplateQuery } from '../../types/graphql'
 import OrganizationTitle from '../components/OrganizationTitle'
-import { Breadcrumb } from '../components/ui/Breadcrumb'
+import { Breadcrumb, PageContext } from '../components/ui/Breadcrumb'
 import { Cards } from '../components/ui/cards'
 // eslint-disable-next-line import/order
 import ProjectCard from '../components/ProjectCard'
@@ -80,7 +80,7 @@ export const query = graphql`
 export default function OrganizationTemplate({
   data,
   pageContext,
-}: PageProps<OrganizationTemplateQuery, any>) {
+}: PageProps<OrganizationTemplateQuery, PageContext>) {
   const { frontmatter, html = '' } = data.page ?? {}
   const { images, logo, quote, title = '', titleAndLogo } = frontmatter ?? {}
 

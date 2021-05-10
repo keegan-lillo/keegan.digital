@@ -1,10 +1,16 @@
+@import '../styles/variables';
+
 .content {
   margin-bottom: 6rem;
 }
 
 .images {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
+  grid-template-columns: auto;
   grid-gap: 3rem;
   margin-bottom: 3rem;
+
+  @media (min-width: $media-mobile) {
+    grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
+  }
 }

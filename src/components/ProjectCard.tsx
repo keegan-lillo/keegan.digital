@@ -5,6 +5,7 @@ import React from 'react'
 import { ProjectCardFragment } from '../../types/graphql'
 
 import { CardLink } from './ui/cards'
+import TechnologyList from './ui/TechnologyList'
 
 import s from './ProjectCard.module.scss'
 
@@ -55,13 +56,7 @@ export default function ProjectCard({ node }: Props) {
         alt={alt}
         image={image?.childImageSharp?.gatsbyImageData}
       />
-      <ul className={s.technologyList}>
-        {technology?.map((item) => (
-          <li className={s.technologyListItem} key={item}>
-            {item}
-          </li>
-        ))}
-      </ul>
+      {technology && <TechnologyList technology={technology} />}
     </CardLink>
   )
 }

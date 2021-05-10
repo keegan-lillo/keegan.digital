@@ -336,16 +336,16 @@ export type SitePageContextSlugTitleMap = {
   _portfolio?: Maybe<Scalars['String']>;
   _about?: Maybe<Scalars['String']>;
   _giving_back_womens_art_register?: Maybe<Scalars['String']>;
+  _giving_back_paintbrush_diplomacy?: Maybe<Scalars['String']>;
   _portfolio_pebble?: Maybe<Scalars['String']>;
   _giving_back_hraff?: Maybe<Scalars['String']>;
-  _giving_back_paintbrush_diplomacy?: Maybe<Scalars['String']>;
   _giving_back_college_of_san_mateo?: Maybe<Scalars['String']>;
   _portfolio_bixby?: Maybe<Scalars['String']>;
   _portfolio_pebble_pebble_appstore?: Maybe<Scalars['String']>;
-  _portfolio_pebble_pebble_website?: Maybe<Scalars['String']>;
   _portfolio_pebble_health_charts?: Maybe<Scalars['String']>;
   _portfolio_pebble_clay?: Maybe<Scalars['String']>;
   _portfolio_bixby_bixby_studio?: Maybe<Scalars['String']>;
+  _portfolio_pebble_pebble_website?: Maybe<Scalars['String']>;
   _portfolio_bixby_bixby_component_library?: Maybe<Scalars['String']>;
 };
 
@@ -2509,16 +2509,16 @@ export type SitePageContextSlugTitleMapFilterInput = {
   _portfolio?: Maybe<StringQueryOperatorInput>;
   _about?: Maybe<StringQueryOperatorInput>;
   _giving_back_womens_art_register?: Maybe<StringQueryOperatorInput>;
+  _giving_back_paintbrush_diplomacy?: Maybe<StringQueryOperatorInput>;
   _portfolio_pebble?: Maybe<StringQueryOperatorInput>;
   _giving_back_hraff?: Maybe<StringQueryOperatorInput>;
-  _giving_back_paintbrush_diplomacy?: Maybe<StringQueryOperatorInput>;
   _giving_back_college_of_san_mateo?: Maybe<StringQueryOperatorInput>;
   _portfolio_bixby?: Maybe<StringQueryOperatorInput>;
   _portfolio_pebble_pebble_appstore?: Maybe<StringQueryOperatorInput>;
-  _portfolio_pebble_pebble_website?: Maybe<StringQueryOperatorInput>;
   _portfolio_pebble_health_charts?: Maybe<StringQueryOperatorInput>;
   _portfolio_pebble_clay?: Maybe<StringQueryOperatorInput>;
   _portfolio_bixby_bixby_studio?: Maybe<StringQueryOperatorInput>;
+  _portfolio_pebble_pebble_website?: Maybe<StringQueryOperatorInput>;
   _portfolio_bixby_bixby_component_library?: Maybe<StringQueryOperatorInput>;
 };
 
@@ -2800,16 +2800,16 @@ export type SitePageFieldsEnum =
   | 'context___slugTitleMap____portfolio'
   | 'context___slugTitleMap____about'
   | 'context___slugTitleMap____giving_back_womens_art_register'
+  | 'context___slugTitleMap____giving_back_paintbrush_diplomacy'
   | 'context___slugTitleMap____portfolio_pebble'
   | 'context___slugTitleMap____giving_back_hraff'
-  | 'context___slugTitleMap____giving_back_paintbrush_diplomacy'
   | 'context___slugTitleMap____giving_back_college_of_san_mateo'
   | 'context___slugTitleMap____portfolio_bixby'
   | 'context___slugTitleMap____portfolio_pebble_pebble_appstore'
-  | 'context___slugTitleMap____portfolio_pebble_pebble_website'
   | 'context___slugTitleMap____portfolio_pebble_health_charts'
   | 'context___slugTitleMap____portfolio_pebble_clay'
   | 'context___slugTitleMap____portfolio_bixby_bixby_studio'
+  | 'context___slugTitleMap____portfolio_pebble_pebble_website'
   | 'context___slugTitleMap____portfolio_bixby_bixby_component_library'
   | 'context___breadcrumb___location'
   | 'context___breadcrumb___crumbs'
@@ -3875,7 +3875,7 @@ export type ProjectTemplateQueryVariables = Exact<{
 export type ProjectTemplateQuery = { page?: Maybe<(
     Pick<MarkdownRemark, 'html'>
     & { frontmatter?: Maybe<(
-      Pick<MarkdownRemarkFrontmatter, 'title'>
+      Pick<MarkdownRemarkFrontmatter, 'title' | 'technology'>
       & { images?: Maybe<Array<Maybe<(
         Pick<MarkdownRemarkFrontmatterImages, 'alt' | 'caption'>
         & { image?: Maybe<ProjectTemplateImageFragment> }
