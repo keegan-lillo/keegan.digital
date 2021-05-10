@@ -1,5 +1,5 @@
 ```yaml
-title: Bixby Studio
+title: Bixby Studio - TEST
 order: 1001
 organization: src/content/organizations/bixby
 technology:
