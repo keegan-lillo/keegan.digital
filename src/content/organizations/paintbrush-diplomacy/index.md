@@ -12,8 +12,10 @@ logo:
 images:
   - image: images/home-full.png
     alt: Screenshot of the Paintbrush Diplomacy website home page
+    caption: Paintbrush Diplomacy website home page.
   - image: images/museum.png
     alt: Screenshot of the Paintbrush Diplomacy teaching museum web page.
+    caption: Paintbrush Diplomacy teaching museum web page.
 quote:
   content: Keegan became an invaluable part of our organisation when he was
     brought onboard to migrate all our old data and build a much-needed new
