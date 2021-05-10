@@ -1,5 +1,5 @@
 ```yaml
-title: Bixby (Viv Labs + Samsung)
+title: Bixby (Viv Labs + Samsung) - TEST
 order: 1001
 section: portfolio
 link:
