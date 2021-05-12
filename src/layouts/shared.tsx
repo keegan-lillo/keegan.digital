@@ -40,7 +40,8 @@ export function Head({ description, title = '' }: Props) {
       />
       <link rel="manifest" href="/icons/site.webmanifest" />
       <link rel="shortcut icon" href="/icons/favicon.ico" />
-      <meta name="theme-color" content="#ffffff" />
+      <meta name="theme-color" content="#e9f5ff" />
+      <meta property="og:image" content="/images/social-image.png" />
       {/* === SEO === */}
       <title>
         {siteMetadata.title === title

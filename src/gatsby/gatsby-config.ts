@@ -6,7 +6,7 @@ const config: GatsbyConfig = {
     siteName: `Keegan Digital`,
     siteUrl: `https://keegan.digital`,
     title: `Keegan Digital`,
-    description: 'The personal website for Keegan Lillo.',
+    description: `Hi, I'm Keegan Lillo, a front-end web software engineer based in Melbourne, Australia.`,
     author: {
       name: 'Keegan Lillo',
       url: 'https://keegan.digital',
