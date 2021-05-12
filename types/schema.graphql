@@ -813,22 +813,22 @@ type SitePageContextBreadcrumbCrumbs {
 }
 
 type SitePageContextSlugTitleMap {
-  _about: String
-  _giving_back: String
-  _giving_back_college_of_san_mateo: String
-  _giving_back_hraff: String
-  _giving_back_paintbrush_diplomacy: String
-  _giving_back_womens_art_register: String
-  _portfolio: String
-  _portfolio_bixby: String
-  _portfolio_bixby_bixby_component_library: String
-  _portfolio_bixby_bixby_studio: String
-  _portfolio_pebble: String
-  _portfolio_pebble_clay: String
-  _portfolio_pebble_health_charts: String
-  _portfolio_pebble_pebble_appstore: String
-  _portfolio_pebble_pebble_website: String
-  _who: String
+  _about_: String
+  _giving_back_: String
+  _giving_back_college_of_san_mateo_: String
+  _giving_back_hraff_: String
+  _giving_back_paintbrush_diplomacy_: String
+  _giving_back_womens_art_register_: String
+  _portfolio_: String
+  _portfolio_bixby_: String
+  _portfolio_bixby_bixby_component_library_: String
+  _portfolio_bixby_bixby_studio_: String
+  _portfolio_pebble_: String
+  _portfolio_pebble_clay_: String
+  _portfolio_pebble_health_charts_: String
+  _portfolio_pebble_pebble_appstore_: String
+  _portfolio_pebble_pebble_website_: String
+  _who_: String
 }
 
 type SitePageEdge {
@@ -925,10 +925,13 @@ type SitePluginPluginOptions {
   defaultQuality: Int
   delimiters: [String]
   documentPaths: [String]
+  excludedPaths: [String]
   failOnError: Boolean
   fileName: String
   isTSX: Boolean
   jsxPragma: String
+  linkImagesToOriginal: Boolean
+  maxWidth: Int
   modulePath: String
   name: String
   path: String
@@ -939,6 +942,7 @@ type SitePluginPluginOptions {
   stripMetadata: Boolean
   svgo: Boolean
   target: String
+  trailingSlashes: Boolean
   typeCheck: Boolean
   useAutoGen: Boolean
 }
@@ -959,8 +963,10 @@ type SitePluginPluginOptionsCssLoaderOptionsModules {
 }
 
 type SitePluginPluginOptionsPlugins {
+  browserAPIs: [String]
   id: String
   name: String
+  nodeAPIs: [String]
   pluginFilepath: String
   pluginOptions: SitePluginPluginOptionsPluginsPluginOptions
   resolve: String
@@ -968,6 +974,8 @@ type SitePluginPluginOptionsPlugins {
 }
 
 type SitePluginPluginOptionsPluginsPluginOptions {
+  linkImagesToOriginal: Boolean
+  maxWidth: Int
   rel: String
   target: String
 }
@@ -2298,22 +2306,22 @@ enum SitePageFieldsEnum {
   context___childrenGlob
   context___orgId
   context___slug
-  context___slugTitleMap____about
-  context___slugTitleMap____giving_back
-  context___slugTitleMap____giving_back_college_of_san_mateo
-  context___slugTitleMap____giving_back_hraff
-  context___slugTitleMap____giving_back_paintbrush_diplomacy
-  context___slugTitleMap____giving_back_womens_art_register
-  context___slugTitleMap____portfolio
-  context___slugTitleMap____portfolio_bixby
-  context___slugTitleMap____portfolio_bixby_bixby_component_library
-  context___slugTitleMap____portfolio_bixby_bixby_studio
-  context___slugTitleMap____portfolio_pebble
-  context___slugTitleMap____portfolio_pebble_clay
-  context___slugTitleMap____portfolio_pebble_health_charts
-  context___slugTitleMap____portfolio_pebble_pebble_appstore
-  context___slugTitleMap____portfolio_pebble_pebble_website
-  context___slugTitleMap____who
+  context___slugTitleMap____about_
+  context___slugTitleMap____giving_back_
+  context___slugTitleMap____giving_back_college_of_san_mateo_
+  context___slugTitleMap____giving_back_hraff_
+  context___slugTitleMap____giving_back_paintbrush_diplomacy_
+  context___slugTitleMap____giving_back_womens_art_register_
+  context___slugTitleMap____portfolio_
+  context___slugTitleMap____portfolio_bixby_
+  context___slugTitleMap____portfolio_bixby_bixby_component_library_
+  context___slugTitleMap____portfolio_bixby_bixby_studio_
+  context___slugTitleMap____portfolio_pebble_
+  context___slugTitleMap____portfolio_pebble_clay_
+  context___slugTitleMap____portfolio_pebble_health_charts_
+  context___slugTitleMap____portfolio_pebble_pebble_appstore_
+  context___slugTitleMap____portfolio_pebble_pebble_website_
+  context___slugTitleMap____who_
   context___sourceInstanceName
   context___template
   context___title
@@ -2436,17 +2444,22 @@ enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___defaultQuality
   pluginCreator___pluginOptions___delimiters
   pluginCreator___pluginOptions___documentPaths
+  pluginCreator___pluginOptions___excludedPaths
   pluginCreator___pluginOptions___failOnError
   pluginCreator___pluginOptions___fileName
   pluginCreator___pluginOptions___isTSX
   pluginCreator___pluginOptions___jsxPragma
+  pluginCreator___pluginOptions___linkImagesToOriginal
+  pluginCreator___pluginOptions___maxWidth
   pluginCreator___pluginOptions___modulePath
   pluginCreator___pluginOptions___name
   pluginCreator___pluginOptions___path
   pluginCreator___pluginOptions___pathCheck
   pluginCreator___pluginOptions___plugins
+  pluginCreator___pluginOptions___plugins___browserAPIs
   pluginCreator___pluginOptions___plugins___id
   pluginCreator___pluginOptions___plugins___name
+  pluginCreator___pluginOptions___plugins___nodeAPIs
   pluginCreator___pluginOptions___plugins___pluginFilepath
   pluginCreator___pluginOptions___plugins___resolve
   pluginCreator___pluginOptions___plugins___version
@@ -2455,6 +2468,7 @@ enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___stripMetadata
   pluginCreator___pluginOptions___svgo
   pluginCreator___pluginOptions___target
+  pluginCreator___pluginOptions___trailingSlashes
   pluginCreator___pluginOptions___typeCheck
   pluginCreator___pluginOptions___useAutoGen
   pluginCreator___resolve
@@ -2579,18 +2593,25 @@ enum SitePluginFieldsEnum {
   pluginOptions___defaultQuality
   pluginOptions___delimiters
   pluginOptions___documentPaths
+  pluginOptions___excludedPaths
   pluginOptions___failOnError
   pluginOptions___fileName
   pluginOptions___isTSX
   pluginOptions___jsxPragma
+  pluginOptions___linkImagesToOriginal
+  pluginOptions___maxWidth
   pluginOptions___modulePath
   pluginOptions___name
   pluginOptions___path
   pluginOptions___pathCheck
   pluginOptions___plugins
+  pluginOptions___plugins___browserAPIs
   pluginOptions___plugins___id
   pluginOptions___plugins___name
+  pluginOptions___plugins___nodeAPIs
   pluginOptions___plugins___pluginFilepath
+  pluginOptions___plugins___pluginOptions___linkImagesToOriginal
+  pluginOptions___plugins___pluginOptions___maxWidth
   pluginOptions___plugins___pluginOptions___rel
   pluginOptions___plugins___pluginOptions___target
   pluginOptions___plugins___resolve
@@ -2600,6 +2621,7 @@ enum SitePluginFieldsEnum {
   pluginOptions___stripMetadata
   pluginOptions___svgo
   pluginOptions___target
+  pluginOptions___trailingSlashes
   pluginOptions___typeCheck
   pluginOptions___useAutoGen
   resolve
@@ -3066,22 +3088,22 @@ input SitePageContextFilterInput {
 }
 
 input SitePageContextSlugTitleMapFilterInput {
-  _about: StringQueryOperatorInput
-  _giving_back: StringQueryOperatorInput
-  _giving_back_college_of_san_mateo: StringQueryOperatorInput
-  _giving_back_hraff: StringQueryOperatorInput
-  _giving_back_paintbrush_diplomacy: StringQueryOperatorInput
-  _giving_back_womens_art_register: StringQueryOperatorInput
-  _portfolio: StringQueryOperatorInput
-  _portfolio_bixby: StringQueryOperatorInput
-  _portfolio_bixby_bixby_component_library: StringQueryOperatorInput
-  _portfolio_bixby_bixby_studio: StringQueryOperatorInput
-  _portfolio_pebble: StringQueryOperatorInput
-  _portfolio_pebble_clay: StringQueryOperatorInput
-  _portfolio_pebble_health_charts: StringQueryOperatorInput
-  _portfolio_pebble_pebble_appstore: StringQueryOperatorInput
-  _portfolio_pebble_pebble_website: StringQueryOperatorInput
-  _who: StringQueryOperatorInput
+  _about_: StringQueryOperatorInput
+  _giving_back_: StringQueryOperatorInput
+  _giving_back_college_of_san_mateo_: StringQueryOperatorInput
+  _giving_back_hraff_: StringQueryOperatorInput
+  _giving_back_paintbrush_diplomacy_: StringQueryOperatorInput
+  _giving_back_womens_art_register_: StringQueryOperatorInput
+  _portfolio_: StringQueryOperatorInput
+  _portfolio_bixby_: StringQueryOperatorInput
+  _portfolio_bixby_bixby_component_library_: StringQueryOperatorInput
+  _portfolio_bixby_bixby_studio_: StringQueryOperatorInput
+  _portfolio_pebble_: StringQueryOperatorInput
+  _portfolio_pebble_clay_: StringQueryOperatorInput
+  _portfolio_pebble_health_charts_: StringQueryOperatorInput
+  _portfolio_pebble_pebble_appstore_: StringQueryOperatorInput
+  _portfolio_pebble_pebble_website_: StringQueryOperatorInput
+  _who_: StringQueryOperatorInput
 }
 
 input SitePageFilterInput {
@@ -3185,10 +3207,13 @@ input SitePluginPluginOptionsFilterInput {
   defaultQuality: IntQueryOperatorInput
   delimiters: StringQueryOperatorInput
   documentPaths: StringQueryOperatorInput
+  excludedPaths: StringQueryOperatorInput
   failOnError: BooleanQueryOperatorInput
   fileName: StringQueryOperatorInput
   isTSX: BooleanQueryOperatorInput
   jsxPragma: StringQueryOperatorInput
+  linkImagesToOriginal: BooleanQueryOperatorInput
+  maxWidth: IntQueryOperatorInput
   modulePath: StringQueryOperatorInput
   name: StringQueryOperatorInput
   path: StringQueryOperatorInput
@@ -3199,13 +3224,16 @@ input SitePluginPluginOptionsFilterInput {
   stripMetadata: BooleanQueryOperatorInput
   svgo: BooleanQueryOperatorInput
   target: StringQueryOperatorInput
+  trailingSlashes: BooleanQueryOperatorInput
   typeCheck: BooleanQueryOperatorInput
   useAutoGen: BooleanQueryOperatorInput
 }
 
 input SitePluginPluginOptionsPluginsFilterInput {
+  browserAPIs: StringQueryOperatorInput
   id: StringQueryOperatorInput
   name: StringQueryOperatorInput
+  nodeAPIs: StringQueryOperatorInput
   pluginFilepath: StringQueryOperatorInput
   pluginOptions: SitePluginPluginOptionsPluginsPluginOptionsFilterInput
   resolve: StringQueryOperatorInput
@@ -3217,6 +3245,8 @@ input SitePluginPluginOptionsPluginsFilterListInput {
 }
 
 input SitePluginPluginOptionsPluginsPluginOptionsFilterInput {
+  linkImagesToOriginal: BooleanQueryOperatorInput
+  maxWidth: IntQueryOperatorInput
   rel: StringQueryOperatorInput
   target: StringQueryOperatorInput
 }
