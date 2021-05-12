@@ -50,7 +50,7 @@ export default function ProjectCard({ node }: Props) {
 
   return (
     <CardLink to={slug ?? '/'}>
-      <h3 className={s.title}>{title}</h3>
+      <h2 className={s.title}>{title}</h2>
       <GatsbyImage
         className={s.image}
         alt={alt}
