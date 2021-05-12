@@ -26,8 +26,6 @@ export function Head({ description, title = '' }: Props) {
   `)
 
   const { siteMetadata = {} } = data.site ?? {}
-  const googleFontUrl =
-    'https://fonts.googleapis.com/css2?family=Comfortaa:wght@400&display=swap'
 
   return (
     <Helmet>
@@ -56,19 +54,6 @@ export function Head({ description, title = '' }: Props) {
       <meta charSet="UTF-8" />
       {/* === Device === */}
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-      {/* === Fonts === */}
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-      <link rel="preload" as="style" href={googleFontUrl} />
-      <link
-        // eslint-disable-next-line @typescript-eslint/prefer-ts-expect-error
-        // @ts-ignore
-        onLoad="this.media='all'"
-        rel="stylesheet"
-        media="print"
-        href={googleFontUrl}
-      />
-      <noscript>{`<link rel="stylesheet" href="${googleFontUrl}" />`}</noscript>
     </Helmet>
   )
 }
