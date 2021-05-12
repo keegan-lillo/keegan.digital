@@ -11,7 +11,7 @@ export default function Header() {
     <header className={s.header}>
       <div className={s.inner}>
         <div className={s.logoContainer}>
-          <Link to="/" className={s.logoLink}>
+          <Link to="/" className={s.logoLink} aria-label="Home">
             <Logo className={s.logo} />
           </Link>
         </div>

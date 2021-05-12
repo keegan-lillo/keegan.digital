@@ -258,6 +258,8 @@ export type DirectoryCtimeArgs = {
 export type Site = Node & {
   buildTime?: Maybe<Scalars['Date']>;
   siteMetadata?: Maybe<SiteSiteMetadata>;
+  port?: Maybe<Scalars['Int']>;
+  host?: Maybe<Scalars['String']>;
   polyfill?: Maybe<Scalars['Boolean']>;
   pathPrefix?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
@@ -330,15 +332,15 @@ export type SitePageContext = {
 
 export type SitePageContextSlugTitleMap = {
   _giving_back_?: Maybe<Scalars['String']>;
-  _about_?: Maybe<Scalars['String']>;
   _portfolio_?: Maybe<Scalars['String']>;
   _who_?: Maybe<Scalars['String']>;
+  _about_?: Maybe<Scalars['String']>;
   _giving_back_womens_art_register_?: Maybe<Scalars['String']>;
-  _portfolio_pebble_?: Maybe<Scalars['String']>;
   _giving_back_paintbrush_diplomacy_?: Maybe<Scalars['String']>;
-  _giving_back_hraff_?: Maybe<Scalars['String']>;
+  _portfolio_pebble_?: Maybe<Scalars['String']>;
   _giving_back_college_of_san_mateo_?: Maybe<Scalars['String']>;
   _portfolio_bixby_?: Maybe<Scalars['String']>;
+  _giving_back_hraff_?: Maybe<Scalars['String']>;
   _portfolio_pebble_pebble_website_?: Maybe<Scalars['String']>;
   _portfolio_pebble_pebble_appstore_?: Maybe<Scalars['String']>;
   _portfolio_pebble_health_charts_?: Maybe<Scalars['String']>;
@@ -789,6 +791,8 @@ export type SitePluginPluginOptions = {
   defaultQuality?: Maybe<Scalars['Int']>;
   failOnError?: Maybe<Scalars['Boolean']>;
   delimiters?: Maybe<Array<Maybe<Scalars['String']>>>;
+  maxWidth?: Maybe<Scalars['Int']>;
+  linkImagesToOriginal?: Maybe<Scalars['Boolean']>;
   target?: Maybe<Scalars['String']>;
   rel?: Maybe<Scalars['String']>;
   modulePath?: Maybe<Scalars['String']>;
@@ -802,10 +806,14 @@ export type SitePluginPluginOptionsPlugins = {
   name?: Maybe<Scalars['String']>;
   version?: Maybe<Scalars['String']>;
   pluginOptions?: Maybe<SitePluginPluginOptionsPluginsPluginOptions>;
+  nodeAPIs?: Maybe<Array<Maybe<Scalars['String']>>>;
+  browserAPIs?: Maybe<Array<Maybe<Scalars['String']>>>;
   pluginFilepath?: Maybe<Scalars['String']>;
 };
 
 export type SitePluginPluginOptionsPluginsPluginOptions = {
+  maxWidth?: Maybe<Scalars['Int']>;
+  linkImagesToOriginal?: Maybe<Scalars['Boolean']>;
   target?: Maybe<Scalars['String']>;
   rel?: Maybe<Scalars['String']>;
 };
@@ -980,6 +988,8 @@ export type QueryAllDirectoryArgs = {
 export type QuerySiteArgs = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
+  port?: Maybe<IntQueryOperatorInput>;
+  host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -2208,6 +2218,8 @@ export type SiteFieldsEnum =
   | 'siteMetadata___author___name'
   | 'siteMetadata___author___url'
   | 'siteMetadata___author___email'
+  | 'port'
+  | 'host'
   | 'polyfill'
   | 'pathPrefix'
   | 'id'
@@ -2309,6 +2321,8 @@ export type SiteGroupConnection = {
 export type SiteFilterInput = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
+  port?: Maybe<IntQueryOperatorInput>;
+  host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -2499,15 +2513,15 @@ export type SitePageContextFilterInput = {
 
 export type SitePageContextSlugTitleMapFilterInput = {
   _giving_back_?: Maybe<StringQueryOperatorInput>;
-  _about_?: Maybe<StringQueryOperatorInput>;
   _portfolio_?: Maybe<StringQueryOperatorInput>;
   _who_?: Maybe<StringQueryOperatorInput>;
+  _about_?: Maybe<StringQueryOperatorInput>;
   _giving_back_womens_art_register_?: Maybe<StringQueryOperatorInput>;
-  _portfolio_pebble_?: Maybe<StringQueryOperatorInput>;
   _giving_back_paintbrush_diplomacy_?: Maybe<StringQueryOperatorInput>;
-  _giving_back_hraff_?: Maybe<StringQueryOperatorInput>;
+  _portfolio_pebble_?: Maybe<StringQueryOperatorInput>;
   _giving_back_college_of_san_mateo_?: Maybe<StringQueryOperatorInput>;
   _portfolio_bixby_?: Maybe<StringQueryOperatorInput>;
+  _giving_back_hraff_?: Maybe<StringQueryOperatorInput>;
   _portfolio_pebble_pebble_website_?: Maybe<StringQueryOperatorInput>;
   _portfolio_pebble_pebble_appstore_?: Maybe<StringQueryOperatorInput>;
   _portfolio_pebble_health_charts_?: Maybe<StringQueryOperatorInput>;
@@ -2568,6 +2582,8 @@ export type SitePluginPluginOptionsFilterInput = {
   defaultQuality?: Maybe<IntQueryOperatorInput>;
   failOnError?: Maybe<BooleanQueryOperatorInput>;
   delimiters?: Maybe<StringQueryOperatorInput>;
+  maxWidth?: Maybe<IntQueryOperatorInput>;
+  linkImagesToOriginal?: Maybe<BooleanQueryOperatorInput>;
   target?: Maybe<StringQueryOperatorInput>;
   rel?: Maybe<StringQueryOperatorInput>;
   modulePath?: Maybe<StringQueryOperatorInput>;
@@ -2585,10 +2601,14 @@ export type SitePluginPluginOptionsPluginsFilterInput = {
   name?: Maybe<StringQueryOperatorInput>;
   version?: Maybe<StringQueryOperatorInput>;
   pluginOptions?: Maybe<SitePluginPluginOptionsPluginsPluginOptionsFilterInput>;
+  nodeAPIs?: Maybe<StringQueryOperatorInput>;
+  browserAPIs?: Maybe<StringQueryOperatorInput>;
   pluginFilepath?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePluginPluginOptionsPluginsPluginOptionsFilterInput = {
+  maxWidth?: Maybe<IntQueryOperatorInput>;
+  linkImagesToOriginal?: Maybe<BooleanQueryOperatorInput>;
   target?: Maybe<StringQueryOperatorInput>;
   rel?: Maybe<StringQueryOperatorInput>;
 };
@@ -2792,15 +2812,15 @@ export type SitePageFieldsEnum =
   | 'context___template'
   | 'context___title'
   | 'context___slugTitleMap____giving_back_'
-  | 'context___slugTitleMap____about_'
   | 'context___slugTitleMap____portfolio_'
   | 'context___slugTitleMap____who_'
+  | 'context___slugTitleMap____about_'
   | 'context___slugTitleMap____giving_back_womens_art_register_'
-  | 'context___slugTitleMap____portfolio_pebble_'
   | 'context___slugTitleMap____giving_back_paintbrush_diplomacy_'
-  | 'context___slugTitleMap____giving_back_hraff_'
+  | 'context___slugTitleMap____portfolio_pebble_'
   | 'context___slugTitleMap____giving_back_college_of_san_mateo_'
   | 'context___slugTitleMap____portfolio_bixby_'
+  | 'context___slugTitleMap____giving_back_hraff_'
   | 'context___slugTitleMap____portfolio_pebble_pebble_website_'
   | 'context___slugTitleMap____portfolio_pebble_pebble_appstore_'
   | 'context___slugTitleMap____portfolio_pebble_health_charts_'
@@ -2857,6 +2877,8 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___plugins___id'
   | 'pluginCreator___pluginOptions___plugins___name'
   | 'pluginCreator___pluginOptions___plugins___version'
+  | 'pluginCreator___pluginOptions___plugins___nodeAPIs'
+  | 'pluginCreator___pluginOptions___plugins___browserAPIs'
   | 'pluginCreator___pluginOptions___plugins___pluginFilepath'
   | 'pluginCreator___pluginOptions___isTSX'
   | 'pluginCreator___pluginOptions___allExtensions'
@@ -2880,6 +2902,8 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___defaultQuality'
   | 'pluginCreator___pluginOptions___failOnError'
   | 'pluginCreator___pluginOptions___delimiters'
+  | 'pluginCreator___pluginOptions___maxWidth'
+  | 'pluginCreator___pluginOptions___linkImagesToOriginal'
   | 'pluginCreator___pluginOptions___target'
   | 'pluginCreator___pluginOptions___rel'
   | 'pluginCreator___pluginOptions___modulePath'
@@ -3716,8 +3740,12 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___plugins___id'
   | 'pluginOptions___plugins___name'
   | 'pluginOptions___plugins___version'
+  | 'pluginOptions___plugins___pluginOptions___maxWidth'
+  | 'pluginOptions___plugins___pluginOptions___linkImagesToOriginal'
   | 'pluginOptions___plugins___pluginOptions___target'
   | 'pluginOptions___plugins___pluginOptions___rel'
+  | 'pluginOptions___plugins___nodeAPIs'
+  | 'pluginOptions___plugins___browserAPIs'
   | 'pluginOptions___plugins___pluginFilepath'
   | 'pluginOptions___isTSX'
   | 'pluginOptions___allExtensions'
@@ -3742,6 +3770,8 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___defaultQuality'
   | 'pluginOptions___failOnError'
   | 'pluginOptions___delimiters'
+  | 'pluginOptions___maxWidth'
+  | 'pluginOptions___linkImagesToOriginal'
   | 'pluginOptions___target'
   | 'pluginOptions___rel'
   | 'pluginOptions___modulePath'

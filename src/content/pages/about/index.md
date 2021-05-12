@@ -5,6 +5,7 @@ tags:
   - foo
   - test
 ```
+<div class="_profileImage"><img src="images/color-me.jpg" alt="Headshot of Keegan Lillo" /></div>
 
 Hi, I'm Keegan Lillo, a front-end web software engineer based in Melbourne,
 Australia.
@@ -22,7 +23,7 @@ I have spent the majority of my career in the San Francisco Bay Area in various
 capacities across the tech stack. However, I have always found myself enjoying
 visual and interactive experiences the most. I loved my time there, and after
 five amazing years collectively at
-[Pebble](<https://en.wikipedia.org/wiki/Pebble_(watch)>),
+[Pebble](https://en.wikipedia.org/wiki/Pebble_(watch)),
 [Fitbit](https://www.fitbit.com), and
 [Viv&nbsp;Labs&nbsp;(Bixby)](https://bixby.developer.samsung.com/) I returned home to
 Melbourne at the end of 2019. I'm now searching for my next adventure, hopefully
@@ -32,19 +33,19 @@ in a capacity where I can pursue my passions and give back to the world.
 
 <div class="_gridList">
 
-- [CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout)
-- [CSS Modules](https://github.com/css-modules/css-modules)
-- [Electron](https://www.electronjs.org)
-- [ESLint](https://eslint.org)
-- [Gatsby](https://www.gatsbyjs.org)
-- [Jamstack](https://jamstack.org/)
-- [Jest](https://jestjs.io/)
-- [Netlify](https://jestjs.io/)
-- [Prettier](https://prettier.io)
-- [React](https://reactjs.org)
-- [Redux](https://redux.js.org)
-- [Sass (SCSS)](https://sass-lang.com)
-- [Typescript](https://www.typescriptlang.org)
+* [CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout)
+* [CSS Modules](https://github.com/css-modules/css-modules)
+* [Electron](https://www.electronjs.org)
+* [ESLint](https://eslint.org)
+* [Gatsby](https://www.gatsbyjs.org)
+* [Jamstack](https://jamstack.org/)
+* [Jest](https://jestjs.io/)
+* [Netlify](https://jestjs.io/)
+* [Prettier](https://prettier.io)
+* [React](https://reactjs.org)
+* [Redux](https://redux.js.org)
+* [Sass (SCSS)](https://sass-lang.com)
+* [Typescript](https://www.typescriptlang.org)
 
 </div>
 
@@ -52,8 +53,8 @@ in a capacity where I can pursue my passions and give back to the world.
 
 <div class="_gridList">
 
-- [GitHub](https://github.com/keegan-lillo/)
-- [LinkedIn](https://www.linkedin.com/in/keegan-lillo/)
-- [hello@keegan.digital](mailto:hello@keegan.digital)
+* [GitHub](https://github.com/keegan-lillo/)
+* [LinkedIn](https://www.linkedin.com/in/keegan-lillo/)
+* [hello@keegan.digital](mailto:hello@keegan.digital)
 
 </div>
