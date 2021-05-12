@@ -24,6 +24,7 @@
     "not IE 11"
   ],
   "dependencies": {
+    "@fontsource/comfortaa": "^4.3.0",
     "@svgr/webpack": "^5.5.0",
     "clsx": "^1.1.1",
     "gatsby": "^3.4.1",
