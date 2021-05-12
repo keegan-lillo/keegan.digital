@@ -23,6 +23,7 @@ export default function OrganizationTitle({
     'alt': '',
     'aria-hidden': true,
     'imgClassName': s.image,
+    'imgStyle': { transitionDuration: '70ms' },
     'loading': 'eager',
     'objectFit': 'contain',
   } as const
