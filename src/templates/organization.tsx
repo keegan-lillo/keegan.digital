@@ -17,7 +17,7 @@ export const query = graphql`
   fragment OrganizationTemplateLogoImageSharp on File {
     childImageSharp {
       gatsbyImageData(
-        height: 64
+        height: 48
         formats: AUTO
         placeholder: NONE
         layout: CONSTRAINED
