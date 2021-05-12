@@ -1,6 +1,7 @@
 /node_modules
 /public
 /.cache
+/.netlify
 /types/graphql.ts
 /types/schema.graphql
 /src/content/

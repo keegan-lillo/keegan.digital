@@ -93,7 +93,7 @@ export const onCreateNode = ({
         node,
         trailingSlash: true,
       })
-      const { sourceInstanceName } = (getNode(node.parent) as unknown) as File
+      const { sourceInstanceName } = getNode(node.parent) as unknown as File
 
       // Used to determine a page template.
       const { organization = '', section = '' } = node.frontmatter ?? {}
