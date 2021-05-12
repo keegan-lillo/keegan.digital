@@ -31,12 +31,14 @@
   // Colors - Light
   --color-light-prime: rgb(0, 108, 172);
   --color-light-prime-alt: rgb(2, 81, 125);
+  --color-light-secondary: #{mix(rgb(0, 108, 172), $color-base-light, 65%)};
   --font-weight-light-body: 400;
   --font-weight-light-headings: 400;
 
   // Colors - Dark
   --color-dark-prime: rgb(41, 158, 224);
   --color-dark-prime-alt: rgb(98, 178, 234);
+  --color-dark-secondary: #{mix(rgb(41, 158, 224), $color-base-dark, 82%)};
   --font-weight-dark-body: 300;
   --font-weight-dark-headings: 400;
 }
@@ -73,6 +75,7 @@
   // Apply
   --color-prime: var(--color-light-prime);
   --color-prime-alt: var(--color-light-prime-alt);
+  --color-secondary: var(--color-light-secondary);
   --font-weight-body: var(--font-weight-light-body);
   --font-weight-headings: var(--font-weight-light-headings);
 }
@@ -109,6 +112,7 @@
     // Apply
     --color-prime: var(--color-dark-prime);
     --color-prime-alt: var(--color-dark-prime-alt);
+    --color-secondary: var(--color-dark-secondary);
     --font-weight-body: var(--font-weight-dark-body);
     --font-weight-headings: var(--font-weight-dark-headings);
   }
@@ -124,5 +128,5 @@
   --color-text-subtle: var(--color-add-60);
   --color-text-link-default: var(--color-prime);
   --color-text-link-hover: var(--color-prime);
-  --color-text-link-visited: var(--color-text-link-default);
+  --color-text-link-visited: var(--color-secondary);
 }

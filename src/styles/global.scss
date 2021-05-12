@@ -88,6 +88,7 @@ p {
 }
 
 a {
+  position: relative;
   color: var(--color-text-link-default);
   text-decoration: none;
 
@@ -102,6 +103,22 @@ a {
     text-decoration-color: var(--color-text-link-default);
     text-decoration-thickness: 2px;
     text-underline-offset: 0.2em;
+  }
+
+  &:focus-visible {
+    outline: none;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -0.5rem;
+      right: -0.5rem;
+      bottom: -0.5rem;
+      left: -0.5rem;
+      border-radius: 0.5rem;
+      outline: none;
+      box-shadow: 0 0 0 2px var(--color-prime);
+    }
   }
 }
 
@@ -193,4 +210,15 @@ blockquote {
   width: 1px;
   height: 1px;
   overflow: hidden;
+}
+
+._profileImage {
+  width: 24rem;
+  margin: 0 0 3rem;
+  border: 2px solid var(--color-add-60);
+
+  &,
+  * {
+    border-radius: 9999px;
+  }
 }

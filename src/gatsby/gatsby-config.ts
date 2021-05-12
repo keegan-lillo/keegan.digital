@@ -103,6 +103,13 @@ const config: GatsbyConfig = {
         delimiters: ['```yaml', '```'],
         plugins: [
           {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 400,
+              linkImagesToOriginal: false,
+            },
+          },
+          {
             resolve: `gatsby-remark-external-links`,
             options: {
               target: `_blank`,
