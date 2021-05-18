@@ -22,7 +22,7 @@ quote:
     professional experiences, what they can expect after graduation and how to
     set up a portfolio website. Mr. Lillo greatly contributed to our goal in
     this series to prepare students for life after the classroom.
-  author: Rebecca Alex, M.S.A. Professor and Chair, Art Department, College of San
+  author: Rebecca Alex, M.F.A. Professor and Chair, Art Department, College of San
     Mateo
 ```
 As part of the College of San Mateo Artist/Graphic Design Lecture Series, I was invited to give a talk on my professional experience, as well as provide the students an honest look into what they can expect from the design industry. This also included some advice on how to stand out from the crowd when applying for their first jobs. Plus a crash course on how to get set up with a portfolio website.
