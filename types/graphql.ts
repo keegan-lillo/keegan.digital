@@ -258,8 +258,6 @@ export type DirectoryCtimeArgs = {
 export type Site = Node & {
   buildTime?: Maybe<Scalars['Date']>;
   siteMetadata?: Maybe<SiteSiteMetadata>;
-  port?: Maybe<Scalars['Int']>;
-  host?: Maybe<Scalars['String']>;
   polyfill?: Maybe<Scalars['Boolean']>;
   pathPrefix?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
@@ -308,19 +306,17 @@ export type SitePage = Node & {
   internalComponentName: Scalars['String'];
   componentChunkName: Scalars['String'];
   matchPath?: Maybe<Scalars['String']>;
-  isCreatedByStatefulCreatePages?: Maybe<Scalars['Boolean']>;
-  pluginCreator?: Maybe<SitePlugin>;
-  pluginCreatorId?: Maybe<Scalars['String']>;
-  componentPath?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
   parent?: Maybe<Node>;
   children: Array<Node>;
   internal: Internal;
+  isCreatedByStatefulCreatePages?: Maybe<Scalars['Boolean']>;
   context?: Maybe<SitePageContext>;
+  pluginCreator?: Maybe<SitePlugin>;
+  pluginCreatorId?: Maybe<Scalars['String']>;
 };
 
 export type SitePageContext = {
-  breadcrumb?: Maybe<SitePageContextBreadcrumb>;
   childrenGlob?: Maybe<Scalars['String']>;
   orgId?: Maybe<Scalars['String']>;
   slug?: Maybe<Scalars['String']>;
@@ -328,6 +324,26 @@ export type SitePageContext = {
   template?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
   slugTitleMap?: Maybe<SitePageContextSlugTitleMap>;
+  breadcrumb?: Maybe<SitePageContextBreadcrumb>;
+};
+
+export type SitePageContextSlugTitleMap = {
+  _portfolio_?: Maybe<Scalars['String']>;
+  _giving_back_?: Maybe<Scalars['String']>;
+  _about_?: Maybe<Scalars['String']>;
+  _who_?: Maybe<Scalars['String']>;
+  _giving_back_womens_art_register_?: Maybe<Scalars['String']>;
+  _portfolio_pebble_?: Maybe<Scalars['String']>;
+  _giving_back_paintbrush_diplomacy_?: Maybe<Scalars['String']>;
+  _giving_back_hraff_?: Maybe<Scalars['String']>;
+  _giving_back_college_of_san_mateo_?: Maybe<Scalars['String']>;
+  _portfolio_bixby_?: Maybe<Scalars['String']>;
+  _portfolio_pebble_pebble_website_?: Maybe<Scalars['String']>;
+  _portfolio_pebble_pebble_appstore_?: Maybe<Scalars['String']>;
+  _portfolio_pebble_health_charts_?: Maybe<Scalars['String']>;
+  _portfolio_bixby_bixby_studio_?: Maybe<Scalars['String']>;
+  _portfolio_pebble_clay_?: Maybe<Scalars['String']>;
+  _portfolio_bixby_bixby_component_library_?: Maybe<Scalars['String']>;
 };
 
 export type SitePageContextBreadcrumb = {
@@ -338,25 +354,6 @@ export type SitePageContextBreadcrumb = {
 export type SitePageContextBreadcrumbCrumbs = {
   pathname?: Maybe<Scalars['String']>;
   crumbLabel?: Maybe<Scalars['String']>;
-};
-
-export type SitePageContextSlugTitleMap = {
-  _giving_back_?: Maybe<Scalars['String']>;
-  _portfolio_?: Maybe<Scalars['String']>;
-  _who_?: Maybe<Scalars['String']>;
-  _giving_back_womens_art_register_?: Maybe<Scalars['String']>;
-  _giving_back_paintbrush_diplomacy_?: Maybe<Scalars['String']>;
-  _portfolio_pebble_?: Maybe<Scalars['String']>;
-  _portfolio_bixby_?: Maybe<Scalars['String']>;
-  _giving_back_hraff_?: Maybe<Scalars['String']>;
-  _portfolio_pebble_pebble_website_?: Maybe<Scalars['String']>;
-  _portfolio_pebble_pebble_appstore_?: Maybe<Scalars['String']>;
-  _portfolio_pebble_health_charts_?: Maybe<Scalars['String']>;
-  _portfolio_pebble_clay_?: Maybe<Scalars['String']>;
-  _portfolio_bixby_bixby_studio_?: Maybe<Scalars['String']>;
-  _portfolio_bixby_bixby_component_library_?: Maybe<Scalars['String']>;
-  _about_?: Maybe<Scalars['String']>;
-  _giving_back_college_of_san_mateo_?: Maybe<Scalars['String']>;
 };
 
 export type ImageFormat =
@@ -682,6 +679,7 @@ export type MarkdownRemarkTableOfContentsArgs = {
 export type MarkdownRemarkFrontmatter = {
   title?: Maybe<Scalars['String']>;
   template?: Maybe<Scalars['String']>;
+  tags?: Maybe<Array<Maybe<Scalars['String']>>>;
   order?: Maybe<Scalars['Int']>;
   section?: Maybe<Scalars['String']>;
   link?: Maybe<MarkdownRemarkFrontmatterLink>;
@@ -692,7 +690,6 @@ export type MarkdownRemarkFrontmatter = {
   organization?: Maybe<Scalars['String']>;
   technology?: Maybe<Array<Maybe<Scalars['String']>>>;
   subProjects?: Maybe<Array<Maybe<MarkdownRemarkFrontmatterSubProjects>>>;
-  tags?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
 export type MarkdownRemarkFrontmatterLink = {
@@ -988,8 +985,6 @@ export type QueryAllDirectoryArgs = {
 export type QuerySiteArgs = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
-  port?: Maybe<IntQueryOperatorInput>;
-  host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -1034,15 +1029,14 @@ export type QuerySitePageArgs = {
   internalComponentName?: Maybe<StringQueryOperatorInput>;
   componentChunkName?: Maybe<StringQueryOperatorInput>;
   matchPath?: Maybe<StringQueryOperatorInput>;
-  isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>;
-  pluginCreator?: Maybe<SitePluginFilterInput>;
-  pluginCreatorId?: Maybe<StringQueryOperatorInput>;
-  componentPath?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
+  isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>;
   context?: Maybe<SitePageContextFilterInput>;
+  pluginCreator?: Maybe<SitePluginFilterInput>;
+  pluginCreatorId?: Maybe<StringQueryOperatorInput>;
 };
 
 
@@ -1309,6 +1303,7 @@ export type MarkdownRemarkFilterInput = {
 export type MarkdownRemarkFrontmatterFilterInput = {
   title?: Maybe<StringQueryOperatorInput>;
   template?: Maybe<StringQueryOperatorInput>;
+  tags?: Maybe<StringQueryOperatorInput>;
   order?: Maybe<IntQueryOperatorInput>;
   section?: Maybe<StringQueryOperatorInput>;
   link?: Maybe<MarkdownRemarkFrontmatterLinkFilterInput>;
@@ -1319,7 +1314,6 @@ export type MarkdownRemarkFrontmatterFilterInput = {
   organization?: Maybe<StringQueryOperatorInput>;
   technology?: Maybe<StringQueryOperatorInput>;
   subProjects?: Maybe<MarkdownRemarkFrontmatterSubProjectsFilterListInput>;
-  tags?: Maybe<StringQueryOperatorInput>;
 };
 
 export type MarkdownRemarkFrontmatterLinkFilterInput = {
@@ -1672,6 +1666,7 @@ export type FileFieldsEnum =
   | 'childrenMarkdownRemark___id'
   | 'childrenMarkdownRemark___frontmatter___title'
   | 'childrenMarkdownRemark___frontmatter___template'
+  | 'childrenMarkdownRemark___frontmatter___tags'
   | 'childrenMarkdownRemark___frontmatter___order'
   | 'childrenMarkdownRemark___frontmatter___section'
   | 'childrenMarkdownRemark___frontmatter___link___text'
@@ -1688,7 +1683,6 @@ export type FileFieldsEnum =
   | 'childrenMarkdownRemark___frontmatter___subProjects___title'
   | 'childrenMarkdownRemark___frontmatter___subProjects___description'
   | 'childrenMarkdownRemark___frontmatter___subProjects___images'
-  | 'childrenMarkdownRemark___frontmatter___tags'
   | 'childrenMarkdownRemark___excerpt'
   | 'childrenMarkdownRemark___rawMarkdownBody'
   | 'childrenMarkdownRemark___fileAbsolutePath'
@@ -1750,6 +1744,7 @@ export type FileFieldsEnum =
   | 'childMarkdownRemark___id'
   | 'childMarkdownRemark___frontmatter___title'
   | 'childMarkdownRemark___frontmatter___template'
+  | 'childMarkdownRemark___frontmatter___tags'
   | 'childMarkdownRemark___frontmatter___order'
   | 'childMarkdownRemark___frontmatter___section'
   | 'childMarkdownRemark___frontmatter___link___text'
@@ -1766,7 +1761,6 @@ export type FileFieldsEnum =
   | 'childMarkdownRemark___frontmatter___subProjects___title'
   | 'childMarkdownRemark___frontmatter___subProjects___description'
   | 'childMarkdownRemark___frontmatter___subProjects___images'
-  | 'childMarkdownRemark___frontmatter___tags'
   | 'childMarkdownRemark___excerpt'
   | 'childMarkdownRemark___rawMarkdownBody'
   | 'childMarkdownRemark___fileAbsolutePath'
@@ -2218,8 +2212,6 @@ export type SiteFieldsEnum =
   | 'siteMetadata___author___name'
   | 'siteMetadata___author___url'
   | 'siteMetadata___author___email'
-  | 'port'
-  | 'host'
   | 'polyfill'
   | 'pathPrefix'
   | 'id'
@@ -2321,8 +2313,6 @@ export type SiteGroupConnection = {
 export type SiteFilterInput = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
-  port?: Maybe<IntQueryOperatorInput>;
-  host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -2500,6 +2490,50 @@ export type SiteFunctionSortInput = {
   order?: Maybe<Array<Maybe<SortOrderEnum>>>;
 };
 
+export type SitePageContextFilterInput = {
+  childrenGlob?: Maybe<StringQueryOperatorInput>;
+  orgId?: Maybe<StringQueryOperatorInput>;
+  slug?: Maybe<StringQueryOperatorInput>;
+  sourceInstanceName?: Maybe<StringQueryOperatorInput>;
+  template?: Maybe<StringQueryOperatorInput>;
+  title?: Maybe<StringQueryOperatorInput>;
+  slugTitleMap?: Maybe<SitePageContextSlugTitleMapFilterInput>;
+  breadcrumb?: Maybe<SitePageContextBreadcrumbFilterInput>;
+};
+
+export type SitePageContextSlugTitleMapFilterInput = {
+  _portfolio_?: Maybe<StringQueryOperatorInput>;
+  _giving_back_?: Maybe<StringQueryOperatorInput>;
+  _about_?: Maybe<StringQueryOperatorInput>;
+  _who_?: Maybe<StringQueryOperatorInput>;
+  _giving_back_womens_art_register_?: Maybe<StringQueryOperatorInput>;
+  _portfolio_pebble_?: Maybe<StringQueryOperatorInput>;
+  _giving_back_paintbrush_diplomacy_?: Maybe<StringQueryOperatorInput>;
+  _giving_back_hraff_?: Maybe<StringQueryOperatorInput>;
+  _giving_back_college_of_san_mateo_?: Maybe<StringQueryOperatorInput>;
+  _portfolio_bixby_?: Maybe<StringQueryOperatorInput>;
+  _portfolio_pebble_pebble_website_?: Maybe<StringQueryOperatorInput>;
+  _portfolio_pebble_pebble_appstore_?: Maybe<StringQueryOperatorInput>;
+  _portfolio_pebble_health_charts_?: Maybe<StringQueryOperatorInput>;
+  _portfolio_bixby_bixby_studio_?: Maybe<StringQueryOperatorInput>;
+  _portfolio_pebble_clay_?: Maybe<StringQueryOperatorInput>;
+  _portfolio_bixby_bixby_component_library_?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePageContextBreadcrumbFilterInput = {
+  location?: Maybe<StringQueryOperatorInput>;
+  crumbs?: Maybe<SitePageContextBreadcrumbCrumbsFilterListInput>;
+};
+
+export type SitePageContextBreadcrumbCrumbsFilterListInput = {
+  elemMatch?: Maybe<SitePageContextBreadcrumbCrumbsFilterInput>;
+};
+
+export type SitePageContextBreadcrumbCrumbsFilterInput = {
+  pathname?: Maybe<StringQueryOperatorInput>;
+  crumbLabel?: Maybe<StringQueryOperatorInput>;
+};
+
 export type SitePluginFilterInput = {
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
@@ -2623,50 +2657,6 @@ export type SitePluginPackageJsonPeerDependenciesFilterInput = {
   version?: Maybe<StringQueryOperatorInput>;
 };
 
-export type SitePageContextFilterInput = {
-  breadcrumb?: Maybe<SitePageContextBreadcrumbFilterInput>;
-  childrenGlob?: Maybe<StringQueryOperatorInput>;
-  orgId?: Maybe<StringQueryOperatorInput>;
-  slug?: Maybe<StringQueryOperatorInput>;
-  sourceInstanceName?: Maybe<StringQueryOperatorInput>;
-  template?: Maybe<StringQueryOperatorInput>;
-  title?: Maybe<StringQueryOperatorInput>;
-  slugTitleMap?: Maybe<SitePageContextSlugTitleMapFilterInput>;
-};
-
-export type SitePageContextBreadcrumbFilterInput = {
-  location?: Maybe<StringQueryOperatorInput>;
-  crumbs?: Maybe<SitePageContextBreadcrumbCrumbsFilterListInput>;
-};
-
-export type SitePageContextBreadcrumbCrumbsFilterListInput = {
-  elemMatch?: Maybe<SitePageContextBreadcrumbCrumbsFilterInput>;
-};
-
-export type SitePageContextBreadcrumbCrumbsFilterInput = {
-  pathname?: Maybe<StringQueryOperatorInput>;
-  crumbLabel?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePageContextSlugTitleMapFilterInput = {
-  _giving_back_?: Maybe<StringQueryOperatorInput>;
-  _portfolio_?: Maybe<StringQueryOperatorInput>;
-  _who_?: Maybe<StringQueryOperatorInput>;
-  _giving_back_womens_art_register_?: Maybe<StringQueryOperatorInput>;
-  _giving_back_paintbrush_diplomacy_?: Maybe<StringQueryOperatorInput>;
-  _portfolio_pebble_?: Maybe<StringQueryOperatorInput>;
-  _portfolio_bixby_?: Maybe<StringQueryOperatorInput>;
-  _giving_back_hraff_?: Maybe<StringQueryOperatorInput>;
-  _portfolio_pebble_pebble_website_?: Maybe<StringQueryOperatorInput>;
-  _portfolio_pebble_pebble_appstore_?: Maybe<StringQueryOperatorInput>;
-  _portfolio_pebble_health_charts_?: Maybe<StringQueryOperatorInput>;
-  _portfolio_pebble_clay_?: Maybe<StringQueryOperatorInput>;
-  _portfolio_bixby_bixby_studio_?: Maybe<StringQueryOperatorInput>;
-  _portfolio_bixby_bixby_component_library_?: Maybe<StringQueryOperatorInput>;
-  _about_?: Maybe<StringQueryOperatorInput>;
-  _giving_back_college_of_san_mateo_?: Maybe<StringQueryOperatorInput>;
-};
-
 export type SitePageConnection = {
   totalCount: Scalars['Int'];
   edges: Array<SitePageEdge>;
@@ -2718,7 +2708,119 @@ export type SitePageFieldsEnum =
   | 'internalComponentName'
   | 'componentChunkName'
   | 'matchPath'
+  | 'id'
+  | 'parent___id'
+  | 'parent___parent___id'
+  | 'parent___parent___parent___id'
+  | 'parent___parent___parent___children'
+  | 'parent___parent___children'
+  | 'parent___parent___children___id'
+  | 'parent___parent___children___children'
+  | 'parent___parent___internal___content'
+  | 'parent___parent___internal___contentDigest'
+  | 'parent___parent___internal___description'
+  | 'parent___parent___internal___fieldOwners'
+  | 'parent___parent___internal___ignoreType'
+  | 'parent___parent___internal___mediaType'
+  | 'parent___parent___internal___owner'
+  | 'parent___parent___internal___type'
+  | 'parent___children'
+  | 'parent___children___id'
+  | 'parent___children___parent___id'
+  | 'parent___children___parent___children'
+  | 'parent___children___children'
+  | 'parent___children___children___id'
+  | 'parent___children___children___children'
+  | 'parent___children___internal___content'
+  | 'parent___children___internal___contentDigest'
+  | 'parent___children___internal___description'
+  | 'parent___children___internal___fieldOwners'
+  | 'parent___children___internal___ignoreType'
+  | 'parent___children___internal___mediaType'
+  | 'parent___children___internal___owner'
+  | 'parent___children___internal___type'
+  | 'parent___internal___content'
+  | 'parent___internal___contentDigest'
+  | 'parent___internal___description'
+  | 'parent___internal___fieldOwners'
+  | 'parent___internal___ignoreType'
+  | 'parent___internal___mediaType'
+  | 'parent___internal___owner'
+  | 'parent___internal___type'
+  | 'children'
+  | 'children___id'
+  | 'children___parent___id'
+  | 'children___parent___parent___id'
+  | 'children___parent___parent___children'
+  | 'children___parent___children'
+  | 'children___parent___children___id'
+  | 'children___parent___children___children'
+  | 'children___parent___internal___content'
+  | 'children___parent___internal___contentDigest'
+  | 'children___parent___internal___description'
+  | 'children___parent___internal___fieldOwners'
+  | 'children___parent___internal___ignoreType'
+  | 'children___parent___internal___mediaType'
+  | 'children___parent___internal___owner'
+  | 'children___parent___internal___type'
+  | 'children___children'
+  | 'children___children___id'
+  | 'children___children___parent___id'
+  | 'children___children___parent___children'
+  | 'children___children___children'
+  | 'children___children___children___id'
+  | 'children___children___children___children'
+  | 'children___children___internal___content'
+  | 'children___children___internal___contentDigest'
+  | 'children___children___internal___description'
+  | 'children___children___internal___fieldOwners'
+  | 'children___children___internal___ignoreType'
+  | 'children___children___internal___mediaType'
+  | 'children___children___internal___owner'
+  | 'children___children___internal___type'
+  | 'children___internal___content'
+  | 'children___internal___contentDigest'
+  | 'children___internal___description'
+  | 'children___internal___fieldOwners'
+  | 'children___internal___ignoreType'
+  | 'children___internal___mediaType'
+  | 'children___internal___owner'
+  | 'children___internal___type'
+  | 'internal___content'
+  | 'internal___contentDigest'
+  | 'internal___description'
+  | 'internal___fieldOwners'
+  | 'internal___ignoreType'
+  | 'internal___mediaType'
+  | 'internal___owner'
+  | 'internal___type'
   | 'isCreatedByStatefulCreatePages'
+  | 'context___childrenGlob'
+  | 'context___orgId'
+  | 'context___slug'
+  | 'context___sourceInstanceName'
+  | 'context___template'
+  | 'context___title'
+  | 'context___slugTitleMap____portfolio_'
+  | 'context___slugTitleMap____giving_back_'
+  | 'context___slugTitleMap____about_'
+  | 'context___slugTitleMap____who_'
+  | 'context___slugTitleMap____giving_back_womens_art_register_'
+  | 'context___slugTitleMap____portfolio_pebble_'
+  | 'context___slugTitleMap____giving_back_paintbrush_diplomacy_'
+  | 'context___slugTitleMap____giving_back_hraff_'
+  | 'context___slugTitleMap____giving_back_college_of_san_mateo_'
+  | 'context___slugTitleMap____portfolio_bixby_'
+  | 'context___slugTitleMap____portfolio_pebble_pebble_website_'
+  | 'context___slugTitleMap____portfolio_pebble_pebble_appstore_'
+  | 'context___slugTitleMap____portfolio_pebble_health_charts_'
+  | 'context___slugTitleMap____portfolio_bixby_bixby_studio_'
+  | 'context___slugTitleMap____portfolio_pebble_clay_'
+  | 'context___slugTitleMap____portfolio_bixby_bixby_component_library_'
+  | 'context___breadcrumb___location'
+  | 'context___breadcrumb___crumbs'
+  | 'context___breadcrumb___crumbs___pathname'
+  | 'context___breadcrumb___crumbs___crumbLabel'
   | 'pluginCreator___id'
   | 'pluginCreator___parent___id'
   | 'pluginCreator___parent___parent___id'
@@ -2816,120 +2918,7 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___packageJson___peerDependencies___name'
   | 'pluginCreator___packageJson___peerDependencies___version'
   | 'pluginCreator___packageJson___keywords'
-  | 'pluginCreatorId'
-  | 'componentPath'
-  | 'id'
-  | 'parent___id'
-  | 'parent___parent___id'
-  | 'parent___parent___parent___id'
-  | 'parent___parent___parent___children'
-  | 'parent___parent___children'
-  | 'parent___parent___children___id'
-  | 'parent___parent___children___children'
-  | 'parent___parent___internal___content'
-  | 'parent___parent___internal___contentDigest'
-  | 'parent___parent___internal___description'
-  | 'parent___parent___internal___fieldOwners'
-  | 'parent___parent___internal___ignoreType'
-  | 'parent___parent___internal___mediaType'
-  | 'parent___parent___internal___owner'
-  | 'parent___parent___internal___type'
-  | 'parent___children'
-  | 'parent___children___id'
-  | 'parent___children___parent___id'
-  | 'parent___children___parent___children'
-  | 'parent___children___children'
-  | 'parent___children___children___id'
-  | 'parent___children___children___children'
-  | 'parent___children___internal___content'
-  | 'parent___children___internal___contentDigest'
-  | 'parent___children___internal___description'
-  | 'parent___children___internal___fieldOwners'
-  | 'parent___children___internal___ignoreType'
-  | 'parent___children___internal___mediaType'
-  | 'parent___children___internal___owner'
-  | 'parent___children___internal___type'
-  | 'parent___internal___content'
-  | 'parent___internal___contentDigest'
-  | 'parent___internal___description'
-  | 'parent___internal___fieldOwners'
-  | 'parent___internal___ignoreType'
-  | 'parent___internal___mediaType'
-  | 'parent___internal___owner'
-  | 'parent___internal___type'
-  | 'children'
-  | 'children___id'
-  | 'children___parent___id'
-  | 'children___parent___parent___id'
-  | 'children___parent___parent___children'
-  | 'children___parent___children'
-  | 'children___parent___children___id'
-  | 'children___parent___children___children'
-  | 'children___parent___internal___content'
-  | 'children___parent___internal___contentDigest'
-  | 'children___parent___internal___description'
-  | 'children___parent___internal___fieldOwners'
-  | 'children___parent___internal___ignoreType'
-  | 'children___parent___internal___mediaType'
-  | 'children___parent___internal___owner'
-  | 'children___parent___internal___type'
-  | 'children___children'
-  | 'children___children___id'
-  | 'children___children___parent___id'
-  | 'children___children___parent___children'
-  | 'children___children___children'
-  | 'children___children___children___id'
-  | 'children___children___children___children'
-  | 'children___children___internal___content'
-  | 'children___children___internal___contentDigest'
-  | 'children___children___internal___description'
-  | 'children___children___internal___fieldOwners'
-  | 'children___children___internal___ignoreType'
-  | 'children___children___internal___mediaType'
-  | 'children___children___internal___owner'
-  | 'children___children___internal___type'
-  | 'children___internal___content'
-  | 'children___internal___contentDigest'
-  | 'children___internal___description'
-  | 'children___internal___fieldOwners'
-  | 'children___internal___ignoreType'
-  | 'children___internal___mediaType'
-  | 'children___internal___owner'
-  | 'children___internal___type'
-  | 'internal___content'
-  | 'internal___contentDigest'
-  | 'internal___description'
-  | 'internal___fieldOwners'
-  | 'internal___ignoreType'
-  | 'internal___mediaType'
-  | 'internal___owner'
-  | 'internal___type'
-  | 'context___breadcrumb___location'
-  | 'context___breadcrumb___crumbs'
-  | 'context___breadcrumb___crumbs___pathname'
-  | 'context___breadcrumb___crumbs___crumbLabel'
-  | 'context___childrenGlob'
-  | 'context___orgId'
-  | 'context___slug'
-  | 'context___sourceInstanceName'
-  | 'context___template'
-  | 'context___title'
-  | 'context___slugTitleMap____giving_back_'
-  | 'context___slugTitleMap____portfolio_'
-  | 'context___slugTitleMap____who_'
-  | 'context___slugTitleMap____giving_back_womens_art_register_'
-  | 'context___slugTitleMap____giving_back_paintbrush_diplomacy_'
-  | 'context___slugTitleMap____portfolio_pebble_'
-  | 'context___slugTitleMap____portfolio_bixby_'
-  | 'context___slugTitleMap____giving_back_hraff_'
-  | 'context___slugTitleMap____portfolio_pebble_pebble_website_'
-  | 'context___slugTitleMap____portfolio_pebble_pebble_appstore_'
-  | 'context___slugTitleMap____portfolio_pebble_health_charts_'
-  | 'context___slugTitleMap____portfolio_pebble_clay_'
-  | 'context___slugTitleMap____portfolio_bixby_bixby_studio_'
-  | 'context___slugTitleMap____portfolio_bixby_bixby_component_library_'
-  | 'context___slugTitleMap____about_'
-  | 'context___slugTitleMap____giving_back_college_of_san_mateo_';
+  | 'pluginCreatorId';
 
 export type SitePageGroupConnection = {
   totalCount: Scalars['Int'];
@@ -2946,15 +2935,14 @@ export type SitePageFilterInput = {
   internalComponentName?: Maybe<StringQueryOperatorInput>;
   componentChunkName?: Maybe<StringQueryOperatorInput>;
   matchPath?: Maybe<StringQueryOperatorInput>;
-  isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>;
-  pluginCreator?: Maybe<SitePluginFilterInput>;
-  pluginCreatorId?: Maybe<StringQueryOperatorInput>;
-  componentPath?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
+  isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>;
   context?: Maybe<SitePageContextFilterInput>;
+  pluginCreator?: Maybe<SitePluginFilterInput>;
+  pluginCreatorId?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePageSortInput = {
@@ -3190,6 +3178,7 @@ export type MarkdownRemarkFieldsEnum =
   | 'id'
   | 'frontmatter___title'
   | 'frontmatter___template'
+  | 'frontmatter___tags'
   | 'frontmatter___order'
   | 'frontmatter___section'
   | 'frontmatter___link___text'
@@ -3322,7 +3311,6 @@ export type MarkdownRemarkFieldsEnum =
   | 'frontmatter___subProjects___images'
   | 'frontmatter___subProjects___images___caption'
   | 'frontmatter___subProjects___images___alt'
-  | 'frontmatter___tags'
   | 'excerpt'
   | 'rawMarkdownBody'
   | 'fileAbsolutePath'
