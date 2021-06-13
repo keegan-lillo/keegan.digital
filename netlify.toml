@@ -10,13 +10,25 @@
   package = "netlify-plugin-gatsby-cache"
 
 [[redirects]]
-  from = "http://*.keegan.gives"
+  from = "http://www.keegan.gives/*"
   to = "https://www.keegan.digital/giving-back/"
   status = 301
   force = true
 
 [[redirects]]
-  from = "https://*.keegan.gives"
+  from = "https://www.keegan.gives/*"
+  to = "https://www.keegan.digital/giving-back/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://keegan.gives/*"
+  to = "https://www.keegan.digital/giving-back/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://keegan.gives/*"
   to = "https://www.keegan.digital/giving-back/"
   status = 301
   force = true
